@@ -2,19 +2,10 @@ import Button from "@/ui/uiButton";
 
 export default async function admin() {
   return (
-    <div className="flex justify-center gap-3 py-20">
-      <Button href="/reset" variant="base">
-        Reset
-      </Button>
-      <Button href="/database" variant="base">
-        Database
-      </Button>
-      <Button href="/doodstream" variant="base">
-        Doodstream
-      </Button>
-      <Button href="/streamtape" variant="base">
-        Streamtape
-      </Button>
+    <div className="min-h-[70vh] flex flex-col items-center justify-center gap-4">
+      <h1 className="text-6xl font-bold">404</h1>
+
+      <p className="text-zinc-400">Page not found.</p>
     </div>
   );
 }
