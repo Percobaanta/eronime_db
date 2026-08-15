@@ -28,8 +28,15 @@ export default async function Admin() {
     (key) => !(doodMap.has(key) && streamMap.has(key) && pachMap.has(key))
   );
 
+  const getAll = keys.filter(
+    (key) => doodMap.has(key) || streamMap.has(key) || pachMap.has(key)
+  );
+
+  console.log(getAll);
+
   return (
     <main>
+      <p>Broken</p>
       <table className="text-xs mx-auto my-10">
         <thead>
           <tr>
@@ -68,6 +75,7 @@ export default async function Admin() {
 
                     {stream && (
                       <Button
+                        rounded
                         href={stream.link}
                         target="_blank"
                         size="sm"
@@ -96,8 +104,9 @@ export default async function Admin() {
                     {pach && (
                       <>
                         <Button
+                          rounded
                           href={`/${pach.xtype}/${pach.id}`}
-                          variant="base"
+                          variant="primary"
                           size="sm"
                           className="w-24!"
                         >
@@ -105,6 +114,103 @@ export default async function Admin() {
                         </Button>
 
                         <Button
+                          rounded
+                          href={pach.xsource}
+                          target="_blank"
+                          variant="primary"
+                          size="sm"
+                        >
+                          Source
+                        </Button>
+                      </>
+                    )}
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+
+      <p>All</p>
+      <table className="text-xs mx-auto my-10">
+        <thead>
+          <tr>
+            <th className="border px-2 py-1">No</th>
+            <th className="border px-2 py-1">Doodstream</th>
+            <th className="border px-2 py-1">Streamtape</th>
+            <th className="border px-2 py-1">PACH</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {getAll.map((key, index) => {
+            const dood = doodMap.get(key);
+            const stream = streamMap.get(key);
+            const pach = pachMap.get(key);
+
+            return (
+              <tr key={key}>
+                <td className="border px-2 py-1">{index + 1}</td>
+
+                <td className="border px-2 py-1">
+                  <input
+                    className="bg-zinc-800 rounded-full px-2 py-1 text-center"
+                    readOnly
+                    value={dood?.title ?? "x"}
+                  />
+                </td>
+
+                <td className="border px-2 py-1">
+                  <div className="flex justify-between gap-3">
+                    <input
+                      className="bg-zinc-800 rounded-full px-2 py-1 text-center"
+                      readOnly
+                      value={stream?.name.replace(".mp4", "") ?? "x"}
+                    />
+
+                    {stream && (
+                      <Button
+                        rounded
+                        href={stream.link}
+                        target="_blank"
+                        size="sm"
+                        variant="primary"
+                      >
+                        Source
+                      </Button>
+                    )}
+                  </div>
+                </td>
+
+                <td className="border px-2 py-1">
+                  <div className="flex justify-between gap-3">
+                    <input
+                      className="bg-zinc-800 rounded-full px-2 py-1 text-center"
+                      readOnly
+                      value={pach?.id ?? "x"}
+                    />
+
+                    <input
+                      className="bg-zinc-800 rounded-full px-2 py-1 text-center"
+                      readOnly
+                      value={pach?.xtitle ?? "x"}
+                    />
+
+                    {pach && (
+                      <>
+                        <Button
+                          rounded
+                          href={`/${pach.xtype}/${pach.id}`}
+                          variant="primary"
+                          size="sm"
+                          className="w-24!"
+                        >
+                          {pach.xtype}
+                        </Button>
+
+                        <Button
+                          rounded
                           href={pach.xsource}
                           target="_blank"
                           variant="primary"

@@ -6,6 +6,7 @@ export default async function admin() {
       <h1 className="text-6xl font-bold">404</h1>
 
       <p className="text-zinc-400">Page not found.</p>
+      <Button href={"https://eronime.vercel.app"}></Button>
     </div>
   );
 }
