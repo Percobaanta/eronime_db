@@ -18,7 +18,7 @@ export default function DoodUploadPage() {
     setResult(null);
 
     try {
-      const response = await fetch("/admin/doodstream/remote-upload", {
+      const response = await fetch("/3doods/remote-upload", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

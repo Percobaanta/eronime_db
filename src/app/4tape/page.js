@@ -19,7 +19,7 @@ export default function StreamtapePage() {
     setResult(null);
 
     try {
-      const response = await fetch("/admin/streamtape/remote-upload", {
+      const response = await fetch("/4tape/remote-upload", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
