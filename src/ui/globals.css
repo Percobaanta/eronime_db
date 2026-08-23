@@ -2,7 +2,7 @@
 
 @layer components {
   :root {
-    @apply bg-zinc-950 text-zinc-400! text-base!;
+    @apply text-zinc-400! text-base!;
   }
   ::-webkit-scrollbar {
     width: 5px;
@@ -15,44 +15,50 @@
     display: none;
   }
 
-  /* Outline / Border*/
-  .border {
-    @apply border border-zinc-700;
+  /*  Text*/
+  .text0 {
+    @apply text-zinc-200;
+  }
+  .text1 {
+    @apply text-zinc-400;
   }
 
-  /* Button */
-  .btn-sm {
-    @apply min-w-7 h-7 text-xs gap-2;
+  /*  Background*/
+  .bg0 {
+    @apply bg-zinc-950;
   }
-  .btn-lg {
-    @apply min-w-9 h-9 text-sm gap-2 font-semibold;
+  /*  Background*/
+  .bg0 {
+    @apply bg-zinc-950;
+  }
+  .bg1 {
+    @apply bg-zinc-900;
+  }
+  .bg2 {
+    @apply bg-zinc-800;
+  }
+  .bg3 {
+    @apply bg-zinc-700;
+  }
+
+  /*  Border*/
+  .border {
+    @apply border border-zinc-700/40;
+  }
+  .borderT {
+    @apply border border-t border-zinc-700/40;
+  }
+  .borderB {
+    @apply border border-b border-zinc-700/40;
+  }
+  .borderL {
+    @apply border border-l border-zinc-700/40;
+  }
+  .borderR {
+    @apply border border-r border-zinc-700/40;
   }
 
   .shadow {
     @apply shadow drop-shadow;
-  }
-
-  .SearchBar {
-    @apply flex;
-  }
-
-  .scrollbar-rounded::-webkit-scrollbar {
-    @apply h-1;
-  }
-
-  .scrollbar-rounded::-webkit-scrollbar-track {
-    @apply bg-transparent rounded-full;
-  }
-
-  .scrollbar-rounded::-webkit-scrollbar-thumb {
-    @apply bg-zinc-400 rounded-full;
-  }
-
-  .scrollbar-rounded::-webkit-scrollbar-thumb:hover {
-    @apply bg-zinc-200 rounded-full;
-  }
-
-  .scrollbar-rounded::-webkit-scrollbar-corner {
-    @apply bg-transparent;
   }
 }

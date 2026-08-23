@@ -16,9 +16,7 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="en" className={`${googleSansAlt.className} h-full antialiased`}>
-      <body>
-        <div className="containers p-3x mx-autox">{children}</div>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
