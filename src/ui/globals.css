@@ -2,7 +2,7 @@
 
 @layer components {
   :root {
-    @apply text-zinc-400! text-base!;
+    @apply bg-black text-zinc-400! text-base!;
   }
   ::-webkit-scrollbar {
     width: 5px;
@@ -46,16 +46,16 @@
     @apply border border-zinc-700/40;
   }
   .borderT {
-    @apply border border-t border-zinc-700/40;
+    @apply border-t border-zinc-700/40;
   }
   .borderB {
-    @apply border border-b border-zinc-700/40;
+    @apply border-b! border-zinc-700/40;
   }
   .borderL {
-    @apply border border-l border-zinc-700/40;
+    @apply border-l border-zinc-700/40;
   }
   .borderR {
-    @apply border border-r border-zinc-700/40;
+    @apply border-r border-zinc-700/40;
   }
 
   .shadow {

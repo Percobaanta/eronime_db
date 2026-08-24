@@ -5,94 +5,127 @@ import Button from "@/ui/uiButton";
 import Link from "next/link";
 
 export default function NewPage() {
-  const [getSidebar, setSidebar] = useState(false);
-  const [getTheme, setTheme] = useState(false);
+  const [getSidebar, setSidebar] = useState(true);
+  const [getTheme, setTheme] = useState(true);
 
   return (
     <>
       <div className="flex h-screen overflow-auto">
         <aside
-          className={`fixed top-0 left-0 z-20 h-screen  md:relative md:translate-x-0
-          ${getSidebar ? "translate-x-0" : "-translate-x-full"}
-          ${getSidebar ? "md:w-64 w-full" : "md:w-fit"}
-        `}
+          className={`fixed top-0 left-0 md:relative overflow-hidden z-20
+            ${getSidebar ? "md:min-w-64 w-0" : "md:w-fit w-full"}
+          `}
         >
           <div
-            className={`relative bg-zinc-950 border-r border-zinc-700/40 h-screen z-10 ${
-              getSidebar ? "w-64" : "md:w-fit"
-            }`}
+            className={`bg-zinc-950 relative z-10 h-screen p-3 borderR
+             ${getSidebar ? "md:w-64 w-0" : "md:w-fit w-64"}
+          `}
           >
-            <div className="flex justify-between gap-3 mb-6 p-3">
-              {getSidebar ? (
-                <Button
-                  size="lg"
-                  icon="chat-heart-fill"
-                  className="text-white! text-xl! font-bold! lowercase gap-4!"
-                >
+            {/* logo */}
+            <div className="flex justify-between gap-3 mb-5">
+              <Button
+                size="lg"
+                icon="chat-heart-fill"
+                className="text-white! text-xl! font-bold! lowercase"
+              >
+                <div className={getSidebar ? "md:block" : "md:hidden"}>
                   eronime
-                </Button>
-              ) : (
-                <Button
-                  size="lg"
-                  icon="chat-heart-fill"
-                  className="text-white! text-xl! font-bold!"
-                ></Button>
-              )}
+                </div>
+              </Button>
 
-              {getSidebar && (
+              {!getSidebar && (
                 <Button
                   size="lg"
                   icon="layout-sidebar"
-                  className="md:hidden "
-                  onClick={() => setSidebar(!getSidebar)}
-                />
+                  className="md:hidden"
+                  onClick={(e) => setSidebar(!getSidebar)}
+                ></Button>
               )}
             </div>
 
-            {getSidebar && <div className="mb-2 px-6 text-xs">Navigation</div>}
+            {/* navigation menu */}
+            <nav className="mb-3" aria-label="Main Navigation">
+              <span
+                className={`text-xs px-3 py-2 ${
+                  getSidebar ? "block" : "md:hidden block"
+                }`}
+              >
+                Navigation
+              </span>
 
-            <nav className="p-3" aria-label="Main navigation">
               <ul>
                 <li>
-                  {getSidebar ? (
-                    <Button
-                      size="lg"
-                      icon="collection-play-fill"
-                      className="w-full! justify-start gap-4"
-                    >
-                      Animated
-                    </Button>
-                  ) : (
-                    <Button
-                      size="lg"
-                      icon="collection-play-fill"
-                      className="w-full!"
-                    />
-                  )}
+                  <Button
+                    size="lg"
+                    icon="collection-play-fill"
+                    className="w-full! justify-start gap-4"
+                  >
+                    <div className={getSidebar ? "md:block" : "md:hidden"}>
+                      animation
+                    </div>
+                  </Button>
                 </li>
-
                 <li>
-                  {getSidebar ? (
-                    <Button
-                      size="lg"
-                      icon="images"
-                      className="w-full! justify-start gap-4"
-                    >
-                      Cosplay
-                    </Button>
-                  ) : (
-                    <Button size="lg" icon="images" className="w-full!" />
-                  )}
+                  <Button
+                    size="lg"
+                    icon="images"
+                    className="w-full! justify-start gap-4"
+                  >
+                    <div className={getSidebar ? "md:block" : "md:hidden"}>
+                      cosplay
+                    </div>
+                  </Button>
+                </li>
+              </ul>
+            </nav>
+
+            {/* navigation activity */}
+            <nav className="mb-3" aria-label="Main Navigation">
+              <span
+                className={`text-xs px-3 py-2 ${
+                  getSidebar ? "block" : "md:hidden block"
+                }`}
+              >
+                Activity
+              </span>
+
+              <ul>
+                <li>
+                  <Button
+                    size="lg"
+                    icon="bookmark-fill"
+                    className="w-full! justify-start gap-4"
+                  >
+                    <div className={getSidebar ? "md:block" : "md:hidden"}>
+                      Bookmark
+                    </div>
+                  </Button>
+                </li>
+                <li>
+                  <Button
+                    size="lg"
+                    icon="clock-fill"
+                    className="w-full! justify-start gap-4"
+                  >
+                    <div className={getSidebar ? "md:block" : "md:hidden"}>
+                      History
+                    </div>
+                  </Button>
                 </li>
               </ul>
             </nav>
           </div>
 
-          <div className="absolute inset-0 bg-zinc-950/80"></div>
+          {!getSidebar && (
+            <div
+              className="md:hidden absolute inset-0 bg-zinc-950/70 z-0"
+              onClick={(e) => setSidebar(!getSidebar)}
+            ></div>
+          )}
         </aside>
 
-        <main className="min-w-0 flex-1 overflow-y-auto bg-zinc-900">
-          <header className="sticky top-0 z-10 flex gap-3 border-b border-zinc-700/40 bg-zinc-900 p-3">
+        <main className="bg-zinc-900 min-w-0 flex-1 overflow-y-auto">
+          <header className="sticky top-0  flex gap-3 borderB bg-zinc-900 p-3">
             <Button
               size="lg"
               icon="layout-sidebar"
@@ -119,17 +152,15 @@ export default function NewPage() {
             )}
           </header>
 
-          <div className="container mx-auto">
-            <section className="p-3">
-              <h1>New Uploaded</h1>
+          <section className="container mx-auto p-3">
+            <h1>New Uploaded</h1>
 
-              {Array.from({ length: 60 }, (_, index) => (
-                <article key={index}>
-                  <h2>Title {index + 1}</h2>
-                </article>
-              ))}
-            </section>
-          </div>
+            {Array.from({ length: 60 }, (_, index) => (
+              <article key={index}>
+                <h2>Title {index + 1}</h2>
+              </article>
+            ))}
+          </section>
         </main>
       </div>
     </>
