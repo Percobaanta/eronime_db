@@ -7,6 +7,7 @@ import NavbarX from "@/ui/uiNavbarX";
 import PostScroll from "@/ui/uiPostScroll";
 import Dropdown from "@/ui/uiDropdown";
 import Collapse from "@/ui/uiCollapse";
+import NavbarY from "@/ui/uiNavbarY";
 
 export default function NewPage() {
   const [getSidebar, setSidebar] = useState(true);
@@ -43,28 +44,24 @@ export default function NewPage() {
               <Button variant="primary" icon={"chat-heart-fill"}></Button>
             </div>
 
-            <div className="p-3">
-              <nav className="mb-3" aria-label="Main Navigation">
-                <ul className="space-y-3">
-                  {[
-                    "grid-fill",
-                    "person-video",
-                    "person-vcard-fill",
-                    "collection-play-fill",
-                    "images",
-                  ].map((e, i) => {
-                    return (
-                      <ul key={i}>
-                        <Button
-                          icon={e}
-                          variant={i == 0 ? "baseActive" : "ghost"}
-                        ></Button>
-                      </ul>
-                    );
-                  })}
-                </ul>
-              </nav>
-            </div>
+            <NavbarY
+              data={[
+                { url: "/", icon: "house-fill" },
+                { url: "/porn", icon: "person-video2" },
+                { url: "/animated", icon: "person-vcard-fill" },
+                { url: "/hentai", icon: "collection-play-fill" },
+                { url: "/cosplay", icon: "images" },
+              ]}
+            ></NavbarY>
+
+            <div className="border w-4 mx-auto"></div>
+
+            <NavbarY
+              data={[
+                { url: "bookmark", icon: "bookmark-fill" },
+                { url: "history", icon: "clock-fill" },
+              ]}
+            ></NavbarY>
           </div>
 
           {/* Filter */}
@@ -113,6 +110,8 @@ export default function NewPage() {
               icon="layout-sidebar"
               onClick={() => setSidebar((prev) => !prev)}
             ></Button>
+
+            <span className="border h-4 my-auto"></span>
 
             <Button className="text-white! text-xl! font-bold! lowercase mr-auto px-0!">
               eronime
