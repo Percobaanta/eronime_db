@@ -64,22 +64,22 @@
 
   /*  Border*/
   .border {
-    @apply border border-zinc-700/40;
+    @apply border border-zinc-800;
   }
   .borderT {
-    @apply border-t border-zinc-700/40;
+    @apply border-t border-zinc-800;
   }
   .borderB {
-    @apply border-b! border-zinc-700/40;
+    @apply border-b! border-zinc-800;
   }
   .borderL {
-    @apply border-l border-zinc-700/40;
+    @apply border-l border-zinc-800;
   }
   .borderR {
-    @apply border-r border-zinc-700/40;
+    @apply border-r border-zinc-800;
   }
 
   .shadow {
-    @apply shadow drop-shadow-xl;
+    @apply shadow-lg drop-shadow-lg;
   }
 }

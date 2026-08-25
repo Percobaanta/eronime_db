@@ -5,9 +5,10 @@ export default function Button({
   href,
   variant = "default",
   size = "md",
-  rounded,
   icon,
   iconEnd,
+  rounded,
+  block,
   className = "",
   ...props
 }) {
@@ -40,9 +41,10 @@ export default function Button({
 
   // Menggabungkan class menggunakan Array agar lebih bersih dari spasi ekstra
   const baseStyles = [
-    `${
-      rounded ? "rounded-full" : "rounded-md"
-    } flex items-center justify-center capitalize cursor-pointer transition-colors duration-200 active:scale-98`,
+    `
+    ${block ? "w-full!" : ""}
+    ${rounded ? "rounded-full" : "rounded-lg"}
+     flex items-center justify-center capitalize cursor-pointer transition-colors duration-200 active:scale-98`,
     variants[variant],
     result,
     className,
