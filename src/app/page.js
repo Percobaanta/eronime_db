@@ -9,6 +9,7 @@ import PostScroll from "@/ui/uiPostScroll";
 export default function NewPage() {
   const [getSidebar, setSidebar] = useState(true);
   const [getTheme, setTheme] = useState(true);
+  const [getCollapse, setCollapse] = useState(false);
 
   const posts = [
     { id: 1, title: "Post 1", view: 234234 },
@@ -30,25 +31,25 @@ export default function NewPage() {
       <div className="flex h-screen overflow-auto">
         <aside
           className={`${
-            getSidebar ? "md:min-w-64 w-0" : "md:w-fit w-full"
-          } bg-zinc-950 fixed top-0 left-0 md:relative overflow-hidden z-20 flex borderR hidden`}
+            getSidebar ? "md:w-64 w-0 md:flex hidden" : "md:w-fit flex w-64"
+          } bg-zinc-900 fixed top-0 left-0 md:relative z-20 borderR`}
         >
           <div
             className={`${
-              getSidebar ? "md:w-fit w-0" : "md:w-fit w-64"
-            } bg-zinc-900 relative z-10 h-screen p-3`}
+              getSidebar ? "md:w-fit w-0" : "md:w-fit w-fit"
+            } bg-zinc-950 relative z-10 h-screen p-3`}
           >
             {/* logo */}
-            <div className="flex justify-between gap-3 mb-5">
+            <div className="mb-5">
               <Button icon="chat-heart-fill" variant="primary"></Button>
             </div>
 
             {/* navigation icon */}
             <nav className="mb-3" aria-label="Main Navigation">
-              <ul>
+              <ul className="space-y-3">
                 {[
-                  "collection-play-fill",
-                  "collection-play-fill",
+                  "person-video",
+                  "person-vcard-fill",
                   "collection-play-fill",
                   "images",
                 ].map((e, i) => {
@@ -65,121 +66,59 @@ export default function NewPage() {
             </nav>
           </div>
 
-          {getSidebar && (
-            <div className="w-full p-3">
-              <div className="flex justify-between gap-3 mb-5">
-                <Button className="text-white! font-semibold! lowercase w-full">
-                  eronime
-                </Button>
-              </div>
-
-              {/* navigation menu */}
-              <nav className="mb-3" aria-label="Main Navigation">
-                <span
-                  className={`text-xs py-2 ${
-                    getSidebar ? "block" : "md:hidden block"
-                  }`}
-                >
-                  Porn Page
-                </span>
-
-                <ul>
-                  {["tag1", "Animated", "Hentai", "Cosplay"].map((e, i) => {
-                    return (
-                      <ul key={i}>
-                        <Button
-                          icon={e}
-                          className="w-full! justify-start borderL rounded-none!"
-                        >
-                          {e}
-                        </Button>
-                      </ul>
-                    );
-                  })}
-                </ul>
-              </nav>
-            </div>
-          )}
-
-          {/* {!getSidebar && (
-            <div
-              className="bg-zinc-950/70 md:hidden absolute inset-0  z-0"
-              onClick={(e) => setSidebar(!getSidebar)}
-            ></div>
-          )} */}
-        </aside>
-
-        <aside
-          className={`fixed top-0 left-0 md:relative overflow-hidden z-20
-            ${getSidebar ? "md:min-w-64 w-0" : "md:w-fit w-full"}
-          `}
-        >
           <div
-            className={`bgPrimary relative z-10 h-screen p-3 borderR
-             ${getSidebar ? "md:w-64 w-0" : "md:w-fit w-64"}
-          `}
+            className={`overflow-y-scroll ${
+              getSidebar ? "md:w-full" : "md:w-0 w-64"
+            }`}
           >
-            {/* logo */}
-            <div className="flex justify-between gap-3 mb-5">
+            <div className="bg-zinc-900 sticky top-0 flex justify-between gap-3 p-3 pb-0 mb-5">
               <Button
-                size="lg"
-                icon="chat-heart-fill"
-                className="text-white! text-xl! font-bold! lowercase"
+                variant="baseActive"
+                icon="collection-play-fill"
+                iconEnd="caret-down-fill"
+                className="w-full! justify-between!"
+                onClick={() => setCollapse((prev) => !prev)}
               >
-                <div className={getSidebar ? "md:block" : "md:hidden"}>
-                  eronime
-                </div>
+                Porn
               </Button>
 
-              {!getSidebar && (
-                <Button
-                  size="lg"
-                  icon="layout-sidebar"
-                  className="md:hidden"
-                  onClick={(e) => setSidebar(!getSidebar)}
-                ></Button>
+              <Button
+                variant="baseActive"
+                icon="layout-sidebar"
+                className="flex-none md:hidden"
+                onClick={() => setSidebar((prev) => !prev)}
+              ></Button>
+
+              {getCollapse && (
+                <div className="absolute top-full left-0 z-10 w-full p-3">
+                  <div className="bg-zinc-800 rounded-lg">
+                    <Button className="w-full! justify-start">Porn</Button>
+                    <Button className="w-full! justify-start">Animated</Button>
+                    <Button className="w-full! justify-start">Cosplay</Button>
+                    <Button className="w-full! justify-start">Hentai</Button>
+                  </div>
+                </div>
               )}
             </div>
 
-            {/* navigation menu */}
-            <nav className="mb-3" aria-label="Main Navigation">
-              <span
-                className={`text-xs px-3 py-2 ${
-                  getSidebar ? "block" : "md:hidden block"
-                }`}
-              >
-                Navigation
-              </span>
+            {/* Sort */}
+            <nav className="px-3 mb-3" aria-label="Main Navigation">
+              <span className={`text-xs font-bold py-2`}>Sort</span>
 
-              <ul>
-                {[
-                  {
-                    title: "Porn",
-                    icon: "collection-play-fill",
-                  },
-                  {
-                    title: "Animated",
-                    icon: "collection-play-fill",
-                  },
-                  {
-                    title: "Hentai",
-                    icon: "collection-play-fill",
-                  },
-                  {
-                    title: "Cosplay",
-                    icon: "images",
-                  },
-                ].map((doc, i) => {
+              <ul className="max-h-64 overflow-y-scroll rounded-lg">
+                {["Sort 1", "Sort 2", "Sort 3", "Sort 4"].map((e, i) => {
                   return (
                     <ul key={i}>
                       <Button
-                        size="lg"
-                        icon={doc.icon}
-                        className="w-full! justify-start gap-4"
+                        size="sm"
+                        icon="arrow-return-right text-[8px]"
+                        variant={i == 2 ? "baseActive" : "ghost"}
+                        className="w-full! justify-start!"
                       >
-                        <div className={getSidebar ? "md:block" : "md:hidden"}>
-                          {doc.title}
-                        </div>
+                        {e}
+                        <span className="bg-zinc-800 size-4 text-[8px] flex justify-center items-center rounded ml-auto">
+                          12
+                        </span>
                       </Button>
                     </ul>
                   );
@@ -187,37 +126,67 @@ export default function NewPage() {
               </ul>
             </nav>
 
-            {/* navigation activity */}
-            <nav className="mb-3" aria-label="Main Navigation">
-              <span
-                className={`text-xs px-3 py-2 ${
-                  getSidebar ? "block" : "md:hidden block"
-                }`}
-              >
-                Activity
-              </span>
+            {/* Actress */}
+            <nav className="px-3 mb-3" aria-label="Main Navigation">
+              <span className={`text-xs font-bold py-2`}>Actress</span>
 
-              <ul>
+              <ul className="max-h-64 overflow-y-scroll rounded-lg">
+                {["Actress 1", "Actress 2", "Actress 3", "Actress 4"].map(
+                  (e, i) => {
+                    return (
+                      <ul key={i}>
+                        <Button
+                          size="sm"
+                          icon="arrow-return-right text-[8px]"
+                          variant={i == 2 ? "baseActive" : "ghost"}
+                          className="w-full! justify-start!"
+                        >
+                          {e}
+                          <span className="bg-zinc-800 size-4 text-[8px] flex justify-center items-center rounded ml-auto">
+                            12
+                          </span>
+                        </Button>
+                      </ul>
+                    );
+                  }
+                )}
+              </ul>
+            </nav>
+
+            {/* Tags */}
+            <nav className="px-3 mb-3" aria-label="Main Navigation">
+              <span className={`text-xs font-bold py-2`}>Tags</span>
+
+              <ul className="max-h-64 overflow-y-scroll rounded-lg">
                 {[
-                  {
-                    title: "Bookmark",
-                    icon: "bookmark-fill",
-                  },
-                  {
-                    title: "History",
-                    icon: "clock-fill",
-                  },
-                ].map((doc, i) => {
+                  "Tags 1",
+                  "Tags 2",
+                  "Tags 3",
+                  "Tags 4",
+                  "Tags 1",
+                  "Tags 2",
+                  "Tags 3",
+                  "Tags 4",
+                  "Tags 2",
+                  "Tags 3",
+                  "Tags 4",
+                  "Tags 1",
+                  "Tags 2",
+                  "Tags 3",
+                  "Tags 4",
+                ].map((e, i) => {
                   return (
                     <ul key={i}>
                       <Button
-                        size="lg"
-                        icon={doc.icon}
-                        className="w-full! justify-start gap-4"
+                        size="sm"
+                        icon="arrow-return-right text-[8px]"
+                        variant={i == 2 ? "baseActive" : "ghost"}
+                        className="w-full! justify-start!"
                       >
-                        <div className={getSidebar ? "md:block" : "md:hidden"}>
-                          {doc.title}
-                        </div>
+                        {e}
+                        <span className="bg-zinc-800 size-4 text-[8px] flex justify-center items-center rounded ml-auto">
+                          12
+                        </span>
                       </Button>
                     </ul>
                   );
@@ -228,7 +197,7 @@ export default function NewPage() {
 
           {!getSidebar && (
             <div
-              className="bg-zinc-950/70 md:hidden absolute inset-0  z-0"
+              className="bg-zinc-950/50 md:hidden absolute top-0 -right-full h-full w-full z-10"
               onClick={(e) => setSidebar(!getSidebar)}
             ></div>
           )}
@@ -237,33 +206,32 @@ export default function NewPage() {
         <main className="bgBody min-w-0 flex-1 overflow-y-auto">
           <header className="bgBody borderB sticky top-0 flex gap-3 z-10 p-3">
             <Button
-              size="lg"
+              variant="baseActive"
               icon="layout-sidebar"
-              onClick={() => setSidebar(!getSidebar)}
+              onClick={() => setSidebar((prev) => !prev)}
             ></Button>
 
-            <Button
-              size="lg"
-              className="text-white! text-xl! font-bold! lowercase mr-auto"
-            >
+            <Button className="text-white! text-xl! font-bold! lowercase mr-auto px-0!">
               <div className={getSidebar ? "md:hidden" : ""}>eronime</div>
             </Button>
 
-            <Button size="lg" icon={"search"}></Button>
+            <Button variant="baseActive" rounded icon={"search"}></Button>
 
-            <Button size="lg" icon={"bell"}></Button>
+            <Button variant="baseActive" rounded icon={"bell"}></Button>
 
             {getTheme ? (
               <Button
-                size="lg"
+                variant="baseActive"
+                rounded
                 icon={"moon-stars-fill"}
-                onClick={() => setTheme(!getTheme)}
+                onClick={() => setTheme((prev) => !prev)}
               ></Button>
             ) : (
               <Button
-                size="lg"
+                variant="baseActive"
+                rounded
                 icon={"sun-fill"}
-                onClick={() => setTheme(!getTheme)}
+                onClick={() => setTheme((prev) => !prev)}
               ></Button>
             )}
           </header>
