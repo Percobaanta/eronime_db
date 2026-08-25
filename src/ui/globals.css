@@ -2,7 +2,7 @@
 
 @layer components {
   :root {
-    @apply bg-black text-zinc-400! text-base!;
+    @apply text-zinc-400! text-base!;
   }
   ::-webkit-scrollbar {
     width: 5px;
@@ -15,30 +15,51 @@
     display: none;
   }
 
-  /*  Text*/
-  .text0 {
-    @apply text-zinc-200;
-  }
-  .text1 {
-    @apply text-zinc-400;
-  }
-
-  /*  Background*/
-  .bg0 {
+  /*  Background - Body */
+  .bgBody {
     @apply bg-zinc-950;
   }
-  /*  Background*/
-  .bg0 {
-    @apply bg-zinc-950;
-  }
-  .bg1 {
+  /*  Background - Main */
+  .bgPrimary {
     @apply bg-zinc-900;
   }
-  .bg2 {
+  /*  Background - Sidebar, Panel, Card */
+  .bgSecondary {
     @apply bg-zinc-800;
   }
-  .bg3 {
+  /*  Background - child Sidebar, child Panel, child Card */
+  .bgElement {
     @apply bg-zinc-700;
+  }
+
+  /*  Background - child Sidebar, child Panel, child Card */
+  .bgHover {
+    @apply bg-zinc-700;
+  }
+
+  /*  Text*/
+  .textPrimary {
+    @apply text-zinc-100;
+  }
+  .textNormal {
+    @apply text-zinc-300;
+  }
+  .textSecondary {
+    @apply text-zinc-400;
+  }
+  .textMuted {
+    @apply text-zinc-500;
+  }
+
+  /* Border */
+  .borderNormal {
+    @apply border-zinc-800;
+  }
+  .borderVisible {
+    @apply border-zinc-700;
+  }
+  .borderFocus {
+    @apply border-zinc-500;
   }
 
   /*  Border*/
@@ -59,6 +80,6 @@
   }
 
   .shadow {
-    @apply shadow drop-shadow;
+    @apply shadow drop-shadow-xl;
   }
 }
