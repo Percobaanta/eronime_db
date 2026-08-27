@@ -15,7 +15,10 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${googleSansAlt.className} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${googleSansAlt.className} h-full dark antialiased`}
+    >
       <body>{children}</body>
     </html>
   );

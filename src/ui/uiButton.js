@@ -5,10 +5,14 @@ export default function Button({
   href,
   variant = "default",
   size = "md",
+  radius = "base",
+  justify = "center",
   icon,
   iconEnd,
-  rounded,
   block,
+  outline,
+  border,
+  shadow,
   className = "",
   ...props
 }) {
@@ -17,36 +21,50 @@ export default function Button({
   const variants = {
     default: "text-zinc-400 hover:text-zinc-300",
     ghost: "hover:bg-zinc-800 hover:text-zinc-300",
-    base: "bg-zinc-900 text-zinc-400 hover:bg-zinc-800",
-    baseActive: "bg-zinc-800 text-zinc-400",
+    base: "bg-zinc-800 text-zinc-400 hover:bg-zinc-700",
+    baseActive: "bg-zinc-700 text-zinc-400",
     primary: "bg-yellow-200 text-zinc-900 hover:bg-yellow-300",
     primaryActive: "bg-yellow-300 text-zinc-900",
   };
 
-  const buttonSizes = {
-    sm: "h-6.5 text-xs gap-2",
-    md: "h-8 text-xs gap-2 font-semibold",
-    lg: "h-10 text-sm gap-2 font-semibold",
+  const radiuss = {
+    base: "rounded-lg",
+    rounded: "rounded-xl",
+    full: "rounded-full",
   };
 
-  const iconSizes = {
+  const justifys = {
+    start: "justify-start",
+    center: "justify-center",
+    between: "justify-between",
+    end: "justify-end",
+  };
+
+  const sizes = {
+    sm: "h-6.5 text-xs gap-2",
+    md: "h-8 text-xs gap-2 font-semibold",
+    lg: "h-10 text-sm gap-3 font-semibold",
+  };
+
+  const icons = {
     sm: "w-6.5 h-6.5 px-0",
     md: "w-8 h-8 px-0",
     lg: "w-10 h-10 px-0",
   };
 
-  const result = hasText
-    ? `px-3 md:w-fit ${buttonSizes[size]}`
-    : iconSizes[size];
+  const atribut = hasText ? `px-3 ${sizes[size]}` : icons[size];
 
-  // Menggabungkan class menggunakan Array agar lebih bersih dari spasi ekstra
-  const baseStyles = [
-    `
-    ${block ? "w-full!" : ""}
-    ${rounded ? "rounded-full" : "rounded-lg"}
-     flex items-center justify-center capitalize cursor-pointer transition-colors duration-200 active:scale-98`,
+  const finalStyles = [
+    `flex items-center capitalize cursor-pointer transition-colors duration-200 active:scale-98
+    ${outline ? "border-2 border-zinc-900 outline-2 outline-zinc-600/60" : ""} 
+    ${block ? "w-full!" : ""} 
+    ${border ? "border" : ""} 
+    ${shadow ? "shadow" : ""}
+    `,
     variants[variant],
-    result,
+    justifys[justify],
+    radiuss[radius],
+    atribut,
     className,
   ]
     .filter(Boolean)
@@ -62,14 +80,14 @@ export default function Button({
 
   if (href) {
     return (
-      <Link href={href} className={baseStyles} {...props}>
+      <Link href={href} className={finalStyles} {...props}>
         {content}
       </Link>
     );
   }
 
   return (
-    <button className={baseStyles} {...props}>
+    <button className={finalStyles} {...props}>
       {content}
     </button>
   );

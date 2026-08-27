@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer components {
   :root {
-    @apply text-zinc-400! text-base!;
+    @apply dark:text-zinc-300 text-zinc-700;
   }
   ::-webkit-scrollbar {
     width: 5px;
@@ -15,70 +17,93 @@
     display: none;
   }
 
-  /*  Background - Body */
-  .bgBody {
-    @apply bg-zinc-950;
-  }
-  /*  Background - Main */
+  /*  Background */
   .bgPrimary {
-    @apply bg-zinc-900;
+    @apply bg-yellow-200;
   }
-  /*  Background - Sidebar, Panel, Card */
-  .bgSecondary {
-    @apply bg-zinc-800;
+  .bg950 {
+    @apply dark:bg-zinc-950 bg-zinc-50;
   }
-  /*  Background - child Sidebar, child Panel, child Card */
-  .bgElement {
-    @apply bg-zinc-700;
+  .bg900 {
+    @apply dark:bg-zinc-900 bg-zinc-100;
+  }
+  .bg800 {
+    @apply dark:bg-zinc-800 bg-zinc-200;
+  }
+  .bg700 {
+    @apply dark:bg-zinc-700 bg-zinc-300;
   }
 
-  /*  Background - child Sidebar, child Panel, child Card */
-  .bgHover {
-    @apply bg-zinc-700;
+  /*  Button */
+  .btnPrimary {
+    @apply bg-yellow-200 text-zinc-900;
+  }
+  .btnPrimaryActive {
+    @apply bg-yellow-300 text-zinc-800;
+  }
+  .btnBase {
+    @apply dark:bg-zinc-800 bg-zinc-200;
+  }
+  .btnBaseActive {
+    @apply dark:bg-zinc-800 bg-zinc-200;
+  }
+  .btnGhost {
+    @apply hover:dark:bg-zinc-700 hover:bg-zinc-300;
   }
 
-  /*  Text*/
-  .textPrimary {
-    @apply text-zinc-100;
+  /*  Button Size */
+  .btnLg {
+    @apply text-base font-bold min-h-9 min-w-9 px-4 rounded-sm capitalize;
   }
-  .textNormal {
-    @apply text-zinc-300;
+  .btnSm {
+    @apply text-sm font-semibold min-h-7.5 min-w-7.5 px-3 rounded-sm capitalize;
   }
-  .textSecondary {
-    @apply text-zinc-400;
+  .btnXs {
+    @apply text-xs font-medium min-h-6.5 min-w-6.5 px-3 rounded capitalize;
+  }
+  .btnCircle {
+    @apply p-0! rounded-full;
+  }
+  .btnRounded {
+    @apply p-0! rounded-xl;
+  }
+
+  .outline {
+    @apply border-2 border-zinc-900 outline-2 outline-zinc-600/60;
+  }
+
+  /* Text */
+  .textLg {
+    @apply text-xl font-black;
+  }
+  .textSm {
+    @apply text-sm font-semibold;
+  }
+  .textXs {
+    @apply text-xs font-semibold;
   }
   .textMuted {
-    @apply text-zinc-500;
+    @apply dark:text-zinc-500 text-zinc-600;
   }
 
   /* Border */
-  .borderNormal {
-    @apply border-zinc-800;
-  }
-  .borderVisible {
-    @apply border-zinc-700;
-  }
-  .borderFocus {
-    @apply border-zinc-500;
-  }
-
-  /*  Border*/
   .border {
-    @apply border border-zinc-800;
+    @apply border dark:border-zinc-700 border-zinc-300;
   }
   .borderT {
-    @apply border-t border-zinc-800;
+    @apply border-t dark:border-zinc-700 border-zinc-300;
   }
   .borderB {
-    @apply border-b! border-zinc-800;
+    @apply border-b! dark:border-zinc-700 border-zinc-300;
   }
   .borderL {
-    @apply border-l border-zinc-800;
+    @apply border-l dark:border-zinc-700 border-zinc-300;
   }
   .borderR {
-    @apply border-r border-zinc-800;
+    @apply border-r dark:border-zinc-700 border-zinc-300;
   }
 
+  /* Shadow */
   .shadow {
     @apply shadow-lg drop-shadow-lg;
   }

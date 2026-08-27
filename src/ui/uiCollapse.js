@@ -1,12 +1,15 @@
 import Button from "@/ui/uiButton";
+import Badge from "@/ui/uiBadge";
 
-export default function Collapse({ title, getDropdown, setDropdown }) {
+export default function Collapse({ title, icon, getDropdown, setDropdown }) {
   return (
     <>
       <Button
-        iconEnd={getDropdown == title ? "dash-lg" : "plus-lg"}
-        className={"justify-between!"}
+        icon={icon}
+        iconEnd={getDropdown == title ? "dash-lg ml-auto" : "plus-lg ml-auto"}
+        justify={"between"}
         block
+        className="p-0!"
         onClick={(e) =>
           getDropdown == title ? setDropdown("") : setDropdown(title)
         }
@@ -21,12 +24,14 @@ export default function Collapse({ title, getDropdown, setDropdown }) {
               <li key={i}>
                 <Button
                   key={i}
-                  icon={"hash"}
-                  iconEnd={"circle text-[8px] ml-auto"}
-                  size="sm"
-                  className="w-full! justify-start!"
+                  size={"sm"}
+                  icon={"record"}
+                  justify={"between"}
+                  block
+                  className="pl-1! pr-0!"
                 >
-                  Sort
+                  tag list
+                  <Badge title={"23"} />
                 </Button>
               </li>
             ))}

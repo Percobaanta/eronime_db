@@ -3,9 +3,7 @@ import { useParams, usePathname } from "next/navigation";
 
 export default function NavbarY({ data }) {
   const pathname = usePathname();
-  console.log(pathname);
 
-  console.log(data);
   return (
     <>
       <div className="p-3">
