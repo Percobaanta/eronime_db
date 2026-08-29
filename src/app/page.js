@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Sidebar from "@/ui/uiSidebar";
+import Sidebar2 from "@/ui/uiSidebar2";
 import Header from "@/ui/uiHeader";
 import Filter from "@/ui/uiFilter";
 import Post from "@/ui/uiPost";
@@ -47,7 +48,7 @@ export default function App() {
 
   return (
     <div className="flex h-screen">
-      <Sidebar path={"/"} getSidebar={getSidebar} setSidebar={setSidebar} />
+      <Sidebar2 path={"/"} getSidebar={getSidebar} setSidebar={setSidebar} />
 
       <main className="bg950 w-full overflow-auto">
         <Header setSidebar={setSidebar} />

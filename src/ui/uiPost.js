@@ -72,16 +72,16 @@ export default function Post({}) {
       <div className="container mx-auto p-3">
         <Label h2 title={"New Uploaded"} className={"mb-2"} />
 
-        <div className="grid md:grid-cols-6 grid-cols-2 gap-3 mb-10">
+        <div className="grid md:grid-cols-6 grid-cols-3 gap-x-3 gap-y-5 mb-10">
           {Array.from({ length: 16 }, (_, i) => (
             <article key={i}>
               <Link
                 href={"#"}
-                className="bg900 flex flex-col rounded-lg shadow p-3 active:scale-[99.50%]"
+                className="flex flex-col rounded-lg space-y-2 active:scale-[99.50%]"
               >
                 <img
                   src={"https://www.eronime.com/img/pah/1777809485628.webp"}
-                  className={`bg-zinc-800 object-cover rounded-lg shadow aspect-[4/5] mb-3`}
+                  className={`bg-zinc-800 object-cover rounded-lg shadow aspect-4/5`}
                 />
 
                 <Label title="13123" icon={"eye-fill"} size="sm" muted />
@@ -91,7 +91,7 @@ export default function Post({}) {
                   title={
                     "Asian Beautifull Masturbation With Dildo asdasdh asjdhkhaskjdh akshdlkjasd"
                   }
-                  className="line-clamp-2"
+                  className="line-clamp-1"
                   h3
                 />
               </Link>
