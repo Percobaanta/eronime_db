@@ -38,7 +38,6 @@ export default function Theme() {
 
   return (
     <Button
-      size={"lg"}
       icon={dark ? "moon-stars-fill" : "sun-fill"}
       onClick={toggleTheme}
     ></Button>

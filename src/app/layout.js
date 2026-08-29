@@ -1,11 +1,15 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import "@/ui/globals.css";
+import "./globals.css";
 
-const googleSansAlt = Plus_Jakarta_Sans({
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata = {
@@ -17,9 +21,9 @@ export default async function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${googleSansAlt.className} h-full dark antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full dark antialiased`}
     >
-      <body>{children}</body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

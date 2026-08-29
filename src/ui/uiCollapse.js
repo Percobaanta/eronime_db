@@ -26,12 +26,12 @@ export default function Collapse({ title, icon, getDropdown, setDropdown }) {
                   key={i}
                   size={"sm"}
                   icon={"record"}
-                  justify={"between"}
+                  justify={"start"}
                   block
                   className="pl-1! pr-0!"
                 >
                   tag list
-                  <Badge title={"23"} />
+                  <Badge title={"23"} className={"ml-auto"} />
                 </Button>
               </li>
             ))}

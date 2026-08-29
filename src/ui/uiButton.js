@@ -28,6 +28,7 @@ export default function Button({
   };
 
   const radiuss = {
+    flat: "rounded-0",
     base: "rounded-lg",
     rounded: "rounded-xl",
     full: "rounded-full",
@@ -55,12 +56,11 @@ export default function Button({
   const atribut = hasText ? `px-3 ${sizes[size]}` : icons[size];
 
   const finalStyles = [
-    `flex items-center capitalize cursor-pointer transition-colors duration-200 active:scale-98
-    ${outline ? "border-2 border-zinc-900 outline-2 outline-zinc-600/60" : ""} 
-    ${block ? "w-full!" : ""} 
-    ${border ? "border" : ""} 
-    ${shadow ? "shadow" : ""}
-    `,
+    `flex items-center capitalize cursor-pointer transition-colors duration-200 active:scale-98`,
+    outline && "border-2 border-zinc-900 outline-2 outline-zinc-600/60",
+    block && "w-full!",
+    border && "border",
+    shadow && "shadow",
     variants[variant],
     justifys[justify],
     radiuss[radius],

@@ -1,8 +1,8 @@
-import { apiAnimated } from "@/api/apiAnimated";
-import { apiDoodstream } from "@/api/apiDoodstream";
-import { apiHentai } from "@/api/apiHentai";
-import { apiPorn } from "@/api/apiPorn";
-import { apiStreamtape } from "@/api/apiStreamtape";
+import { apiAnimated } from "@/app/api/apiAnimateds";
+import { apiDoodstream } from "@/app/api/apiDoodstream";
+import { apiHentai } from "@/app/api/apiHentai";
+import { apiPorn } from "@/app/api/apiPorn";
+import { apiStreamtape } from "@/app/api/apiStreamtape";
 import Button from "@/ui/uiButton";
 
 export default async function Admin() {

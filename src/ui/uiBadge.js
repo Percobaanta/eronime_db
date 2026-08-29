@@ -1,13 +1,17 @@
-export default function Badge({ title, radius = "base" }) {
+export default function Badge({ title, radius = "base", className }) {
   const radiuss = {
-    base: "rounded-lg",
-    rounded: "rounded-xl",
+    base: "rounded-md",
+    rounded: "rounded-lg",
     full: "rounded-full",
   };
 
-  return (
-    <span className="bg-zinc-600/60 rounded-md ml-auto text-[8px] p-1">
-      {title}
-    </span>
-  );
+  const finalStyles = [
+    `bg-zinc-600/40 text-[8px] p-1`,
+    radiuss[radius],
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return <span className={finalStyles}>{title}</span>;
 }

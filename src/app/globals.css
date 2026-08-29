@@ -4,7 +4,7 @@
 
 @layer components {
   :root {
-    @apply dark:text-zinc-300 text-zinc-700;
+    @apply dark:bg-black bg-white dark:text-zinc-300 text-zinc-700;
   }
   ::-webkit-scrollbar {
     width: 5px;
