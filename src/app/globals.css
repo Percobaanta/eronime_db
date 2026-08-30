@@ -17,6 +17,14 @@
     display: none;
   }
 
+  /* Scrollbar none  */
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
   /*  Background */
   .bgPrimary {
     @apply bg-yellow-200;

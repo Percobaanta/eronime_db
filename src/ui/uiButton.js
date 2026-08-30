@@ -21,8 +21,8 @@ export default function Button({
   const variants = {
     default: "text-zinc-400 hover:text-zinc-300",
     ghost: "hover:bg-zinc-800 hover:text-zinc-300",
-    base: "bg-zinc-800 text-zinc-400 hover:bg-zinc-700",
-    baseActive: "bg-zinc-700 text-zinc-400",
+    base: "dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 bg-zinc-200 text-zinc-800 hover:bg-zinc-300",
+    baseActive: "dark:bg-zinc-700 dark:text-zinc-400 bg-zinc-300 text-zinc-800",
     primary: "bg-yellow-200 text-zinc-900 hover:bg-yellow-300",
     primaryActive: "bg-yellow-300 text-zinc-900",
   };
@@ -57,7 +57,8 @@ export default function Button({
 
   const finalStyles = [
     `flex items-center capitalize cursor-pointer transition-colors duration-200 active:scale-98`,
-    outline && "border-2 border-zinc-900 outline-2 outline-zinc-600/60",
+    outline &&
+      "border-2 dark:border-zinc-900 border-zinc-100 outline-2 outline-zinc-500/50",
     block && "w-full!",
     border && "border",
     shadow && "shadow",

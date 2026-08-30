@@ -68,25 +68,11 @@ export default function Sidebar({ path, getSidebar, setSidebar }) {
             radius={"rounded"}
             outline={path == "manhwa"}
           ></Button>
-
-          <div className="border w-4 mx-auto"></div>
-
-          <Button
-            variant="base"
-            icon={"bookmark-fill"}
-            radius={"rounded"}
-          ></Button>
-
-          <Button
-            variant="base"
-            icon={"clock-fill"}
-            radius={"rounded"}
-          ></Button>
         </div>
       </div>
 
       <div
-        className={`bg900 overflow-auto borderR min-w-48
+        className={`bg900 overflow-auto borderR md:min-w-48 w-3/5
             ${getSidebar ? "md:block" : "md:hidden"}
           `}
       >
@@ -102,23 +88,23 @@ export default function Sidebar({ path, getSidebar, setSidebar }) {
           <Label title={"Filter Menu"} size={"sm"} muted />
 
           <Collapse
-            title={"sort"}
-            icon={"funnel-fill"}
+            title={"Bookmark"}
+            icon={"bookmark-fill"}
             iconEnd={""}
             setDropdown={setDropdown}
             getDropdown={getDropdown}
           ></Collapse>
 
           <Collapse
-            title={"actress"}
-            icon={"file-person-fill"}
+            title={"History"}
+            icon={"clock-fill"}
             setDropdown={setDropdown}
             getDropdown={getDropdown}
           ></Collapse>
 
           <Collapse
-            title={"tags"}
-            icon={"tag-fill"}
+            title={"Reaction"}
+            icon={"hand-thumbs-up-fill"}
             setDropdown={setDropdown}
             getDropdown={getDropdown}
           ></Collapse>

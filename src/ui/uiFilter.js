@@ -9,67 +9,77 @@ export default function uiFilter({ path }) {
   return (
     <>
       <div className="container relative mx-auto p-3">
-        <nav>
-          <ul className="flex justify-between gap-2">
-            <li className="md:w-24! w-full">
-              <Button
-                size="sm"
-                icon={"person-video2"}
-                href={"/porn"}
-                variant={path == "/" || path == "porn" ? "baseActive" : "ghost"}
-                block
-              >
-                porn
-              </Button>
-            </li>
+        <div className="flex gap-3">
+          <nav className="md:w-fit w-full overflow-auto scrollbar-none">
+            <ul className="flex justify-between gap-2">
+              <li className="md:w-24! w-full">
+                <Button
+                  icon={"person-video2"}
+                  href={"/porn"}
+                  variant={
+                    path == "/" || path == "porn" ? "baseActive" : "base"
+                  }
+                  block
+                >
+                  porn
+                </Button>
+              </li>
 
-            <li className="md:w-24! w-full">
-              <Button
-                size="sm"
-                icon={"person-vcard-fill"}
-                href={"/animated"}
-                variant={path == "animated" ? "baseActive" : "ghost"}
-                block
-              >
-                animated
-              </Button>
-            </li>
+              <li className="md:w-24! w-full">
+                <Button
+                  icon={"person-vcard-fill"}
+                  href={"/animated"}
+                  variant={path == "animated" ? "baseActive" : "base"}
+                  block
+                >
+                  animated
+                </Button>
+              </li>
 
-            <li className="md:w-24! w-full">
-              <Button
-                size="sm"
-                href={"/hentai"}
-                icon={"collection-play-fill"}
-                variant={path == "hentai" ? "baseActive" : "ghost"}
-                block
-              >
-                hentai
-              </Button>
-            </li>
+              <li className="md:w-24! w-full">
+                <Button
+                  href={"/hentai"}
+                  icon={"collection-play-fill"}
+                  variant={path == "hentai" ? "baseActive" : "base"}
+                  block
+                >
+                  hentai
+                </Button>
+              </li>
 
-            <li className="md:w-24! w-full">
-              <Button
-                size="sm"
-                icon={"images"}
-                href={"/cosplay"}
-                variant={path == "cosplay" ? "baseActive" : "ghost"}
-                block
-              >
-                cosplay
-              </Button>
-            </li>
+              <li className="md:w-24! w-full">
+                <Button
+                  icon={"images"}
+                  href={"/cosplay"}
+                  variant={path == "cosplay" ? "baseActive" : "base"}
+                  block
+                >
+                  cosplay
+                </Button>
+              </li>
 
-            <li className="grow">
-              <Button
-                size="sm"
-                variant={getFilter ? "baseActive" : "ghost"}
-                icon={"filter"}
-                onClick={() => setFilter((prev) => !prev)}
-                className="ml-auto"
-              ></Button>
-            </li>
-          </ul>
-        </nav>
+              <li className="md:w-24! w-full">
+                <Button
+                  icon={"images"}
+                  href={"/cosplay"}
+                  variant={path == "cosplay" ? "baseActive" : "base"}
+                  block
+                >
+                  manhwa
+                </Button>
+              </li>
+            </ul>
+          </nav>
+
+          <Button
+            variant={getFilter ? "baseActive" : "base"}
+            icon={"filter"}
+            onClick={() => setFilter((prev) => !prev)}
+            className="flex-none ml-auto"
+          >
+            <span className="md:block hidden">Filter</span>
+          </Button>
+        </div>
 
         {getFilter && (
           <div className="bg900  min-h-64 max-h-72 rounded-lg mt-3 p-3 overflow-auto space-y-5">
