@@ -10,11 +10,13 @@ export default function uiFilter({ path }) {
     <>
       <div className="container relative mx-auto p-3">
         <nav>
-          <ul className="flex  gap-3">
+          <ul className="flex justify-between gap-2">
             <li className="md:w-24! w-full">
               <Button
+                size="sm"
+                icon={"person-video2"}
                 href={"/porn"}
-                variant={path == "/" || path == "porn" ? "baseActive" : "base"}
+                variant={path == "/" || path == "porn" ? "baseActive" : "ghost"}
                 block
               >
                 porn
@@ -23,8 +25,10 @@ export default function uiFilter({ path }) {
 
             <li className="md:w-24! w-full">
               <Button
+                size="sm"
+                icon={"person-vcard-fill"}
                 href={"/animated"}
-                variant={path == "animated" ? "baseActive" : "base"}
+                variant={path == "animated" ? "baseActive" : "ghost"}
                 block
               >
                 animated
@@ -33,8 +37,10 @@ export default function uiFilter({ path }) {
 
             <li className="md:w-24! w-full">
               <Button
+                size="sm"
                 href={"/hentai"}
-                variant={path == "hentai" ? "baseActive" : "base"}
+                icon={"collection-play-fill"}
+                variant={path == "hentai" ? "baseActive" : "ghost"}
                 block
               >
                 hentai
@@ -43,27 +49,20 @@ export default function uiFilter({ path }) {
 
             <li className="md:w-24! w-full">
               <Button
+                size="sm"
+                icon={"images"}
                 href={"/cosplay"}
-                variant={path == "cosplay" ? "baseActive" : "base"}
+                variant={path == "cosplay" ? "baseActive" : "ghost"}
                 block
               >
                 cosplay
               </Button>
             </li>
 
-            <li className="md:w-24! w-full">
-              <Button
-                href={"/manhwa"}
-                variant={path == "manhwa" ? "baseActive" : "base"}
-                block
-              >
-                manhwa
-              </Button>
-            </li>
-
             <li className="grow">
               <Button
-                variant={getFilter ? "baseActive" : "base"}
+                size="sm"
+                variant={getFilter ? "baseActive" : "ghost"}
                 icon={"filter"}
                 onClick={() => setFilter((prev) => !prev)}
                 className="ml-auto"

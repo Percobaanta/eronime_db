@@ -15,8 +15,8 @@ export default function Sidebar({ path, getSidebar, setSidebar }) {
           ${getSidebar ? "md:flex hidden" : "md:flex"}
           `}
     >
-      <div className="bg900 flex-none overflow-auto">
-        <div className="bg900 sticky top-0 p-3">
+      <div className="bg800 flex-none overflow-auto borderR">
+        <div className="bg800 sticky top-0 p-3">
           <Button
             href={"/"}
             variant="primary"
@@ -25,6 +25,8 @@ export default function Sidebar({ path, getSidebar, setSidebar }) {
             outline
           ></Button>
         </div>
+
+        <Divider />
 
         <div className="flex flex-col gap-2 p-3 ">
           <Button
@@ -96,22 +98,8 @@ export default function Sidebar({ path, getSidebar, setSidebar }) {
           ></Dropdown>
         </div>
 
-        <div className="flex flex-col gap-2 p-3 pl-0">
-          <Button variant="base" justify="start">
-            porn
-          </Button>
-          <Button variant="base" justify="start">
-            animated
-          </Button>
-          <Button variant="base" justify="start">
-            hentai
-          </Button>
-          <Button variant="base" justify="start">
-            cosplay
-          </Button>
-          <Button variant="base" justify="start">
-            manhwa
-          </Button>
+        <div className="flex flex-col p-3">
+          <Label title={"Filter Menu"} size={"sm"} muted />
 
           <Collapse
             title={"sort"}

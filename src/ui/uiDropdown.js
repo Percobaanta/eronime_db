@@ -1,12 +1,14 @@
 import Button from "@/ui/uiButton";
 import Badge from "@/ui/uiBadge";
+import Label from "./uiLabel";
+import Divider from "./uiDivider";
 
 export default function Dropdown({ setSidebar, setCollapse, getCollapse }) {
   return (
     <div className="flex gap-3">
       <Button
         variant={"base"}
-        icon={"collection-play-fill"}
+        icon={"gear-fill"}
         iconEnd={"caret-down-fill"}
         justify={"between"}
         width={"full"}
@@ -14,7 +16,7 @@ export default function Dropdown({ setSidebar, setCollapse, getCollapse }) {
         block
         onClick={() => setCollapse((prev) => !prev)}
       >
-        porn
+        Setting
       </Button>
 
       <Button
@@ -29,45 +31,73 @@ export default function Dropdown({ setSidebar, setCollapse, getCollapse }) {
         <div className="absolute top-full left-0 z-10 w-full p-3 pt-0 ">
           <div className="bg-zinc-800 rounded-lg overflow-auto shadow">
             <Button
-              variant="baseActive"
-              icon={"person-video2"}
+              icon={"moon-stars-fill"}
+              iconEnd={"record ml-auto"}
               justify={"start"}
               radius={"flat"}
               block
             >
-              Porn
-              <Badge title={"18+"} className={"ml-auto"} />
+              Dark Mode
             </Button>
+            <Button
+              icon={"sun-fill"}
+              iconEnd={"record ml-auto"}
+              justify={"start"}
+              radius={"flat"}
+              block
+            >
+              Light Mode
+            </Button>
+
+            <Divider className={"w-full"} />
 
             <Button
-              icon={"person-vcard-fill"}
+              icon={"square-fill"}
+              iconEnd={"record ml-auto"}
               justify={"start"}
               radius={"flat"}
               block
             >
-              Animated <Badge title={"18+"} className={"ml-auto"} />
+              Square
             </Button>
+            <Button
+              icon={"phone-fill"}
+              iconEnd={"record ml-auto"}
+              justify={"start"}
+              radius={"flat"}
+              block
+            >
+              Potrait
+            </Button>
+            <Button
+              icon={"phone-landscape-fill"}
+              iconEnd={"record ml-auto"}
+              justify={"start"}
+              radius={"flat"}
+              block
+            >
+              Landscape
+            </Button>
+
+            <Divider className={"w-full"} />
 
             <Button
-              icon={"collection-play-fill"}
+              icon={"grid-fill"}
+              iconEnd={"record ml-auto"}
               justify={"start"}
               radius={"flat"}
               block
             >
-              Hentai <Badge title={"18+"} className={"ml-auto"} />
+              5x5
             </Button>
-
-            <Button icon={"images"} justify={"start"} radius={"flat"} block>
-              Cosplay <Badge title={"18+"} className={"ml-auto"} />
-            </Button>
-
             <Button
-              icon={"file-image-fill"}
+              icon={"list"}
+              iconEnd={"record ml-auto"}
               justify={"start"}
               radius={"flat"}
               block
             >
-              Manhwa <Badge title={"18+"} className={"ml-auto"} />
+              6x6
             </Button>
           </div>
         </div>

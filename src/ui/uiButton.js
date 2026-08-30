@@ -29,7 +29,7 @@ export default function Button({
 
   const radiuss = {
     flat: "rounded-0",
-    base: "rounded-lg",
+    base: "rounded-md",
     rounded: "rounded-xl",
     full: "rounded-full",
   };

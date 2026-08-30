@@ -88,19 +88,19 @@
 
   /* Border */
   .border {
-    @apply border dark:border-zinc-700 border-zinc-300;
+    @apply border dark:border-zinc-100/10 border-zinc-300;
   }
   .borderT {
-    @apply border-t dark:border-zinc-700 border-zinc-300;
+    @apply border-t dark:border-zinc-100/10 border-zinc-300;
   }
   .borderB {
-    @apply border-b! dark:border-zinc-700 border-zinc-300;
+    @apply border-b! dark:border-zinc-100/10 border-zinc-300;
   }
   .borderL {
-    @apply border-l dark:border-zinc-700 border-zinc-300;
+    @apply border-l dark:border-zinc-100/10 border-zinc-300;
   }
   .borderR {
-    @apply border-r dark:border-zinc-700 border-zinc-300;
+    @apply border-r dark:border-zinc-100/10 border-zinc-300;
   }
 
   /* Shadow */

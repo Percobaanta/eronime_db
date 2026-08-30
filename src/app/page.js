@@ -50,70 +50,7 @@ export default function App() {
   console.log(getSidebar);
   return (
     <div className="flex h-screen">
-      {/* <Sidebar2 path={"/"} getSidebar={getSidebar} setSidebar={setSidebar} /> */}
-      <aside
-        className={`bg900 flex flex-col gap-2 relative p-3
-        ${getSidebar ? "w-64" : "w-auto"}
-      `}
-      >
-        <Button icon={"chat-heart-fill"} variant="primary"></Button>
-        <Button
-          icon={"chat-heart-fill"}
-          variant="primary"
-          justify={getSidebar ? "start" : "center"}
-          block={getSidebar}
-          outline
-          radius={getSidebar ? "base" : "rounded"}
-          className="font-bold! text-xl! lowercase"
-        >
-          {getSidebar && "eronime"}
-        </Button>
-        <Button
-          icon={"person-video2"}
-          variant="base"
-          justify={getSidebar ? "start" : "center"}
-          block={getSidebar}
-          radius={getSidebar ? "base" : "rounded"}
-        >
-          {getSidebar && "porn"}
-        </Button>
-        <Button
-          icon={"person-vcard-fill"}
-          variant="base"
-          justify={getSidebar ? "start" : "center"}
-          block={getSidebar}
-          radius={getSidebar ? "base" : "rounded"}
-        >
-          {getSidebar && "animated"}
-        </Button>
-        <Button
-          icon={"collection-play-fill"}
-          variant="base"
-          justify={getSidebar ? "start" : "center"}
-          block={getSidebar}
-          radius={getSidebar ? "base" : "rounded"}
-        >
-          {getSidebar && "hentai"}
-        </Button>
-        <Button
-          icon={"images"}
-          variant="base"
-          justify={getSidebar ? "start" : "center"}
-          block={getSidebar}
-          radius={getSidebar ? "base" : "rounded"}
-        >
-          {getSidebar && "cosplay"}
-        </Button>
-        <Button
-          icon={"file-image-fill"}
-          variant="base"
-          justify={getSidebar ? "start" : "center"}
-          block={getSidebar}
-          radius={getSidebar ? "base" : "rounded"}
-        >
-          {getSidebar && "manhwa"}
-        </Button>
-      </aside>
+      <Sidebar2 path={"/"} getSidebar={getSidebar} setSidebar={setSidebar} />
 
       <main className="bg950 w-full overflow-auto">
         <Header setSidebar={setSidebar} />
