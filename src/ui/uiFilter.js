@@ -14,7 +14,7 @@ export default function uiFilter({ path }) {
             <li className="md:w-24! w-full">
               <Button
                 href={"/porn"}
-                variant={path == "/" || path == "porn" ? "baseActive" : "ghost"}
+                variant={path == "/" || path == "porn" ? "baseActive" : "base"}
                 block
               >
                 porn
@@ -24,7 +24,7 @@ export default function uiFilter({ path }) {
             <li className="md:w-24! w-full">
               <Button
                 href={"/animated"}
-                variant={path == "animated" ? "baseActive" : "ghost"}
+                variant={path == "animated" ? "baseActive" : "base"}
                 block
               >
                 animated
@@ -34,7 +34,7 @@ export default function uiFilter({ path }) {
             <li className="md:w-24! w-full">
               <Button
                 href={"/hentai"}
-                variant={path == "hentai" ? "baseActive" : "ghost"}
+                variant={path == "hentai" ? "baseActive" : "base"}
                 block
               >
                 hentai
@@ -44,7 +44,7 @@ export default function uiFilter({ path }) {
             <li className="md:w-24! w-full">
               <Button
                 href={"/cosplay"}
-                variant={path == "cosplay" ? "baseActive" : "ghost"}
+                variant={path == "cosplay" ? "baseActive" : "base"}
                 block
               >
                 cosplay
@@ -54,7 +54,7 @@ export default function uiFilter({ path }) {
             <li className="md:w-24! w-full">
               <Button
                 href={"/manhwa"}
-                variant={path == "manhwa" ? "baseActive" : "ghost"}
+                variant={path == "manhwa" ? "baseActive" : "base"}
                 block
               >
                 manhwa
@@ -63,7 +63,7 @@ export default function uiFilter({ path }) {
 
             <li className="grow">
               <Button
-                variant={getFilter ? "baseActive" : "ghost"}
+                variant={getFilter ? "baseActive" : "base"}
                 icon={"filter"}
                 onClick={() => setFilter((prev) => !prev)}
                 className="ml-auto"

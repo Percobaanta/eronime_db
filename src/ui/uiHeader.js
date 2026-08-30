@@ -4,7 +4,7 @@ import Theme from "./uiTheme";
 
 export default function Header({ setSidebar }) {
   return (
-    <header className="bg950 sticky top-0 flex gap-3 z-10 p-3 borderB">
+    <header className="bg950 sticky top-0 flex gap-3 z-10 p-3">
       <Button
         icon={"layout-sidebar"}
         onClick={() => setSidebar((prev) => !prev)}

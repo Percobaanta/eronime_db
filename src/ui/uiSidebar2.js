@@ -5,18 +5,18 @@ import Collapse from "@/ui/uiCollapse";
 import Divider from "@/ui/uiDivider";
 import Label from "@/ui/uiLabel";
 
-export default function Sidebar2({ path, getSidebar, setSidebar }) {
+export default function Sidebar({ path, getSidebar, setSidebar }) {
   const [getCollapse, setCollapse] = useState(false);
   const [getDropdown, setDropdown] = useState("");
 
   return (
     <aside
-      className={`relative h-screen fixeds flex w-min z-20
-          ${getSidebar ? "flex" : "md:flex"}
+      className={`md:relative h-screen fixed flex md:w-min w-full z-20
+          ${getSidebar ? "md:flex hidden" : "md:flex"}
           `}
     >
-      <div className="bg800 flex-none overflow-auto borderR z-10">
-        <div className="bg800 sticky top-0 p-3">
+      <div className="bg900 flex-none overflow-auto">
+        <div className="bg900 sticky top-0 p-3">
           <Button
             href={"/"}
             variant="primary"
@@ -25,8 +25,6 @@ export default function Sidebar2({ path, getSidebar, setSidebar }) {
             outline
           ></Button>
         </div>
-
-        <Divider />
 
         <div className="flex flex-col gap-2 p-3 ">
           <Button
@@ -86,14 +84,9 @@ export default function Sidebar2({ path, getSidebar, setSidebar }) {
       </div>
 
       <div
-        className={`bg900 overflow-auto borderR w-0
-            ${
-              getSidebar
-                ? "md:block hidden md:min-w-48 z-0"
-                : "md:hidden block w-64"
-            }
-     md:relative! 
-            `}
+        className={`bg900 overflow-auto borderR min-w-48
+            ${getSidebar ? "md:block" : "md:hidden"}
+          `}
       >
         <div className="bg900 sticky top-0 p-3">
           <Dropdown
@@ -103,8 +96,22 @@ export default function Sidebar2({ path, getSidebar, setSidebar }) {
           ></Dropdown>
         </div>
 
-        <div className="flex flex-col p-3">
-          <Label title={"Filter Menu"} size={"sm"} muted />
+        <div className="flex flex-col gap-2 p-3 pl-0">
+          <Button variant="base" justify="start">
+            porn
+          </Button>
+          <Button variant="base" justify="start">
+            animated
+          </Button>
+          <Button variant="base" justify="start">
+            hentai
+          </Button>
+          <Button variant="base" justify="start">
+            cosplay
+          </Button>
+          <Button variant="base" justify="start">
+            manhwa
+          </Button>
 
           <Collapse
             title={"sort"}
