@@ -12,7 +12,7 @@ export default function uiFilter({ path }) {
         <div className="flex gap-3">
           <nav className="md:w-fit w-full overflow-auto scrollbar-none">
             <ul className="flex justify-between gap-2">
-              <li className="md:w-24! w-full">
+              <li className="flex-none w-28">
                 <Button
                   icon={"person-video2"}
                   href={"/porn"}
@@ -20,12 +20,13 @@ export default function uiFilter({ path }) {
                     path == "/" || path == "porn" ? "baseActive" : "base"
                   }
                   block
+                  className="w-48!"
                 >
                   porn
                 </Button>
               </li>
 
-              <li className="md:w-24! w-full">
+              <li className="flex-none w-28">
                 <Button
                   icon={"person-vcard-fill"}
                   href={"/animated"}
@@ -36,7 +37,7 @@ export default function uiFilter({ path }) {
                 </Button>
               </li>
 
-              <li className="md:w-24! w-full">
+              <li className="flex-none w-28">
                 <Button
                   href={"/hentai"}
                   icon={"collection-play-fill"}
@@ -47,7 +48,7 @@ export default function uiFilter({ path }) {
                 </Button>
               </li>
 
-              <li className="md:w-24! w-full">
+              <li className="flex-none w-28">
                 <Button
                   icon={"images"}
                   href={"/cosplay"}
@@ -58,7 +59,7 @@ export default function uiFilter({ path }) {
                 </Button>
               </li>
 
-              <li className="md:w-24! w-full">
+              <li className="flex-none w-28">
                 <Button
                   icon={"images"}
                   href={"/cosplay"}
@@ -77,7 +78,8 @@ export default function uiFilter({ path }) {
             onClick={() => setFilter((prev) => !prev)}
             className="flex-none ml-auto"
           >
-            <span className="md:block hidden">Filter</span>
+            {" "}
+            Filter
           </Button>
         </div>
 

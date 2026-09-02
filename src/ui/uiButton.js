@@ -56,7 +56,7 @@ export default function Button({
   const atribut = hasText ? `px-3 ${sizes[size]}` : icons[size];
 
   const finalStyles = [
-    `flex items-center capitalize cursor-pointer transition-colors duration-200 active:scale-98`,
+    `flex items-center capitalize cursor-pointer transition-colors duration-200`,
     outline &&
       "border-2 dark:border-zinc-900 border-zinc-100 outline-2 outline-zinc-500/50",
     block && "w-full!",

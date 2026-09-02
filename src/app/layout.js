@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
+import Side from "@/ui/uiSide";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +24,53 @@ export default async function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full dark antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex">
+        <Side />
+
+        <main className="h-screen overflow-auto w-full">
+          <div className="container mx-auto">{children}</div>
+        </main>
+      </body>
     </html>
   );
 }
+
+<body>
+  <aside>
+    <nav aria-label="Sidebar navigation">Navigation</nav>
+  </aside>
+
+  <header>
+    <nav aria-label="Filter">Filter</nav>
+  </header>
+
+  <main>
+    <section>
+      <h1>Page Title</h1>
+
+      <article>
+        <img
+          src="image.jpg"
+          alt="Descriptive image text"
+          width="300"
+          height="200"
+        />
+
+        <h2>Article Title</h2>
+      </article>
+
+      <article>
+        <img
+          src="image.jpg"
+          alt="Descriptive image text"
+          width="300"
+          height="200"
+        />
+
+        <h2>Article Title</h2>
+      </article>
+    </section>
+  </main>
+
+  <footer>Footer content</footer>
+</body>;

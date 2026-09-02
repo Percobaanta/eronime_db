@@ -27,15 +27,10 @@ export default function pornPage() {
 
   return (
     <div className="flex h-screen">
-      <Sidebar path={"porn"} getSidebar={getSidebar} setSidebar={setSidebar} />
-
-      <main className="bg950 w-full overflow-auto">
-        <Header setSidebar={setSidebar} />
-
-        <Filter path={"porn"} />
-
-        <Post />
-      </main>
+      <div className="border mt-20 w-full px-3 py-20">
+        Porn Porn Porn Porn Porn Porn Porn Porn Porn Porn Porn Porn Porn Porn{" "}
+        Porn Porn Porn Porn Porn Porn Porn Porn Porn Porn{" "}
+      </div>
     </div>
   );
 }

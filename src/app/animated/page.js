@@ -27,19 +27,11 @@ export default function animatedPage() {
 
   return (
     <div className="flex h-screen">
-      <Sidebar
-        path={"animated"}
-        getSidebar={getSidebar}
-        setSidebar={setSidebar}
-      />
-
-      <main className="bg950 w-full overflow-auto">
-        <Header setSidebar={setSidebar} />
-
-        <Filter path={"animated"} />
-
-        <Post />
-      </main>
+      <div className="border mt-20 w-full px-3 py-20">
+        Animated Animated Animated Animated Animated Animated Animated Animated
+        Animated Animated Animated Animated Animated Animated Animated Animated
+        Animated Animated Animated Animated Animated Animated Animated Animated{" "}
+      </div>
     </div>
   );
 }

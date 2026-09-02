@@ -87,17 +87,10 @@ export default function Sidebar({ path, getSidebar, setSidebar }) {
         <div className="flex flex-col p-3">
           <Label title={"Filter Menu"} size={"sm"} muted />
 
-          <Collapse
+          {/* <Collapse
             title={"Bookmark"}
             icon={"bookmark-fill"}
             iconEnd={""}
-            setDropdown={setDropdown}
-            getDropdown={getDropdown}
-          ></Collapse>
-
-          <Collapse
-            title={"History"}
-            icon={"clock-fill"}
             setDropdown={setDropdown}
             getDropdown={getDropdown}
           ></Collapse>
@@ -108,6 +101,13 @@ export default function Sidebar({ path, getSidebar, setSidebar }) {
             setDropdown={setDropdown}
             getDropdown={getDropdown}
           ></Collapse>
+
+          <Collapse
+            title={"Notification"}
+            icon={"bell-fill"}
+            setDropdown={setDropdown}
+            getDropdown={getDropdown}
+          ></Collapse> */}
         </div>
       </div>
 

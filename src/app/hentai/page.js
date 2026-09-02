@@ -27,19 +27,11 @@ export default function hentaiPage() {
 
   return (
     <div className="flex h-screen">
-      <Sidebar
-        path={"hentai"}
-        getSidebar={getSidebar}
-        setSidebar={setSidebar}
-      />
-
-      <main className="bg950 w-full overflow-auto">
-        <Header setSidebar={setSidebar} />
-
-        <Filter path={"hentai"} />
-
-        <Post />
-      </main>
+      <div className="border mt-20 w-full px-3 py-20">
+        dhentai dhentai dhentai dhentai dhentai dhentai dhentai dhentai dhentai
+        dhentai dhentai dhentai dhentai dhentai dhentai dhentai dhentai dhentai
+        dhentai dhentai dhentai dhentai dhentai dhentai{" "}
+      </div>
     </div>
   );
 }

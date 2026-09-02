@@ -12,7 +12,7 @@ export default function Header({ setSidebar }) {
 
       <Divider border={"vertical"} />
 
-      <Button className="text-white! text-xl! font-bold! lowercase px-0! mr-auto">
+      <Button className="dark:text-white! text-dark! text-xl! font-bold! lowercase px-0! mr-auto">
         eronime
       </Button>
 

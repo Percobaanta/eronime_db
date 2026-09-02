@@ -27,19 +27,11 @@ export default function cosplayPage() {
 
   return (
     <div className="flex h-screen">
-      <Sidebar
-        path={"cosplay"}
-        getSidebar={getSidebar}
-        setSidebar={setSidebar}
-      />
-
-      <main className="bg950 w-full overflow-auto">
-        <Header setSidebar={setSidebar} />
-
-        <Filter path={"cosplay"} />
-
-        <Post />
-      </main>
+      <div className="border mt-20 w-full px-3 py-20">
+        cosplay cosplay cosplay cosplay cosplay cosplay cosplay cosplay cosplay
+        cosplay cosplay cosplay cosplay cosplay cosplay cosplay cosplay cosplay
+        cosplay cosplay cosplay cosplay cosplay cosplay{" "}
+      </div>
     </div>
   );
 }

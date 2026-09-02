@@ -7,8 +7,12 @@ import Header from "@/ui/uiHeader";
 import Filter from "@/ui/uiFilter";
 import Post from "@/ui/uiPost";
 import Button from "@/ui/uiButton";
+import Link from "next/link";
+import Badge from "@/ui/uiBadge";
+import { useParams } from "next/navigation";
 
 export default function App() {
+  const param = useParams;
   // Req Api
   const [getDoodstream, setDoodstream] = useState([]);
   const [getStreamtape, setStreamtape] = useState([]);
@@ -47,18 +51,39 @@ export default function App() {
     getApi();
   }, []);
 
-  console.log(getSidebar);
+  console.log(param.query);
   return (
-    <div className="flex h-screen">
-      <Sidebar2 path={"/"} getSidebar={getSidebar} setSidebar={setSidebar} />
+    <>
+      <div className="mt-15 w-full px-3">
+        {Array.from({ length: 26 }, (_, i) => (
+          <Button key={i} size="sm" icon={"record"} className={"p-0!"}>
+            actress {i}
+            <Badge title={"23"} className={"ml-auto"} />
+          </Button>
+        ))}
+      </div>
 
-      <main className="bg950 w-full overflow-auto">
-        <Header setSidebar={setSidebar} />
+      <div className="flex h-screen hidden">
+        {/* <Sidebar2 path={"/"} getSidebar={getSidebar} setSidebar={setSidebar} /> */}
 
-        <Filter path={"/"} />
+        <main className="bg950 w-full overflow-auto border">
+          <Header setSidebar={setSidebar} />
 
-        <Post />
-      </main>
-    </div>
+          <Filter path={"/"} />
+
+          <ul className="border w-48 m-10">
+            <li>
+              <Link href={"#"} className="flex justify-between">
+                <p className="truncate text-xs font-light">
+                  aksjdhklajshdka hsdkljahlskdhalks hdlakshdlaksjhd
+                </p>
+                <Badge title={"porn"} />
+              </Link>
+            </li>
+          </ul>
+          <Post />
+        </main>
+      </div>
+    </>
   );
 }
