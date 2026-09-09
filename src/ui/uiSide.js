@@ -9,7 +9,8 @@ import Divider from "@/ui/uiDivider";
 import Dropdown from "@/ui/uiDropdown";
 import Label from "@/ui/uiLabel";
 import Collapse from "@/ui/uiCollapse";
-import Theme from "@/ui/uiTheme";
+// import Theme from "@/ui/uiTheme";
+import Filter from "@/ui/uiFilter";
 
 export default function Side() {
   const pathname = usePathname();
@@ -194,6 +195,45 @@ export default function Side() {
                     ))}
                   </ul>
                 </li>
+
+                <li>
+                  <Button
+                    icon={"bell-fill"}
+                    iconEnd={
+                      getActivity === "information"
+                        ? "dash-lg ml-auto"
+                        : "plus-lg ml-auto"
+                    }
+                    justify={"start"}
+                    block
+                    className={"p-0!"}
+                    onClick={() =>
+                      getActivity === "information"
+                        ? setActivity("")
+                        : setActivity("information")
+                    }
+                  >
+                    information
+                  </Button>
+
+                  <ul
+                    className={`${
+                      getActivity === "information" ? "visible" : "hidden"
+                    } space-y-2 pl-1`}
+                  >
+                    {Array.from({ length: 8 }, (_, i) => (
+                      <li key={i}>
+                        <Link href={"#"} className="flex justify-between">
+                          <p className="truncate text-xs font-light">
+                            aksjdhklajshdka hsdkljahlskdhalks hdlakshdlaksjhd
+                            dodo
+                          </p>
+                          <Badge title={"porn"} />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
               </ul>
             </nav>
           </div>
@@ -208,30 +248,32 @@ export default function Side() {
 
       {/* Header */}
       <header
-        className={`bg900 fixed flex gap-3 top-0 right-0 p-3 z-10 borderB ${
+        className={`bg950 fixed flex flex-col gap-3 top-0 right-0 p-3 z-10 ${
           getSidebar
             ? "w-full md:w-[calc(100%-15.5rem)]"
             : "w-[calc(100%-3.5rem)]"
         }`}
       >
-        <Button
-          variant="base"
-          icon={"layout-sidebar"}
-          outline
-          onClick={() => setSidebar((prev) => !prev)}
-        ></Button>
+        <div className="flex gap-3 borderB">
+          <Button
+            variant="base"
+            icon={"layout-sidebar"}
+            outline
+            onClick={() => setSidebar((prev) => !prev)}
+          ></Button>
 
-        <Divider border={"vertical"} />
+          <Divider border={"vertical"} />
 
-        <Button className="dark:text-white! text-black! text-xl! font-bold! lowercase px-0! mr-auto">
-          eronime
-        </Button>
+          <Button className="dark:text-white! text-black! text-xl! font-bold! lowercase px-0! mr-auto">
+            eronime
+          </Button>
 
-        <Button icon={"search"} />
+          <Button icon={"search"} />
 
-        <Button icon={"bell"} />
+          <Button icon={"bell"} />
+        </div>
 
-        <Theme />
+        <Filter path={"/"} />
       </header>
     </>
   );

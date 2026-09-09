@@ -5,19 +5,18 @@ export default function Button({
   href,
   title,
   icon,
-  iconEnd,
   btnLg,
   btnSm,
   btnPrimary,
   btnBase,
   btnActive,
   btnGhost,
+  border,
+  iconEnd,
   btnRounded,
   btnFlat,
-  btnCenter,
   btnBlock,
-  btnOutline,
-  border,
+  btnCenter,
   className = "",
   ...props
 }) {
@@ -33,7 +32,7 @@ export default function Button({
     !btnText &&
       !btnLg &&
       !btnSm &&
-      "w-8.5! min-h-8.5! px-0 justify-center text-base!",
+      "w-8.5! h-8.5! px-0 justify-center text-base!",
 
     !btnText && btnLg && "w-10! h-10! px-0 justify-center text-lg!",
 
@@ -52,16 +51,13 @@ export default function Button({
 
     btnSm && "text-xs! font-light! h-7.5!",
 
-    btnBlock && "flex-1 w-full",
+    btnBlock && "flex-1",
 
     btnCenter && "justify-center",
 
     btnRounded && "rounded-xl",
 
     btnFlat && "rounded-none",
-
-    btnOutline &&
-      "border-2 dark:border-zinc-900 border-zinc-100 outline-2 outline-zinc-500/50",
 
     border && "border",
 

@@ -9,6 +9,7 @@ import Post from "@/ui/uiPost";
 import Button from "@/ui/uiButton";
 import Link from "next/link";
 import Badge from "@/ui/uiBadge";
+import Card from "@/ui/uiCard";
 import { useParams } from "next/navigation";
 
 export default function App() {
@@ -51,11 +52,12 @@ export default function App() {
     getApi();
   }, []);
 
-  console.log(param.query);
   return (
     <>
-      <div className="mt-15 w-full px-3">
-        {Array.from({ length: 26 }, (_, i) => (
+      <Card />
+
+      <div className="p-3 hidden">
+        {Array.from({ length: 100 }, (_, i) => (
           <Button key={i} size="sm" icon={"record"} className={"p-0!"}>
             actress {i}
             <Badge title={"23"} className={"ml-auto"} />

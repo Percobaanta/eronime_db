@@ -7,47 +7,47 @@ import { useEffect, useState } from "react";
 export default function Dropdown({ setSidebar, setCollapse, getCollapse }) {
   const [dark, setDark] = useState(true);
 
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
+  // useEffect(() => {
+  //   const theme = localStorage.getItem("theme");
 
-    // Jika belum pernah memilih theme → default dark
-    if (!theme) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-      setDark(true);
-      return;
-    }
+  //   // Jika belum pernah memilih theme → default dark
+  //   if (!theme) {
+  //     document.documentElement.classList.add("dark");
+  //     localStorage.setItem("theme", "dark");
+  //     setDark(true);
+  //     return;
+  //   }
 
-    const isDark = theme === "dark";
+  //   const isDark = theme === "dark";
 
-    document.documentElement.classList.toggle("dark", isDark);
+  //   document.documentElement.classList.toggle("dark", isDark);
 
-    setDark(isDark);
-  }, []);
+  //   setDark(isDark);
+  // }, []);
 
-  const darkTheme = () => {
-    const html = document.documentElement;
+  // const darkTheme = () => {
+  //   const html = document.documentElement;
 
-    const newTheme = true;
+  //   const newTheme = true;
 
-    html.classList.toggle("dark", newTheme);
+  //   html.classList.toggle("dark", newTheme);
 
-    localStorage.setItem("theme", "dark");
+  //   localStorage.setItem("theme", "dark");
 
-    setDark(newTheme);
-  };
+  //   setDark(newTheme);
+  // };
 
-  const lightTheme = () => {
-    const html = document.documentElement;
+  // const lightTheme = () => {
+  //   const html = document.documentElement;
 
-    const newTheme = false;
+  //   const newTheme = false;
 
-    html.classList.toggle("dark", newTheme);
+  //   html.classList.toggle("dark", newTheme);
 
-    localStorage.setItem("theme", "light");
+  //   localStorage.setItem("theme", "light");
 
-    setDark(newTheme);
-  };
+  //   setDark(newTheme);
+  // };
 
   return (
     <div className="flex gap-3">

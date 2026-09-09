@@ -1,6 +1,6 @@
 import Button from "./uiButton";
 import Divider from "./uiDivider";
-import Theme from "./uiTheme";
+// import Theme from "./uiTheme";
 
 export default function Header({ setSidebar }) {
   return (
@@ -20,7 +20,7 @@ export default function Header({ setSidebar }) {
 
       <Button icon={"bell"} />
 
-      <Theme />
+      {/* <Theme /> */}
     </header>
   );
 }
