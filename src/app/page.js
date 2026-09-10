@@ -1,19 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Sidebar from "@/ui/uiSidebar";
-import Sidebar2 from "@/ui/uiSidebar2";
-import Header from "@/ui/uiHeader";
-import Filter from "@/ui/uiFilter";
-import Post from "@/ui/uiPost";
-import Button from "@/ui/uiButton";
-import Link from "next/link";
-import Badge from "@/ui/uiBadge";
-import Card from "@/ui/uiCard";
 import { useParams } from "next/navigation";
+import SidebarX from "@/ui/uiSidebarX";
+import HeaderX from "@/ui/uiHeaderX";
+import Filter from "@/ui/uiFilter";
+import Card from "@/ui/uiCard";
 
 export default function App() {
   const param = useParams;
+
   // Req Api
   const [getDoodstream, setDoodstream] = useState([]);
   const [getStreamtape, setStreamtape] = useState([]);
@@ -24,6 +20,7 @@ export default function App() {
 
   // Global state
   const [getSidebar, setSidebar] = useState(true);
+  const [getSetting, setSetting] = useState(null);
 
   useEffect(() => {
     async function getApi() {
@@ -52,38 +49,22 @@ export default function App() {
     getApi();
   }, []);
 
+  console.log(getSetting);
   return (
     <>
-      <Card />
+      <SidebarX getSidebar={getSidebar} setSidebar={setSidebar} />
 
-      <div className="p-3 hidden">
-        {Array.from({ length: 100 }, (_, i) => (
-          <Button key={i} size="sm" icon={"record"} className={"p-0!"}>
-            actress {i}
-            <Badge title={"23"} className={"ml-auto"} />
-          </Button>
-        ))}
-      </div>
+      <div className="w-full h-screen overflow-auto">
+        <HeaderX
+          setSidebar={setSidebar}
+          getSetting={getSetting}
+          setSetting={setSetting}
+        />
 
-      <div className="flex h-screen hidden">
-        {/* <Sidebar2 path={"/"} getSidebar={getSidebar} setSidebar={setSidebar} /> */}
+        <Filter />
 
-        <main className="bg950 w-full overflow-auto border">
-          <Header setSidebar={setSidebar} />
-
-          <Filter path={"/"} />
-
-          <ul className="border w-48 m-10">
-            <li>
-              <Link href={"#"} className="flex justify-between">
-                <p className="truncate text-xs font-light">
-                  aksjdhklajshdka hsdkljahlskdhalks hdlakshdlaksjhd
-                </p>
-                <Badge title={"porn"} />
-              </Link>
-            </li>
-          </ul>
-          <Post />
+        <main>
+          <Card getSetting={getSetting} setSetting={setSetting} />
         </main>
       </div>
     </>

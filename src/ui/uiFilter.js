@@ -8,55 +8,67 @@ export default function uiFilter({ path }) {
 
   return (
     <>
-      <div className="p-3">
+      <div className="container mx-auto p-3">
         <div className="flex gap-3">
-          <nav className="md:w-fit w-full overflow-auto scrollbar-none">
-            <ul className="flex justify-between gap-2">
-              <li className="flex-none w-28">
-                <Button
-                  href={"/porn"}
-                  icon={"person-video2"}
-                  btnBlock
-                  className="w-48!"
-                >
-                  porn
-                </Button>
-              </li>
+          <nav className="flex gap-2 md:w-fit w-full overflow-auto scrollbar-none">
+            <Button
+              href={"/porn"}
+              icon={"person-video2"}
+              btnBase
+              btnCenter
+              className="min-w-28"
+            >
+              porn
+            </Button>
 
-              <li className="flex-none w-28">
-                <Button icon={"person-vcard-fill"} href={"/animated"} btnBlock>
-                  animated
-                </Button>
-              </li>
+            <Button
+              icon={"person-vcard-fill"}
+              href={"/animated"}
+              btnBase
+              btnCenter
+              className="min-w-28"
+            >
+              animated
+            </Button>
 
-              <li className="flex-none w-28">
-                <Button href={"/hentai"} icon={"collection-play-fill"} btnBlock>
-                  hentai
-                </Button>
-              </li>
+            <Button
+              href={"/hentai"}
+              icon={"collection-play-fill"}
+              btnBase
+              btnCenter
+              className="min-w-28"
+            >
+              hentai
+            </Button>
 
-              <li className="flex-none w-28">
-                <Button icon={"images"} href={"/cosplay"} btnBlock>
-                  cosplay
-                </Button>
-              </li>
+            <Button
+              icon={"images"}
+              href={"/cosplay"}
+              btnBase
+              btnCenter
+              className="min-w-28"
+            >
+              cosplay
+            </Button>
 
-              <li className="flex-none w-28">
-                <Button icon={"images"} href={"/cosplay"} btnBlock>
-                  manhwa
-                </Button>
-              </li>
-            </ul>
+            <Button
+              icon={"images"}
+              href={"/cosplay"}
+              btnBase
+              btnCenter
+              className="min-w-28"
+            >
+              manhwa
+            </Button>
           </nav>
 
           <Button
             variant={getFilter ? "baseActive" : "base"}
             icon={"filter"}
+            btnBase
             onClick={() => setFilter((prev) => !prev)}
             className="flex-none ml-auto"
-          >
-            Filter
-          </Button>
+          ></Button>
         </div>
 
         {getFilter && (

@@ -3,6 +3,19 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer components {
+  :popover-open {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    inset: unset;
+    bottom: 25px;
+    left: 25px;
+    margin: 0;
+    color: maroon;
+    background-color: orange;
+    font-size: 25px;
+  }
+
   :root {
     @apply dark:bg-black bg-white dark:text-zinc-300 text-zinc-700;
   }

@@ -2,8 +2,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
 
-import LayoutClient from "@/ui/LayoutClient";
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -51,7 +49,7 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className="bg950 min-h-screen overflow-hidden flex">
-        <LayoutClient>{children}</LayoutClient>
+        {children}
       </body>
     </html>
   );
