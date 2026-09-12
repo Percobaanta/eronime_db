@@ -70,7 +70,14 @@ export default function Header({ setSidebar, getSetting, setSetting }) {
         <Button
           radius={"rounded"}
           icon={"layout-sidebar-inset"}
-          className="md:hidden"
+          // className="md:hidden"
+          onClick={() => setSidebar((prev) => !prev)}
+        ></Button>
+
+        <Button
+          icon={"grid-fill"}
+          btnRounded
+          btnPrimary
           onClick={() => setSidebar((prev) => !prev)}
         ></Button>
 

@@ -23,21 +23,18 @@ export default function Button({
 }) {
   const btnText = !!children;
 
-  const iconsSize = btnLg ? "text-lg" : btnSm ? "text-sm" : "text-base";
+  const iconsSize = btnLg ? "text-base" : btnSm ? "text-xs" : "text-sm";
 
   const style = [
-    "inline-flex gap-3 items-center capitalize cursor-pointer",
-    "text-xs font-normal rounded-md h-8.5 px-3",
-    "dark:text-zinc-400 dark:hover:text-zinc-200 text-zinc-800 hover:text-zinc-600",
+    "inline-flex gap-2 items-center capitalize cursor-pointer",
+    "text-xs font-medium rounded-md h-7 px-2",
+    "dark:text-zinc-300 dark:hover:text-zinc-200 text-zinc-900 hover:text-zinc-800",
 
-    !btnText &&
-      !btnLg &&
-      !btnSm &&
-      "w-8.5! min-h-8.5! px-0 justify-center text-base!",
+    !btnText && !btnLg && !btnSm && "w-7! min-h-7! px-0 justify-center",
 
-    !btnText && btnLg && "w-10! h-10! px-0 justify-center text-lg!",
+    !btnText && btnLg && "w-8! h-8! px-0 justify-center text-lg!",
 
-    !btnText && btnSm && "w-7.5! h-7.5! px-0 justify-center text-xs!",
+    !btnText && btnSm && "w-6! h-6! px-0 justify-center text-xs!",
 
     btnPrimary && "bg-yellow-200 text-zinc-800!",
 
@@ -48,15 +45,15 @@ export default function Button({
 
     btnGhost && "dark:hover:bg-zinc-800",
 
-    btnLg && "text-sm! font-semibold! h-10!",
+    btnLg && "h-8!",
 
-    btnSm && "text-xs! font-light! h-7.5!",
+    btnSm && "h-6! font-normal!",
 
     btnBlock && "flex-1 w-full",
 
     btnCenter && "justify-center",
 
-    btnRounded && "rounded-xl",
+    btnRounded && "rounded-[10px]!",
 
     btnFlat && "rounded-none",
 

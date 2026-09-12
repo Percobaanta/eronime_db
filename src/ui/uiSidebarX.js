@@ -25,7 +25,7 @@ export default function Sidebar({ getSidebar, setSidebar }) {
             <Button
               icon={getSidebar ? "x-lg" : "layout-sidebar-inset"}
               btnRounded
-              btnActive
+              btnPrimary
               onClick={() => setSidebar((prev) => !prev)}
             ></Button>
           </div>
