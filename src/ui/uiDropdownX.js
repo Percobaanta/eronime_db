@@ -8,6 +8,7 @@ export default function Dropdown({ getSetting, setSetting }) {
   const dropdownRef = useRef(null);
   const [getDropdown, setDropdown] = useState(false);
 
+  // fungsi dropdown
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -22,7 +23,7 @@ export default function Dropdown({ getSetting, setSetting }) {
     };
   }, []);
 
-  // Load setting dari localStorage
+  // Setingan awal atau meengambil dari localStorage
   useEffect(() => {
     const stored = localStorage.getItem("setting");
 
@@ -63,6 +64,7 @@ export default function Dropdown({ getSetting, setSetting }) {
   if (!getSetting) {
     return null;
   }
+
   return (
     <div ref={dropdownRef} className="relative w-fit">
       <Button

@@ -38,6 +38,11 @@
     display: none;
   }
 
+  /*  Content */
+  content {
+    @apply h-screen grow overflow-auto;
+  }
+
   /*  Background */
   .bgPrimary {
     @apply bg-yellow-200;

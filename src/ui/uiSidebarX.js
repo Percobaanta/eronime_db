@@ -5,195 +5,269 @@ import { useState } from "react";
 
 import Button from "./uiButton";
 import Divider from "./uiDivider";
+import Label from "./uiLabel";
 
-export default function Sidebar({ getSidebar, setSidebar }) {
-  const pathname = usePathname();
+export default function Sidebar({
+  getSidebarMobile,
+  setSidebarMobile,
+  getSidebar,
+  setSidebar,
+}) {
+  const [getCollapse, setCollapse] = useState("");
 
-  // Global state
-  const [getCollapse, setCollapse] = useState(false);
+  const pageMenu = [
+    {
+      name: "porn",
+      icon: "play-btn",
+      child: [
+        {
+          url: "#",
+          title: "example bookmark example bookmark example bookmark 1",
+        },
+        {
+          url: "#",
+          title: "example bookmark example bookmark example bookmark 2",
+        },
+        {
+          url: "#",
+          title: "example bookmark example bookmark example bookmark 3",
+        },
+      ],
+    },
+    {
+      name: "animated",
+      icon: "play-btn",
+      child: [
+        { url: "#", title: "example announcement 1" },
+        { url: "#", title: "example announcement 2" },
+        { url: "#", title: "example announcement 3" },
+      ],
+    },
+    {
+      name: "hentai",
+      icon: "play-btn",
+      child: [
+        { url: "#", title: "example setting 1" },
+        { url: "#", title: "example setting 2" },
+        { url: "#", title: "example setting 3" },
+      ],
+    },
+    {
+      name: "cosplay",
+      icon: "image",
+      child: [
+        { url: "#", title: "example setting 1" },
+        { url: "#", title: "example setting 2" },
+        { url: "#", title: "example setting 3" },
+      ],
+    },
+  ];
+
+  const activity = [
+    {
+      name: "bookmark",
+      icon: "bookmark",
+      child: [
+        {
+          url: "#",
+          title: "example bookmark example bookmark example bookmark 1",
+        },
+        {
+          url: "#",
+          title: "example bookmark example bookmark example bookmark 2",
+        },
+        {
+          url: "#",
+          title: "example bookmark example bookmark example bookmark 3",
+        },
+      ],
+    },
+    {
+      name: "reaciton",
+      icon: "hand-thumbs-up",
+      child: [
+        { url: "#", title: "judul" },
+        { url: "#", title: "judul" },
+        { url: "#", title: "example setting 3" },
+      ],
+    },
+    {
+      name: "announcement",
+      icon: "bell",
+      child: [
+        { url: "#", title: "example announcement 1" },
+        { url: "#", title: "example announcement 2" },
+        { url: "#", title: "example announcement 3" },
+      ],
+    },
+  ];
 
   return (
-    <aside aria-label="Sidebar">
-      <div
-        className={`md:relative h-screen fixed flex md:w-min w-full z-20
-    ${getSidebar ? "md:flex hidden" : "md:flex"}
-    `}
-      >
-        {/* Sidebar icon */}
-        <div className="bg900 h-screen flex flex-col borderR">
-          <div className="p-3">
-            <Button
-              icon={getSidebar ? "x-lg" : "layout-sidebar-inset"}
-              btnRounded
-              btnPrimary
-              onClick={() => setSidebar((prev) => !prev)}
-            ></Button>
-          </div>
-
-          <Divider />
-
-          <div className="flex flex-col overflow-auto space-y-2 p-3">
-            <Button
-              href={"/porn"}
-              icon={"person-video2"}
-              btnActive={pathname === "/" || pathname === "/porn"}
-              btnGhost={pathname !== "/" || pathname !== "/porn"}
-              btnRounded
-            ></Button>
-
-            <Button
-              href={"/animated"}
-              icon={"person-vcard-fill"}
-              btnActive={pathname === "/animated"}
-              btnGhost={pathname !== "/animated"}
-              btnRounded
-            ></Button>
-
-            <Button
-              href={"/hentai"}
-              icon={"collection-play-fill"}
-              btnActive={pathname === "/hentai"}
-              btnGhost={pathname !== "/hentai"}
-              btnRounded
-            ></Button>
-
-            <Button
-              href={"/cosplay"}
-              icon={"images"}
-              btnActive={pathname === "/cosplay"}
-              btnGhost={pathname !== "/cosplay"}
-              btnRounded
-            ></Button>
-
-            <Button
-              href={"/manhwa"}
-              icon={"file-image-fill"}
-              btnActive={pathname === "/manhwa"}
-              btnGhost={pathname !== "/manhwa"}
-              btnRounded
-            ></Button>
-          </div>
-        </div>
-
-        {/* Sidebar Activity */}
+    <>
+      {/* Overlay Mobile */}
+      {getSidebarMobile && (
         <div
-          className={`bg900 h-screen flex-col borderR md:w-48 w-64 ${
-            getSidebar ? "md:flex" : "md:hidden flex"
-          }`}
+          onClick={() => setSidebarMobile(false)}
+          className="fixed inset-0 z-30 bg-black/70 md:hidden"
         >
-          <div className="flex gap-3 p-3">
+          <Button
+            btnActive
+            btnCircle
+            icon={getSidebarMobile ? "x-lg" : "list"}
+            onClick={() => setSidebarMobile(!getSidebarMobile)}
+            className="absolute top-4 right-4"
+          ></Button>
+        </div>
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={`bg900 md:relative fixed left-0 top-0 z-40 h-screen md:translate-x-0 borderR overflow-auto
+          ${getSidebar ? "min-w-0" : "w-60"}
+          ${getSidebarMobile ? "translate-x-0" : "-translate-x-full"}
+        `}
+      >
+        {/* Logo */}
+        <div className="bg900 sticky top-0 flex p-3">
+          <div
+            className={`flex min-w-0 items-center rounded-md gap-2 flex-1 
+              ${getSidebar ? "px-0 py-2" : "hover:bg-zinc-800 p-2"}`}
+          >
             <Button
-              href={"/"}
               icon={"chat-heart-fill"}
-              btnBlock
-              className="text-white! lowercase font-semibold! text-base! p-0!"
-            >
-              eronime
-            </Button>
-          </div>
+              btnPrimary
+              btnRounded
+              btnOutline
+              border
+            ></Button>
 
-          <div className="flex-1 overflow-auto space-y-2 mt-3">
-            <div>
+            {!getSidebar && (
               <Button
-                icon={"bookmark-fill"}
-                iconEnd={
-                  getCollapse === "bookmark"
-                    ? "dash-lg ml-auto"
-                    : "plus-lg ml-auto"
-                }
+                href={"/"}
                 btnBlock
-                onClick={() =>
-                  getCollapse === "bookmark"
-                    ? setCollapse("")
-                    : setCollapse("bookmark")
-                }
+                className="lowercase text-base! font-semibold!"
               >
-                Bookmark
+                eronime
               </Button>
-
-              <div className="bg800 max-h-48 overflow-auto">
-                {getCollapse === "bookmark" && (
-                  <>
-                    {Array.from({ length: 60 }, (_, i) => (
-                      <Button key={i} btnSm btnBlock>
-                        bookmark 1
-                      </Button>
-                    ))}
-                  </>
-                )}
-              </div>
-            </div>
-
-            <div>
-              <Button
-                icon={"hand-thumbs-up-fill"}
-                iconEnd={
-                  getCollapse == "reaction"
-                    ? "dash-lg ml-auto"
-                    : "plus-lg ml-auto"
-                }
-                btnBlock
-                onClick={() =>
-                  getCollapse === "reaction"
-                    ? setCollapse("")
-                    : setCollapse("reaction")
-                }
-              >
-                reaction
-              </Button>
-
-              <div className="bg800 max-h-48 overflow-auto">
-                {getCollapse === "reaction" && (
-                  <>
-                    {Array.from({ length: 60 }, (_, i) => (
-                      <Button key={i} btnSm btnBlock>
-                        reaction 1
-                      </Button>
-                    ))}
-                  </>
-                )}
-              </div>
-            </div>
-
-            <div>
-              <Button
-                icon={"bell-fill"}
-                iconEnd={
-                  getCollapse === "notification"
-                    ? "dash-lg ml-auto"
-                    : "plus-lg ml-auto"
-                }
-                btnBlock
-                onClick={() =>
-                  getCollapse === "notification"
-                    ? setCollapse("")
-                    : setCollapse("notification")
-                }
-              >
-                notification
-              </Button>
-
-              <div className="bg800 max-h-48 overflow-auto">
-                {getCollapse === "notification" && (
-                  <>
-                    {Array.from({ length: 60 }, (_, i) => (
-                      <Button key={i} btnSm btnBlock>
-                        notification 1
-                      </Button>
-                    ))}
-                  </>
-                )}
-              </div>
-            </div>
+            )}
           </div>
         </div>
 
-        {/* Overlay Mobile */}
-        <div
-          className="bg-zinc-950/70 grow"
-          onClick={() => setSidebar((prev) => !prev)}
-        ></div>
-      </div>
-    </aside>
+        {getSidebar && <Divider />}
+
+        {/* Page Menu */}
+        <nav className="p-3">
+          {!getSidebar && (
+            <Label size="sm" muted title="Page Menu" className={"pl-2"} />
+          )}
+
+          <ul className="space-y-1">
+            {pageMenu.map((item) => (
+              <li key={item.name}>
+                {/* Parent menu */}
+                <div className="flex gap-2">
+                  <Button
+                    btnActive
+                    href={getSidebar && item.name}
+                    icon={
+                      getCollapse === item.name
+                        ? `${item.icon}-fill`
+                        : item.icon
+                    }
+                    btnBlock
+                    btnRounded={getSidebar}
+                    onClick={() =>
+                      getCollapse === item.name
+                        ? setCollapse("")
+                        : setCollapse(item.name)
+                    }
+                  >
+                    {!getSidebar && item.name}
+                  </Button>
+
+                  {!getSidebar && (
+                    <Button href={item.name} icon="arrow-right-short"></Button>
+                  )}
+                </div>
+
+                {/* Child menu */}
+                {!getSidebar && getCollapse === item.name && (
+                  <div className="ml-4">
+                    <div className="pl-2 borderL border-dashed max-h-64 overflow-auto space-y-1">
+                      {item.child.map((child, i) => (
+                        <Button
+                          key={i}
+                          btnGhost
+                          className="block! w-full! truncate! text-start"
+                        >
+                          {child.title}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {getSidebar && <Divider />}
+
+        {/* Activity */}
+        <nav className="p-3">
+          {!getSidebar && (
+            <Label size="sm" muted title="Activity" className={"pl-2"} />
+          )}
+
+          <ul className="space-y-1">
+            {activity.map((item) => (
+              <li key={item.name}>
+                {/* Parent menu */}
+                <div className="flex gap-2">
+                  <Button
+                    btnActive
+                    icon={
+                      getCollapse === item.name
+                        ? `${item.icon}-fill`
+                        : item.icon
+                    }
+                    btnBlock
+                    btnRounded={getSidebar}
+                    onClick={() =>
+                      getCollapse === item.name
+                        ? setCollapse("")
+                        : setCollapse(item.name)
+                    }
+                  >
+                    {!getSidebar && item.name}
+                  </Button>
+
+                  {!getSidebar && (
+                    <Button href={item.name} icon="arrow-right-short"></Button>
+                  )}
+                </div>
+
+                {/* Child menu */}
+                {!getSidebar && getCollapse === item.name && (
+                  <div className="ml-4">
+                    <div className="pl-2 borderL border-dashed max-h-64 overflow-auto space-y-1">
+                      {item.child.map((child, i) => (
+                        <Button
+                          key={i}
+                          btnGhost
+                          className="block! w-full! truncate! text-start"
+                        >
+                          {child.title}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+    </>
   );
 }

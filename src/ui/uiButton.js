@@ -28,12 +28,12 @@ export default function Button({
 
   const style = [
     "inline-flex gap-2 items-center capitalize cursor-pointer",
-    "text-xs font-medium rounded-md h-7 px-2",
+    "text-xs font-semibold rounded-lg h-8 px-2",
     "dark:text-zinc-300 dark:hover:text-zinc-200 text-zinc-900 hover:text-zinc-800",
 
-    !btnText && !btnLg && !btnSm && "w-7! min-h-7! px-0 justify-center",
+    !btnText && !btnLg && !btnSm && "w-8! min-h-8! px-0! justify-center",
 
-    !btnText && btnLg && "w-8! h-8! px-0 justify-center text-lg!",
+    !btnText && btnLg && "w-9! h-9! px-0 justify-center text-lg!",
 
     !btnText && btnSm && "w-6! h-6! px-0 justify-center text-xs!",
 
@@ -46,7 +46,7 @@ export default function Button({
 
     btnGhost && "dark:hover:bg-zinc-800",
 
-    btnLg && "h-8!",
+    btnLg && "h-9!",
 
     btnSm && "h-6! font-normal!",
 
