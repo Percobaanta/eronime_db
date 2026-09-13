@@ -5,7 +5,7 @@ import Button from "@/ui/uiButton";
 import Link from "next/link";
 import NavbarX from "@/ui/uiFilter";
 import PostScroll from "@/ui/uiPostScroll";
-import Dropdown from "@/ui/uiDropdown";
+import Dropdown from "@/ui/uiDropdownX";
 import Collapse from "@/ui/uiCollapse";
 import NavbarY from "@/ui/uiNavbarY";
 import Theme from "@/ui/uiTheme";

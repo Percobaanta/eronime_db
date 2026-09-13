@@ -9,6 +9,7 @@ import Card from "@/ui/uiCard";
 import Button from "@/ui/uiButton";
 import Label from "@/ui/uiLabel";
 import Divider from "@/ui/uiDivider";
+import Dropdown from "@/ui/uiDropdownX";
 
 export default function App() {
   const param = useParams;
@@ -21,8 +22,6 @@ export default function App() {
   const [getHentai, setHentai] = useState([]);
   const [getCosplay, setCosplay] = useState([]);
 
-  // Global state
-  // const [getSidebar, setSidebar] = useState(true);
   const [getSetting, setSetting] = useState(null);
 
   useEffect(() => {
@@ -144,6 +143,19 @@ export default function App() {
   const [getCollapse, setCollapse] = useState("");
   const [getSearch, setSearch] = useState(false);
 
+  useEffect(() => {
+    const stored = localStorage.getItem("setting");
+    const initialSetting = stored
+      ? JSON.parse(stored)
+      : {
+          theme: "dark",
+          layout: "5",
+          style: "square",
+        };
+
+    setSetting(initialSetting);
+  }, []);
+
   return (
     <>
       <>
@@ -151,13 +163,21 @@ export default function App() {
         {getSidebarMobile && (
           <div
             onClick={() => setSIdebarMobile(false)}
-            className="fixed inset-0 z-30 bg-black/50 md:hidden"
-          ></div>
+            className="fixed inset-0 z-30 bg-black/70 md:hidden"
+          >
+            <Button
+              btnActive
+              btnCircle
+              icon={getSidebarMobile ? "x-lg" : "list"}
+              onClick={() => setSIdebarMobile(!getSidebarMobile)}
+              className="absolute top-4 right-2"
+            ></Button>
+          </div>
         )}
 
         {/* Sidebar */}
         <aside
-          className={`bg900 fixed left-0 top-0 z-40 h-screen transition-all md:translate-x-0 borderR overflow-auto
+          className={`bg900 fixed left-0 top-0 z-40 h-screen md:translate-x-0 borderR overflow-auto
           ${getSidebar ? "min-w-0" : "w-60"}
           ${getSidebarMobile ? "translate-x-0" : "-translate-x-full"}
         `}
@@ -168,7 +188,13 @@ export default function App() {
               className={`flex min-w-0 items-center rounded-md gap-2 flex-1 
               ${getSidebar ? "px-0 py-2" : "hover:bg-zinc-800 p-2"}`}
             >
-              <Button icon={"chat-heart-fill"} btnPrimary btnRounded></Button>
+              <Button
+                icon={"chat-heart-fill"}
+                btnPrimary
+                btnRounded
+                btnOutline
+                border
+              ></Button>
 
               {!getSidebar && (
                 <Button
@@ -304,16 +330,15 @@ export default function App() {
 
         {/* Main Content */}
         <main
-          className={`h-screen transition-all w-full overflow-auto
-          ${getSidebar ? "md:ml-12" : "md:ml-60"}
+          className={`h-screen w-full overflow-auto
+          ${getSidebar ? "md:ml-11" : "md:ml-60"}
         `}
         >
-          <div className="bg950 sticky top-0 px-2 py-4 flex-1 borderB">
-            <div className="flex gap-2">
-              {/* Collapse Button */}
+          <div className="bg950 sticky top-0 px-2 py-4 flex-1">
+            <div className="flex md:gap-3 gap-1">
               <Button
                 icon={"layout-sidebar-inset"}
-                className="md:inline-flex! hidden!"
+                className="md:inline-flex! hidden! md:mr-auto"
                 onClick={() => setSidebar(!getSidebar)}
               ></Button>
 
@@ -327,44 +352,54 @@ export default function App() {
 
               <Button
                 href={"/"}
-                iconEnd={"arrow-down-short"}
-                className="mr-auto"
+                className="lowercase text-base! font-semibold! mr-auto md:hidden"
               >
-                Porn
+                eronime
               </Button>
 
-              {getSearch && (
-                <input
-                  className="bg900 rounded-md w-full md:w-48 h-7 px-4 text-sm outline-0"
-                  autoFocus
-                ></input>
-              )}
+              <div className="bg800 flex rounded-md overflow-auto">
+                <Button icon={"search"}></Button>
 
-              <Button
-                icon={"search"}
-                onClick={() => setSearch(!getSearch)}
-              ></Button>
+                <input className="bg800 w-full md:w-48 h-7 text-sm outline-0" />
+              </div>
 
               <Button icon={"bell"}></Button>
 
-              <Button icon={"gear"}></Button>
+              <Dropdown getSetting={getSetting} setSetting={setSetting} />
 
-              <Button icon={"person-circle"}>
-                <span className="md:block hidden">dashboard</span>
-              </Button>
+              <Button icon={"person-circle"}></Button>
             </div>
           </div>
 
-          {Array.from({ length: 5 }, (_, i) => (
-            <div key={i} className="p-10">
-              {i}
+          <div className="container mx-auto p-2">
+            <div
+              className={`grid gap-3 mb-5 p-3 ${
+                getSetting?.layout === "5"
+                  ? "md:grid-cols-5 grid-cols-2"
+                  : "md:grid-cols-6 grid-cols-3"
+              }`}
+            >
+              {Array.from({ length: 100 }, (_, i) => (
+                <div
+                  key={i}
+                  className={`bg900 rounded-lg ${
+                    getSetting?.style === "square"
+                      ? "aspect-square"
+                      : getSetting?.style === "landscape"
+                      ? "aspect-[3/2]"
+                      : "aspect-[2/3]"
+                  }`}
+                >
+                  asd
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </main>
       </>
 
       {/* <SidebarX getSidebar={getSidebar} setSidebar={setSidebar} /> */}
-      <div className="w-full h-screen overflow-auto  hidden">
+      {/* <div className="w-full h-screen overflow-auto  hidden">
         <HeaderX
           setSidebar={setSidebar}
           getSetting={getSetting}
@@ -376,7 +411,7 @@ export default function App() {
         <main>
           <Card getSetting={getSetting} setSetting={setSetting} />
         </main>
-      </div>
+      </div> */}
     </>
   );
 }

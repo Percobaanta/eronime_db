@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "@/ui/uiButton";
-import Dropdown from "@/ui/uiDropdown";
+import Dropdown from "@/ui/uiDropdownX";
 import Collapse from "@/ui/uiCollapse";
 import Divider from "@/ui/uiDivider";
 import Label from "@/ui/uiLabel";

@@ -6,7 +6,7 @@ import Link from "next/link";
 import Button from "@/ui/uiButton";
 import Badge from "@/ui/uiBadge";
 import Divider from "@/ui/uiDivider";
-import Dropdown from "@/ui/uiDropdown";
+import Dropdown from "@/ui/uiDropdownX";
 import Label from "@/ui/uiLabel";
 import Collapse from "@/ui/uiCollapse";
 // import Theme from "@/ui/uiTheme";
