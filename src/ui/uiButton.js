@@ -13,6 +13,7 @@ export default function Button({
   btnActive,
   btnGhost,
   btnRounded,
+  btnCircle,
   btnFlat,
   btnCenter,
   btnBlock,
@@ -54,6 +55,8 @@ export default function Button({
     btnCenter && "justify-center",
 
     btnRounded && "rounded-[10px]!",
+
+    btnCircle && "rounded-full!",
 
     btnFlat && "rounded-none",
 
