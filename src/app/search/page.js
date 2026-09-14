@@ -6,9 +6,14 @@ import Header from "@/ui/uiHeader";
 import Filter from "@/ui/uiFilter";
 import Card from "@/ui/uiCard";
 
-export default function animatedPage() {
+export default function App() {
   // Req Api
+  const [getDoodstream, setDoodstream] = useState([]);
+  const [getStreamtape, setStreamtape] = useState([]);
+  const [getPorn, setPorn] = useState([]);
   const [getAnimated, setAnimated] = useState([]);
+  const [getHentai, setHentai] = useState([]);
+  const [getCosplay, setCosplay] = useState([]);
 
   // Core State
   const [getSidebar, setSidebar] = useState(false);
@@ -17,11 +22,26 @@ export default function animatedPage() {
 
   useEffect(() => {
     async function getApi() {
+      const resDoodstream = await fetch("/api/apiDoodstream");
+      const resStreamtape = await fetch("/api/apiStreamtape");
+      const resPorn = await fetch("/api/apiPorn");
       const resAnimated = await fetch("/api/apiAnimated");
+      const resHentai = await fetch("/api/apiHentai");
+      const resCosplay = await fetch("/api/apiCosplay");
 
+      const jsonDoodstream = await resDoodstream.json();
+      const jsonStreamtape = await resStreamtape.json();
+      const jsonPorn = await resPorn.json();
       const jsonAnimated = await resAnimated.json();
+      const jsonHentai = await resHentai.json();
+      const jsonCosplay = await resCosplay.json();
 
+      setDoodstream(jsonDoodstream);
+      setStreamtape(jsonStreamtape);
+      setPorn(jsonPorn);
       setAnimated(jsonAnimated);
+      setHentai(jsonHentai);
+      setCosplay(jsonCosplay);
     }
 
     getApi();
@@ -48,7 +68,7 @@ export default function animatedPage() {
 
         <Filter />
 
-        <main>Animated</main>
+        <main>search</main>
       </content>
     </>
   );

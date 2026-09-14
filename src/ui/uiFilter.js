@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Button from "@/ui/uiButton";
 import Label from "@/ui/uiLabel";
-import Badge from "@/ui/uiBadge";
 
 export default function uiFilter({ path }) {
   const [getFilter, setFilter] = useState(false);
@@ -85,7 +84,7 @@ export default function uiFilter({ path }) {
               {Array.from({ length: 26 }, (_, i) => (
                 <Button key={i} size="sm" icon={"record"} className={"p-0!"}>
                   actress {i}
-                  <Badge title={"23"} className={"ml-auto"} />
+                  <Label title={"23"} className={"ml-auto"} />
                 </Button>
               ))}
             </div>
@@ -98,7 +97,7 @@ export default function uiFilter({ path }) {
               {Array.from({ length: 26 }, (_, i) => (
                 <Button key={i} size="sm" icon={"record"} className={"p-0!"}>
                   Tags {i}
-                  <Badge title={"23"} className={"ml-auto"} />
+                  <Label title={"23"} className={"ml-auto"} />
                 </Button>
               ))}
             </div>

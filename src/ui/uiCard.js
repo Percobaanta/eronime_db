@@ -1,8 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Button from "@/ui/uiButton";
-
 export default function Card({ getSetting, setSetting }) {
   return (
     <>
@@ -10,10 +7,10 @@ export default function Card({ getSetting, setSetting }) {
         <div
           className={`grid gap-3 mb-5 p-3 ${
             getSetting
-              ? getSetting.layout === "5"
-                ? "md:grid-cols-5 grid-cols-2"
-                : "md:grid-cols-6 grid-cols-3"
-              : "md:grid-cols-5 grid-cols-2"
+              ? getSetting.layout === "4"
+                ? "md:grid-cols-4 grid-cols-2"
+                : "md:grid-cols-5 grid-cols-3"
+              : "md:grid-cols-4 grid-cols-2"
           }`}
         >
           {Array.from({ length: 100 }, (_, i) => (

@@ -31,7 +31,7 @@ export default function Dropdown({ getSetting, setSetting }) {
       ? JSON.parse(stored)
       : {
           theme: "dark",
-          layout: "5",
+          layout: "4",
           style: "square",
         };
 
@@ -77,13 +77,17 @@ export default function Dropdown({ getSetting, setSetting }) {
 
       {/* Dropdown */}
       {getDropdown === "setting" && (
-        <div className="bg800 absolute right-0 top-full mt-3 w-48 space-y-3 rounded-lg">
+        <div className="bg800 absolute right-0 top-full mt-3 w-48 space-y-3 rounded-lg p-2">
           <div className="">
             <Label title="Theme" className={"text-xs px-3"} muted />
 
             <Button
               icon={"moon-stars-fill"}
-              iconEnd={"record ml-auto"}
+              iconEnd={
+                getSetting?.theme === "dark"
+                  ? "record-fill ml-auto"
+                  : "record ml-auto"
+              }
               btnBlock
               onClick={() => updateSetting({ theme: "dark" })}
             >
@@ -92,7 +96,11 @@ export default function Dropdown({ getSetting, setSetting }) {
 
             <Button
               icon={"sun-fill"}
-              iconEnd={"record ml-auto"}
+              iconEnd={
+                getSetting?.theme === "light"
+                  ? "record-fill ml-auto"
+                  : "record ml-auto"
+              }
               btnBlock
               onClick={() => updateSetting({ theme: "light" })}
             >
@@ -105,7 +113,11 @@ export default function Dropdown({ getSetting, setSetting }) {
 
             <Button
               icon={"square-fill"}
-              iconEnd={"record ml-auto"}
+              iconEnd={
+                getSetting?.style === "square"
+                  ? "record-fill ml-auto"
+                  : "record ml-auto"
+              }
               btnBlock
               onClick={() => updateSetting({ style: "square" })}
             >
@@ -113,15 +125,23 @@ export default function Dropdown({ getSetting, setSetting }) {
             </Button>
             <Button
               icon={"phone-fill"}
-              iconEnd={"record ml-auto"}
+              iconEnd={
+                getSetting?.style === "portrait"
+                  ? "record-fill ml-auto"
+                  : "record ml-auto"
+              }
               btnBlock
-              onClick={() => updateSetting({ style: "potrait" })}
+              onClick={() => updateSetting({ style: "portrait" })}
             >
-              Potrait
+              Portrait
             </Button>
             <Button
               icon={"phone-landscape-fill"}
-              iconEnd={"record ml-auto"}
+              iconEnd={
+                getSetting?.style === "landscape"
+                  ? "record-fill ml-auto"
+                  : "record ml-auto"
+              }
               btnBlock
               onClick={() => updateSetting({ style: "landscape" })}
             >
@@ -134,25 +154,33 @@ export default function Dropdown({ getSetting, setSetting }) {
 
             <Button
               icon={"grid-fill"}
-              iconEnd={"record ml-auto"}
+              iconEnd={
+                getSetting?.layout === "4"
+                  ? "record-fill ml-auto"
+                  : "record ml-auto"
+              }
               btnBlock
               onClick={() => {
-                updateSetting({ layout: "5" });
-                // window.location.reload();
+                updateSetting({ layout: "4" });
               }}
             >
-              5x5
+              <span className="md:block hidden">4x4</span>
+              <span className="md:hidden">2x2</span>
             </Button>
             <Button
               icon={"grid-3x3-gap-fill"}
-              iconEnd={"record ml-auto"}
+              iconEnd={
+                getSetting?.layout === "5"
+                  ? "record-fill ml-auto"
+                  : "record ml-auto"
+              }
               btnBlock
               onClick={() => {
-                updateSetting({ layout: "6" });
-                // window.location.reload();
+                updateSetting({ layout: "5" });
               }}
             >
-              6x6
+              <span className="md:block hidden">5x5</span>
+              <span className="md:hidden">3x3</span>
             </Button>
           </div>
         </div>

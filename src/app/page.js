@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import SidebarX from "@/ui/uiSidebarX";
-import HeaderX from "@/ui/uiHeaderX";
+import Sidebar from "@/ui/uiSidebar";
+import Header from "@/ui/uiHeader";
 import Filter from "@/ui/uiFilter";
 import Card from "@/ui/uiCard";
 
@@ -15,6 +15,7 @@ export default function App() {
   const [getHentai, setHentai] = useState([]);
   const [getCosplay, setCosplay] = useState([]);
 
+  // Core State
   const [getSidebar, setSidebar] = useState(false);
   const [getSidebarMobile, setSidebarMobile] = useState(false);
   const [getSetting, setSetting] = useState(null);
@@ -48,7 +49,7 @@ export default function App() {
 
   return (
     <>
-      <SidebarX
+      <Sidebar
         getSidebarMobile={getSidebarMobile}
         setSidebarMobile={setSidebarMobile}
         getSidebar={getSidebar}
@@ -56,7 +57,7 @@ export default function App() {
       />
 
       <content>
-        <HeaderX
+        <Header
           getSidebarMobile={getSidebarMobile}
           setSidebarMobile={setSidebarMobile}
           getSidebar={getSidebar}

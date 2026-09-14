@@ -4,14 +4,15 @@ import { useEffect, useState } from "react";
 import Sidebar from "@/ui/uiSidebar";
 import Header from "@/ui/uiHeader";
 import Filter from "@/ui/uiFilter";
-import Post from "@/ui/uiPost";
 
 export default function pornPage() {
   // Req Api
   const [getPorn, setPorn] = useState([]);
 
-  // Global state
-  const [getSidebar, setSidebar] = useState(true);
+  // Core State
+  const [getSidebar, setSidebar] = useState(false);
+  const [getSidebarMobile, setSidebarMobile] = useState(false);
+  const [getSetting, setSetting] = useState(null);
 
   useEffect(() => {
     async function getApi() {
@@ -26,11 +27,28 @@ export default function pornPage() {
   }, []);
 
   return (
-    <div className="flex h-screen">
-      <div className="border mt-20 w-full px-3 py-20">
-        Porn Porn Porn Porn Porn Porn Porn Porn Porn Porn Porn Porn Porn Porn{" "}
-        Porn Porn Porn Porn Porn Porn Porn Porn Porn Porn{" "}
-      </div>
-    </div>
+    <>
+      <Sidebar
+        getSidebarMobile={getSidebarMobile}
+        setSidebarMobile={setSidebarMobile}
+        getSidebar={getSidebar}
+        setSidebar={setSidebar}
+      />
+
+      <content>
+        <Header
+          getSidebarMobile={getSidebarMobile}
+          setSidebarMobile={setSidebarMobile}
+          getSidebar={getSidebar}
+          setSidebar={setSidebar}
+          getSetting={getSetting}
+          setSetting={setSetting}
+        />
+
+        <Filter />
+
+        <main>Porn</main>
+      </content>
+    </>
   );
 }
