@@ -115,7 +115,7 @@ export default function Sidebar({
             btnCircle
             icon={getSidebarMobile ? "x-lg" : "list"}
             onClick={() => setSidebarMobile(!getSidebarMobile)}
-            className="absolute top-4 right-4"
+            className="absolute top-3 right-3"
           ></Button>
         </div>
       )}

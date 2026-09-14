@@ -35,7 +35,7 @@ export default function pornPage() {
         setSidebar={setSidebar}
       />
 
-      <content>
+      <main>
         <Header
           getSidebarMobile={getSidebarMobile}
           setSidebarMobile={setSidebarMobile}
@@ -44,11 +44,9 @@ export default function pornPage() {
           getSetting={getSetting}
           setSetting={setSetting}
         />
-
         <Filter />
-
-        <main>Porn</main>
-      </content>
+        Porn
+      </main>
     </>
   );
 }

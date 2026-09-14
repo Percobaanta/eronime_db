@@ -56,7 +56,7 @@ export default function App() {
         setSidebar={setSidebar}
       />
 
-      <content>
+      <main>
         <Header
           getSidebarMobile={getSidebarMobile}
           setSidebarMobile={setSidebarMobile}
@@ -65,11 +65,9 @@ export default function App() {
           getSetting={getSetting}
           setSetting={setSetting}
         />
-
         <Filter />
-
-        <main>search</main>
-      </content>
+        search
+      </main>
     </>
   );
 }

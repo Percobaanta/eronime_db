@@ -38,8 +38,8 @@
     display: none;
   }
 
-  /*  Content */
-  content {
+  /*  Main */
+  main {
     @apply h-screen grow overflow-auto;
   }
 

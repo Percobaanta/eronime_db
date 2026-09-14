@@ -36,7 +36,7 @@ export default function animatedPage() {
         setSidebar={setSidebar}
       />
 
-      <content>
+      <main>
         <Header
           getSidebarMobile={getSidebarMobile}
           setSidebarMobile={setSidebarMobile}
@@ -45,11 +45,9 @@ export default function animatedPage() {
           getSetting={getSetting}
           setSetting={setSetting}
         />
-
         <Filter />
-
-        <main>Animated</main>
-      </content>
+        Animated
+      </main>
     </>
   );
 }

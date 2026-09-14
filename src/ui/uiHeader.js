@@ -55,8 +55,6 @@ export default function Header({
         <Button icon={"bell"}></Button>
 
         <Dropdown getSetting={getSetting} setSetting={setSetting} />
-
-        <Button icon={"person-circle"}></Button>
       </div>
     </div>
   );

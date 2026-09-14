@@ -56,7 +56,7 @@ export default function App() {
         setSidebar={setSidebar}
       />
 
-      <content>
+      <main>
         <Header
           getSidebarMobile={getSidebarMobile}
           setSidebarMobile={setSidebarMobile}
@@ -68,10 +68,8 @@ export default function App() {
 
         <Filter />
 
-        <main>
-          <Card getSetting={getSetting} setSetting={setSetting} />
-        </main>
-      </content>
+        <Card getSetting={getSetting} setSetting={setSetting} />
+      </main>
     </>
   );
 }
