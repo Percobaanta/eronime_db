@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Button from "@/ui/uiButton";
 import Label from "@/ui/uiLabel";
+import { usePathname } from "next/navigation";
 
 export default function uiFilter({ path }) {
+  const pathname = usePathname();
   const [getFilter, setFilter] = useState(false);
 
   return (
@@ -12,50 +14,50 @@ export default function uiFilter({ path }) {
           <nav className="flex gap-2 md:w-fit w-full overflow-auto scrollbar-none">
             <Button
               href={"/porn"}
-              icon={"person-video2"}
+              icon={pathname === "/porn" ? "play-btn-fill" : "play-btn"}
+              className="min-w-28"
               btnBase
               btnCenter
-              className="min-w-28"
             >
               porn
             </Button>
 
             <Button
-              icon={"person-vcard-fill"}
               href={"/animated"}
+              icon={pathname === "/animated" ? "play-btn-fill" : "play-btn"}
+              className="min-w-28"
               btnBase
               btnCenter
-              className="min-w-28"
             >
               animated
             </Button>
 
             <Button
               href={"/hentai"}
-              icon={"collection-play-fill"}
+              icon={pathname === "/hentai" ? "play-btn-fill" : "play-btn"}
+              className="min-w-28"
               btnBase
               btnCenter
-              className="min-w-28"
             >
               hentai
             </Button>
 
             <Button
-              icon={"images"}
               href={"/cosplay"}
+              icon={pathname === "/cosplay" ? "image-fill" : "image"}
+              className="min-w-28"
               btnBase
               btnCenter
-              className="min-w-28"
             >
               cosplay
             </Button>
 
             <Button
-              icon={"images"}
-              href={"/cosplay"}
+              href={"/manhwa"}
+              icon={pathname === "/manhwa" ? "image-fill" : "image"}
+              className="min-w-28"
               btnBase
               btnCenter
-              className="min-w-28"
             >
               manhwa
             </Button>
@@ -64,9 +66,9 @@ export default function uiFilter({ path }) {
           <Button
             variant={getFilter ? "baseActive" : "base"}
             icon={"filter"}
-            btnBase
             onClick={() => setFilter((prev) => !prev)}
             className="flex-none ml-auto"
+            btnBase
           ></Button>
         </div>
 
@@ -74,30 +76,26 @@ export default function uiFilter({ path }) {
           <div className="bg900  min-h-64 max-h-72 rounded-lg mt-3 p-3 overflow-auto space-y-5">
             <div className="grid md:grid-cols-6 grid-cols-2 gap-x-6 gap-y-0 w-full">
               <div className="md:col-span-6 col-span-2">
-                <Label
-                  title={"Actress"}
-                  size={"sm"}
-                  icon={"file-person-fill"}
-                />
+                <Label title={"Actress"} size="sm" className={"pl-2"} muted />
               </div>
 
               {Array.from({ length: 26 }, (_, i) => (
-                <Button key={i} size="sm" icon={"record"} className={"p-0!"}>
+                <Button key={i} icon={"record"} btnSm>
                   actress {i}
-                  <Label title={"23"} className={"ml-auto"} />
+                  <Label title={"23"} size="sm" className={"ml-auto"} />
                 </Button>
               ))}
             </div>
 
             <div className="grid md:grid-cols-6 grid-cols-2 gap-x-6 gap-y-0 w-full">
               <div className="md:col-span-6 col-span-2">
-                <Label title={"Tags"} size={"sm"} icon={"file-person-fill"} />
+                <Label title={"Actress"} size="sm" className={"pl-2"} muted />
               </div>
 
               {Array.from({ length: 26 }, (_, i) => (
-                <Button key={i} size="sm" icon={"record"} className={"p-0!"}>
+                <Button key={i} icon={"record"} btnSm>
                   Tags {i}
-                  <Label title={"23"} className={"ml-auto"} />
+                  <Label title={"23"} size="sm" className={"ml-auto"} />
                 </Button>
               ))}
             </div>

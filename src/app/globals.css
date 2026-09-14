@@ -43,6 +43,10 @@
     @apply h-screen grow overflow-auto;
   }
 
+  /*  Text */
+  .textPrimary {
+    @apply text-yellow-200;
+  }
   /*  Background */
   .bgPrimary {
     @apply bg-yellow-200;

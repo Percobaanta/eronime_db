@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Sidebar from "@/ui/uiSidebar";
 import Header from "@/ui/uiHeader";
-import Filter from "@/ui/uiFilter";
 import Card from "@/ui/uiCard";
 
 export default function App() {
@@ -65,7 +64,6 @@ export default function App() {
           getSetting={getSetting}
           setSetting={setSetting}
         />
-        <Filter />
         search
       </main>
     </>

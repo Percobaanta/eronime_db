@@ -16,7 +16,7 @@ export default function Header({
   const pathname = usePathname();
 
   return (
-    <div className="bg950 sticky top-0 p-3 flex-1">
+    <div className="bg950 sticky top-0 p-3 flex-1 borderB">
       <div className="flex md:gap-3 gap-1">
         <Button
           icon={"layout-sidebar-inset"}
