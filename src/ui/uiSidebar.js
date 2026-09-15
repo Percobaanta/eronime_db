@@ -156,10 +156,10 @@ export default function Sidebar({
 
         {getSidebar && <Divider />}
 
-        {/* Page Menu */}
+        {/* Navigation */}
         <nav className="p-3">
           {!getSidebar && (
-            <Label size="sm" muted title="Page Menu" className={"pl-2"} />
+            <Label size="sm" muted title="Navigation" className={"pl-2"} />
           )}
 
           <ul className="space-y-1">

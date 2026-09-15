@@ -9,7 +9,37 @@ export default function uiFilter({ path }) {
 
   return (
     <>
-      <div className="container mx-auto p-3">
+      <div className="container mx-auto p-3 space-y-5">
+        <div>
+          <Label
+            className="text-2xl! font-bold! uppercase"
+            h1
+            title={
+              pathname === "/" || pathname === "/porn" ? (
+                <>
+                  new porn <span className="textPrimary"> videos</span>
+                </>
+              ) : pathname === "/animated" ? (
+                <>
+                  new animated <span className="textPrimary"> videos</span>
+                </>
+              ) : pathname === "/hentai" ? (
+                <>
+                  new hentai <span className="textPrimary"> videos</span>
+                </>
+              ) : (
+                <>
+                  new cosplay <span className="textPrimary"> collection</span>
+                </>
+              )
+            }
+          />
+
+          <p className="text-sm text-zinc-400">
+            Showing results for your selected filters
+          </p>
+        </div>
+
         <div className="flex gap-3">
           <nav className="flex gap-2 md:w-fit w-full overflow-auto scrollbar-none">
             <Button

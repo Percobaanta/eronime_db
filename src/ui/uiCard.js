@@ -1,23 +1,47 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import Button from "./uiButton";
 import Label from "./uiLabel";
 
 export default function Card({ getSetting, setSetting }) {
+  const pathname = usePathname();
+
   return (
     <>
       <div className="container mx-auto p-3 space-y-5">
-        <div className="space-y-1">
-          <h1 className="text-2xl font-bold uppercase">
-            Explore <span className="textPrimary">Content</span>
-          </h1>
+        <div>
+          <Label
+            className="text-2xl! font-bold! uppercase"
+            h1
+            title={
+              pathname === "/" || pathname === "/porn" ? (
+                <>
+                  new porn <span className="textPrimary"> videos</span>
+                </>
+              ) : pathname === "/animated" ? (
+                <>
+                  new animated <span className="textPrimary"> videos</span>
+                </>
+              ) : pathname === "/hentai" ? (
+                <>
+                  new hentai <span className="textPrimary"> videos</span>
+                </>
+              ) : (
+                <>
+                  new cosplay <span className="textPrimary"> collection</span>
+                </>
+              )
+            }
+          />
+
           <p className="text-sm text-zinc-400">
             Showing results for your selected filters
           </p>
         </div>
 
         <div
-          className={`grid gap-3 mb-5 ${
+          className={`grid gap-3 ${
             getSetting
               ? getSetting.layout === "4"
                 ? "md:grid-cols-4 grid-cols-2"
@@ -25,7 +49,7 @@ export default function Card({ getSetting, setSetting }) {
               : "md:grid-cols-4 grid-cols-2"
           }`}
         >
-          {Array.from({ length: 100 }, (_, i) => (
+          {Array.from({ length: 20 }, (_, i) => (
             <div
               key={i}
               className={`bg900 rounded-lg ${

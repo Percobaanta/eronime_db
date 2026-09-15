@@ -66,7 +66,7 @@ export default function App() {
           setSetting={setSetting}
         />
 
-        <Filter />
+        {/* <Filter /> */}
 
         <Card getSetting={getSetting} setSetting={setSetting} />
       </main>
