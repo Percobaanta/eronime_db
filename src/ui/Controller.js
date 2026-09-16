@@ -1,8 +1,8 @@
 "use client";
 
 import { createContext, useContext, useState } from "react";
-import { usePathname } from "next/navigation";
-import Button from "./uiButton";
+
+import ButtonX from "./uiButtonX";
 
 const ControllerContext = createContext(null);
 
@@ -10,39 +10,27 @@ export function useController() {
   return useContext(ControllerContext);
 }
 
-export default function Controller({ children }) {
-  const pathname = usePathname();
-  const [getDropdown, setDropdown] = useState(false);
-
-  const [dodo, setdodo] = useState("asdhakshdkahsd");
+export function Controller({ children }) {
   const [sidebar, setSidebar] = useState(true);
   const [theme, setTheme] = useState("dark");
 
   return (
-    <>
-      <ControllerContext.Provider
-        value={{
-          dodo,
-          setdodo,
-          sidebar,
-          setSidebar,
-          theme,
-          setTheme,
-        }}
-      >
-        <div className="flex flex-col">
-          <Button onClick={() => setDropdown(!getDropdown)}>{dodo}</Button>
-
-          {getDropdown && (
-            <div className="bg900 p-3">
-              <Button href={"/"}>/</Button>
-              <Button href={"/animated"}>animated</Button>
-            </div>
-          )}
+    <ControllerContext.Provider
+      value={{ sidebar, setSidebar, theme, setTheme }}
+    >
+      <div className="flex w-full">
+        <div className="bg900 h-screen overflow-auto w-64 p-3">
+          <div className="grid grid-cols-1 gap-4">
+            {Array.from({ length: 30 }, (_, i) => (
+              <div key={i} className="bg900">
+                Tags {i}
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="flex flex-col w-full">{children}</div>
-      </ControllerContext.Provider>
-    </>
+        <div className="h-screen overflow-auto grow p-3">{children}</div>
+      </div>
+    </ControllerContext.Provider>
   );
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 
 export default function Button({
   children,
+  atribute,
   href,
   title,
   icon,
@@ -23,6 +24,8 @@ export default function Button({
   ...props
 }) {
   const btnText = !!children;
+
+  // const atributes="dodo"
 
   const iconsSize = btnLg ? "text-base" : btnSm ? "text-xs" : "text-sm";
 

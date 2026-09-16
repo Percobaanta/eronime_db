@@ -1,3 +1,5 @@
+import { Controller } from "@/ui/Controller";
+
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
 
@@ -38,7 +40,7 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className="bg950 min-h-screen overflow-hidden flex">
-        {children}
+        <Controller>{children}</Controller>
       </body>
     </html>
   );

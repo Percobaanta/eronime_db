@@ -1,75 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Sidebar from "@/ui/uiSidebar";
-import Header from "@/ui/uiHeader";
-import Filter from "@/ui/uiFilter";
-import Card from "@/ui/uiCard";
+import { useController } from "@/ui/Controller";
+import ButtonX from "@/ui/uiButtonX";
 
 export default function App() {
-  // Req Api
-  const [getDoodstream, setDoodstream] = useState([]);
-  const [getStreamtape, setStreamtape] = useState([]);
-  const [getPorn, setPorn] = useState([]);
-  const [getAnimated, setAnimated] = useState([]);
-  const [getHentai, setHentai] = useState([]);
-  const [getCosplay, setCosplay] = useState([]);
-
-  // Core State
-  const [getSidebar, setSidebar] = useState(false);
-  const [getSidebarMobile, setSidebarMobile] = useState(false);
-  const [getSetting, setSetting] = useState(null);
-
-  useEffect(() => {
-    async function getApi() {
-      const resDoodstream = await fetch("/api/apiDoodstream");
-      const resStreamtape = await fetch("/api/apiStreamtape");
-      const resPorn = await fetch("/api/apiPorn");
-      const resAnimated = await fetch("/api/apiAnimated");
-      const resHentai = await fetch("/api/apiHentai");
-      const resCosplay = await fetch("/api/apiCosplay");
-
-      const jsonDoodstream = await resDoodstream.json();
-      const jsonStreamtape = await resStreamtape.json();
-      const jsonPorn = await resPorn.json();
-      const jsonAnimated = await resAnimated.json();
-      const jsonHentai = await resHentai.json();
-      const jsonCosplay = await resCosplay.json();
-
-      setDoodstream(jsonDoodstream);
-      setStreamtape(jsonStreamtape);
-      setPorn(jsonPorn);
-      setAnimated(jsonAnimated);
-      setHentai(jsonHentai);
-      setCosplay(jsonCosplay);
-    }
-
-    getApi();
-  }, []);
+  const { sidebar, setSidebar, theme, setTheme } = useController();
 
   return (
-    <>
-      <Sidebar
-        getSidebarMobile={getSidebarMobile}
-        setSidebarMobile={setSidebarMobile}
-        getSidebar={getSidebar}
-        setSidebar={setSidebar}
-      />
-
-      <main>
-        <Header
-          getSidebarMobile={getSidebarMobile}
-          setSidebarMobile={setSidebarMobile}
-          getSidebar={getSidebar}
-          setSidebar={setSidebar}
-          getSetting={getSetting}
-          setSetting={setSetting}
-        />
-
-        {/* <Filter /> */}
-
-        <Card getSetting={getSetting} setSetting={setSetting} />
-      </main>
-    </>
+    <div className="container mx-auto border">
+      <div className="grid grid-cols-2 gap-4">
+        {Array.from({ length: 100 }, (_, i) => (
+          <div key={i} className="bg900">
+            Tags {i}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
