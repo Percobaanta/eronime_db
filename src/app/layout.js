@@ -9,37 +9,9 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const themeScript = `
-    try {
-      const stored = localStorage.getItem("setting");
-
-      const setting = stored
-        ? JSON.parse(stored)
-        : null;
-
-      if (setting?.theme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    } catch (error) {}
-  `;
-
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className="h-full dark antialiased font-sans"
-    >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: themeScript,
-          }}
-        />
-      </head>
-
-      <body className="bg950 min-h-screen overflow-hidden flex">
+    <html lang="en" suppressHydrationWarning className="dark">
+      <body className="h-full flex antialiased">
         <Controller>{children}</Controller>
       </body>
     </html>

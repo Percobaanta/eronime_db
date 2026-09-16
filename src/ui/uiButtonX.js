@@ -7,6 +7,7 @@ export default function ButtonX({
   icon,
   iconEnd,
   size = "default",
+  width = "default",
   variant = "default",
   font = "default",
   justify = "default",
@@ -26,6 +27,11 @@ export default function ButtonX({
     default: "h-8 w-8",
     lg: "h-9 w-9",
     sm: "h-7 w-7",
+  };
+
+  const widths = {
+    default: "w-fit",
+    full: "w-full",
   };
 
   const variants = {
@@ -57,8 +63,8 @@ export default function ButtonX({
   const style = [
     "inline-flex items-center cursor-pointer font-sans!",
 
-    btnText && `${fonts[font]} w-fit px-3 gap-3 text-xs capitalize`,
-    !btnText && `${icons[size]} text-center!`,
+    btnText && `${fonts[font]} ${widths[width]} px-3 gap-3 text-xs capitalize`,
+    !btnText && `${icons[size]} flex-none text-center!`,
     sizes[size],
     variants[variant],
     justifys[justify],

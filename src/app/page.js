@@ -4,7 +4,7 @@ import { useController } from "@/ui/Controller";
 import ButtonX from "@/ui/uiButtonX";
 
 export default function App() {
-  const { sidebar, setSidebar, theme, setTheme } = useController();
+  const { getSidebar, setSidebar, theme, setTheme } = useController();
 
   return (
     <div className="container mx-auto border">
