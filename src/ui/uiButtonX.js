@@ -56,14 +56,14 @@ export default function ButtonX({
 
   const radiuss = {
     default: "rounded-md",
-    rounded: "rounded-lg",
+    rounded: "rounded-xl",
     full: "rounded-full",
   };
 
   const style = [
     "inline-flex items-center cursor-pointer font-sans!",
 
-    btnText && `${fonts[font]} ${widths[width]} px-3 gap-3 text-xs capitalize`,
+    btnText && `${fonts[font]} ${widths[width]} px-2 gap-2 text-xs capitalize`,
     !btnText && `${icons[size]} flex-none text-center!`,
     sizes[size],
     variants[variant],
@@ -76,12 +76,12 @@ export default function ButtonX({
 
   const content = (
     <>
-      {icon && <i className={`bi bi-${icon} text-[12px]`} aria-hidden="true" />}
+      {icon && <i className={`bi bi-${icon} text-[16px]`} aria-hidden="true" />}
 
       {children}
 
       {iconEnd && (
-        <i className={`bi bi-${iconEnd} text-[12px]`} aria-hidden="true" />
+        <i className={`bi bi-${iconEnd} text-[16px]`} aria-hidden="true" />
       )}
     </>
   );
