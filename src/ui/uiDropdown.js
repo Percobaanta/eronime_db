@@ -1,12 +1,15 @@
 "use client";
 
+import { useController } from "@/ui/Controller";
 import { useEffect, useRef, useState } from "react";
-import Button from "./uiButton";
+import ButtonX from "./uiButtonX";
 import Label from "./uiLabel";
 
-export default function Dropdown({ getSetting, setSetting }) {
+export default function Dropdown() {
   const dropdownRef = useRef(null);
   const [getDropdown, setDropdown] = useState(false);
+
+  const { getSetting, setSetting } = useController();
 
   // fungsi dropdown
   useEffect(() => {
@@ -67,8 +70,8 @@ export default function Dropdown({ getSetting, setSetting }) {
 
   return (
     <div ref={dropdownRef} className="relative w-fit">
-      <Button
-        variant="primary"
+      <ButtonX
+        variant="base"
         icon={getDropdown ? "gear-fill" : "gear"}
         onClick={() =>
           getDropdown === "setting" ? setDropdown("") : setDropdown("setting")
@@ -77,111 +80,116 @@ export default function Dropdown({ getSetting, setSetting }) {
 
       {/* Dropdown */}
       {getDropdown === "setting" && (
-        <div className="bg800 absolute right-0 top-full mt-3 w-48 space-y-3 rounded-lg p-2">
-          <div className="">
-            <Label title="Theme" className={"text-xs px-3"} muted />
+        <div className="bg900 absolute top-full -right-2 mt-4 w-48 space-y-2 rounded-lg p-2">
+          <div>
+            <ul>Theme</ul>
+            <ul>
+              <li>Dark Theme</li>
+              <li>Light Theme</li>
+            </ul>
+          </div>
 
-            <Button
-              icon={"moon-stars-fill"}
+          <div className="flex flex-col">
+            <Label title="Theme" className={"text-xs px-2"} muted />
+
+            <ButtonX
+              icon="moon-stars-fill"
               iconEnd={
                 getSetting?.theme === "dark"
                   ? "record-fill ml-auto"
                   : "record ml-auto"
               }
-              btnBlock
+              variant="base"
+              width="full"
               onClick={() => updateSetting({ theme: "dark" })}
             >
               Dark Mode
-            </Button>
+            </ButtonX>
 
-            <Button
-              icon={"sun-fill"}
+            <ButtonX
+              icon="sun-fill"
               iconEnd={
                 getSetting?.theme === "light"
                   ? "record-fill ml-auto"
                   : "record ml-auto"
               }
-              btnBlock
+              variant="base"
+              width="full"
               onClick={() => updateSetting({ theme: "light" })}
             >
               Light Mode
-            </Button>
+            </ButtonX>
           </div>
 
           <div className="">
-            <Label title="Style" className={"text-xs px-3"} muted />
+            <Label title="Style" className={"text-xs px-2"} muted />
 
-            <Button
+            <ButtonX
               icon={"square-fill"}
               iconEnd={
                 getSetting?.style === "square"
                   ? "record-fill ml-auto"
                   : "record ml-auto"
               }
-              btnBlock
               onClick={() => updateSetting({ style: "square" })}
             >
               Square
-            </Button>
-            <Button
+            </ButtonX>
+            <ButtonX
               icon={"phone-fill"}
               iconEnd={
                 getSetting?.style === "portrait"
                   ? "record-fill ml-auto"
                   : "record ml-auto"
               }
-              btnBlock
               onClick={() => updateSetting({ style: "portrait" })}
             >
               Portrait
-            </Button>
-            <Button
+            </ButtonX>
+            <ButtonX
               icon={"phone-landscape-fill"}
               iconEnd={
                 getSetting?.style === "landscape"
                   ? "record-fill ml-auto"
                   : "record ml-auto"
               }
-              btnBlock
               onClick={() => updateSetting({ style: "landscape" })}
             >
               Landscape
-            </Button>
+            </ButtonX>
           </div>
 
           <div className="">
-            <Label title="Layout" className={"text-xs px-3"} muted />
+            <Label title="Layout" className={"text-xs px-2"} muted />
 
-            <Button
+            <ButtonX
               icon={"grid-fill"}
               iconEnd={
                 getSetting?.layout === "4"
                   ? "record-fill ml-auto"
                   : "record ml-auto"
               }
-              btnBlock
               onClick={() => {
                 updateSetting({ layout: "4" });
               }}
             >
               <span className="md:block hidden">4x4</span>
               <span className="md:hidden">2x2</span>
-            </Button>
-            <Button
+            </ButtonX>
+            <ButtonX
               icon={"grid-3x3-gap-fill"}
               iconEnd={
                 getSetting?.layout === "5"
                   ? "record-fill ml-auto"
                   : "record ml-auto"
               }
-              btnBlock
               onClick={() => {
                 updateSetting({ layout: "5" });
               }}
             >
               <span className="md:block hidden">5x5</span>
               <span className="md:hidden">3x3</span>
-            </Button>
+            </ButtonX>
           </div>
         </div>
       )}

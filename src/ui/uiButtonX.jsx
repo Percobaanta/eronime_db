@@ -61,10 +61,10 @@ export default function ButtonX({
   };
 
   const style = [
-    "inline-flex items-center cursor-pointer font-sans!",
+    "inline-flex flex-none items-center cursor-pointer font-sans!",
 
     btnText && `${fonts[font]} ${widths[width]} px-2 gap-2 text-xs capitalize`,
-    !btnText && `${icons[size]} flex-none text-center!`,
+    !btnText && `${icons[size]} text-center!`,
     sizes[size],
     variants[variant],
     justifys[justify],

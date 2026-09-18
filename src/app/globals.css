@@ -40,7 +40,7 @@
 
   /*  Main */
   main {
-    @apply h-screen grow overflow-auto;
+    @apply h-screen grow overflow-auto p-2;
   }
 
   /*  Text */
