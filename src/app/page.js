@@ -1,19 +1,19 @@
 "use client";
 
 import { useController } from "@/ui/Controller";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import Label from "@/ui/uiLabel";
+import ButtonX from "@/ui/uiButton";
+import Card from "@/ui/uiCard";
 
 export default function App() {
-  const { getSidebar, setSidebar, theme, setTheme } = useController();
+  const pathname = usePathname();
+  const { getFilter, setFilter, getSetting, setSetting } = useController();
 
   return (
-    <div className="container mx-auto">
-      <div className="grid grid-cols-2 gap-4">
-        {Array.from({ length: 100 }, (_, i) => (
-          <div key={i} className="bg900">
-            Tags {i}
-          </div>
-        ))}
-      </div>
-    </div>
+    <>
+      <Card />
+    </>
   );
 }

@@ -36,6 +36,7 @@ export default function ButtonX({
 
   const variants = {
     default: "",
+    white: "bg-zinc-100 hover:bg-zinc-300 text-zinc-800",
     base: "bg-zinc-900 hover:bg-zinc-800",
     baseActive: "bg-zinc-800",
     ghost: "hover:bg-zinc-800",

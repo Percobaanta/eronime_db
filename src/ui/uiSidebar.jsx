@@ -2,7 +2,7 @@
 
 import { useController } from "@/ui/Controller";
 import { usePathname, useRouter } from "next/navigation";
-import ButtonX from "./uiButtonX";
+import Button from "./uiButton";
 import Divider from "./uiDivider";
 import Label from "./uiLabel";
 
@@ -68,32 +68,32 @@ export default function Header() {
           onClick={() => setSidebarMobile(false)}
           className="fixed inset-0 z-30 bg-black/70 md:hidden"
         >
-          <ButtonX
+          <Button
             variant="baseActive"
             radius="full"
             icon={getSidebarMobile ? "x-lg" : "list"}
             onClick={() => setSidebarMobile(!getSidebarMobile)}
             className="absolute top-4 right-6"
-          ></ButtonX>
+          ></Button>
         </div>
       )}
 
       {/* Sidebar */}
       <aside
-        className={`bg900 md:sticky fixed flex flex-col left-0 top-0 z-40 h-screen md:translate-x-0 borderR overflow-auto
+        className={`dark:md:bg-black md:bg-white bg-zinc-900 md:sticky fixed flex flex-none flex-col left-0 top-0 z-40 h-screen md:translate-x-0 overflow-auto
         ${getSidebar ? "min-w-0" : "w-60"}
         ${getSidebarMobile ? "translate-x-0" : "-translate-x-full"}
       `}
       >
         <div className="flex gap-2 p-2">
-          <ButtonX
+          <Button
             href={"/"}
             width="full"
             justify="start"
-            variant="base"
+            variant="ghost"
             className={!getSidebar ? "p-2 h-min!" : "h-min! p-2!"}
           >
-            <div className="bg-yellow-200 text-zinc-900 flex items-center justify-center rounded-xl size-8">
+            <div className="bg-indigo-500 text-zinc-100 flex items-center justify-center rounded-xl size-8">
               <i className="bi bi-chat-heart-fill text-[18px]" />
             </div>
 
@@ -105,7 +105,7 @@ export default function Header() {
                 <label className="text-[10px]">v.1.0.0</label>
               </div>
             )}
-          </ButtonX>
+          </Button>
         </div>
 
         {getSidebar && <Divider />}
@@ -122,7 +122,7 @@ export default function Header() {
           <ul className="space-y-2 p-2">
             {navigation.map((e, i) => (
               <li key={i}>
-                <ButtonX
+                <Button
                   href={e.href}
                   icon={
                     pathname === "/"
@@ -144,13 +144,13 @@ export default function Header() {
                         : "record ml-auto"
                       : ""
                   }
-                  variant={!getSidebar ? "base" : "baseActive"}
+                  variant={!getSidebar ? "ghost" : "base"}
                   radius={!getSidebar ? "default" : "rounded"}
                   width="full"
                   justify={!getSidebar ? "start" : "default"}
                 >
                   {!getSidebar && e.title}
-                </ButtonX>
+                </Button>
               </li>
             ))}
           </ul>
@@ -170,7 +170,7 @@ export default function Header() {
           <ul className="space-y-2 p-2">
             {activity.map((e, i) => (
               <li key={i}>
-                <ButtonX
+                <Button
                   icon={getCollapse === e.title ? `${e.icon}-fill` : e.icon}
                   iconEnd={
                     !getSidebar
@@ -179,7 +179,7 @@ export default function Header() {
                         : "plus ml-auto"
                       : ""
                   }
-                  variant={!getSidebar ? "base" : "baseActive"}
+                  variant={!getSidebar ? "ghost" : "base"}
                   radius={!getSidebar ? "default" : "rounded"}
                   width="full"
                   justify={!getSidebar ? "start" : "default"}
@@ -192,21 +192,21 @@ export default function Header() {
                   }
                 >
                   {!getSidebar && e.title}
-                </ButtonX>
+                </Button>
 
                 {getCollapse === e.title && (
                   <div className="ml-4 borderL border-dashed">
                     <div className="pl-2">
                       {Array.from({ length: 5 }, (_, i) => (
-                        <ButtonX
+                        <Button
                           key={i}
-                          variant="base"
+                          variant="ghost"
                           size="sm"
                           width="full"
                           justify="start"
                         >
                           asdasd
-                        </ButtonX>
+                        </Button>
                       ))}
                     </div>
                   </div>
@@ -217,7 +217,7 @@ export default function Header() {
         </nav>
 
         <div className="md:hidden mt-auto p-2">
-          <ButtonX
+          <Button
             icon="layout-sidebar-inset"
             variant={!getSidebar ? "base" : "baseActive"}
             radius={!getSidebar ? "default" : "rounded"}

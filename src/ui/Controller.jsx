@@ -2,8 +2,8 @@
 
 import { createContext, useContext, useState } from "react";
 
-import SidebarX from "./uiSidebarX";
-import HeaderX from "./uiHeaderX";
+import Sidebar from "./uiSidebar";
+import Header from "./uiHeader";
 
 const ControllerContext = createContext(null);
 
@@ -16,7 +16,7 @@ export function Controller({ children }) {
   const [getSidebar, setSidebar] = useState(false);
   const [getSidebarMobile, setSidebarMobile] = useState(false);
   const [getFilter, setFilter] = useState(false);
-  const [getSetting, setSetting] = useState("");
+  const [getSetting, setSetting] = useState(null);
   const [theme, setTheme] = useState("dark");
 
   return (
@@ -34,10 +34,10 @@ export function Controller({ children }) {
         setSetting,
       }}
     >
-      <SidebarX />
+      <Sidebar />
 
       <main>
-        <HeaderX />
+        <Header />
 
         {children}
       </main>

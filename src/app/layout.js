@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/ui/theme-provider";
 import { Controller } from "@/ui/Controller";
 
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -12,7 +13,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning className="dark">
       <body className="h-full flex antialiased">
-        <Controller>{children}</Controller>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Controller>{children}</Controller>
+        </ThemeProvider>
       </body>
     </html>
   );
