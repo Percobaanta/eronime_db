@@ -65,7 +65,7 @@ export default function Setting() {
 
       {/* Dropdown */}
       {getDropdown === "setting" && (
-        <div className="bg800 absolute top-full -right-2 mt-4 w-48 space-y-2 rounded p-2">
+        <div className="bg800 absolute top-full right-0 mt-4 w-48 space-y-2 rounded p-2">
           <div className="space-y-2">
             <ul>
               <Label title="Theme" className={"text-xs px-2"} muted />
@@ -157,22 +157,6 @@ export default function Setting() {
                 <ButtonX
                   icon={"grid-fill"}
                   iconEnd={
-                    getSetting?.layout === "4"
-                      ? "record-fill ml-auto"
-                      : "record ml-auto"
-                  }
-                  width="full"
-                  onClick={() => {
-                    updateSetting({ layout: "4" });
-                  }}
-                >
-                  4x4
-                </ButtonX>
-              </li>
-              <li>
-                <ButtonX
-                  icon={"grid-3x3-gap-fill"}
-                  iconEnd={
                     getSetting?.layout === "5"
                       ? "record-fill ml-auto"
                       : "record ml-auto"
@@ -183,6 +167,22 @@ export default function Setting() {
                   }}
                 >
                   5x5
+                </ButtonX>
+              </li>
+              <li>
+                <ButtonX
+                  icon={"grid-3x3-gap-fill"}
+                  iconEnd={
+                    getSetting?.layout === "6"
+                      ? "record-fill ml-auto"
+                      : "record ml-auto"
+                  }
+                  width="full"
+                  onClick={() => {
+                    updateSetting({ layout: "6" });
+                  }}
+                >
+                  6x6
                 </ButtonX>
               </li>
             </ul>

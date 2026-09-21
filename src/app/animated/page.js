@@ -1,10 +1,14 @@
 "use client";
 
 import { useController } from "@/ui/Controller";
-import ButtonX from "@/ui/uiButton";
+import Post from "@/ui/uiPost";
 
 export default function animatednPage() {
-  const { getSidebar, setSidebar, theme, setTheme } = useController();
+  const { getAnimated } = useController();
 
-  return <>animatednPage</>;
+  return (
+    <>
+      <Post data={getAnimated} />
+    </>
+  );
 }

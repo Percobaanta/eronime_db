@@ -3,21 +3,13 @@
 import { useController } from "@/ui/Controller";
 import { usePathname, useRouter } from "next/navigation";
 import Button from "./uiButton";
-import Divider from "./uiDivider";
-import Label from "./uiLabel";
 
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const {
-    getSidebar,
-    setSidebar,
-    getSidebarMobile,
-    setSidebarMobile,
-    getCollapse,
-    setCollapse,
-  } = useController();
+  const { getSidebar, setSidebar, getSidebarMobile, setSidebarMobile } =
+    useController();
 
   const navigation = [
     {
@@ -42,24 +34,6 @@ export default function Header() {
     },
   ];
 
-  const activity = [
-    {
-      href: "/bookmark",
-      title: "bookmark",
-      icon: "bookmark",
-    },
-    {
-      href: "/reaction",
-      title: "reaction",
-      icon: "hand-thumbs-up",
-    },
-    {
-      href: "/announcement",
-      title: "announcement",
-      icon: "bell",
-    },
-  ];
-
   return (
     <>
       {/* Overlay Mobile */}
@@ -80,17 +54,16 @@ export default function Header() {
 
       {/* Sidebar */}
       <aside
-        className={`dark:md:bg-black md:bg-white bg-zinc-900 md:sticky fixed flex flex-none flex-col left-0 top-0 z-40 h-screen md:translate-x-0 overflow-auto
+        className={`dark:md:bg-black md:bg-white bg-zinc-900 md:sticky fixed flex flex-none flex-col gap-5 left-0 top-0 z-40 h-screen md:translate-x-0 overflow-auto
         ${getSidebar ? "min-w-0" : "w-60"}
         ${getSidebarMobile ? "translate-x-0" : "-translate-x-full"}
       `}
       >
-        <div className="flex gap-2 p-2">
+        <div className="md:bg-black bg-zinc-900 sticky top-0 flex gap-2">
           <Button
             href={"/"}
             width="full"
             justify="start"
-            variant="ghost"
             className={!getSidebar ? "p-2 h-min!" : "h-min! p-2!"}
           >
             <div className="bg-indigo-500 text-zinc-100 flex items-center justify-center rounded-xl size-8">
@@ -108,123 +81,129 @@ export default function Header() {
           </Button>
         </div>
 
-        {getSidebar && <Divider />}
-
-        <nav className="space-y-2 p-2">
-          {!getSidebar && (
-            <ul>
-              <li>
-                <Label title="Navigation" muted className="ml-2 text-xs" />
-              </li>
-            </ul>
-          )}
-
-          <ul className="space-y-2 p-2">
-            {navigation.map((e, i) => (
-              <li key={i}>
-                <Button
-                  href={e.href}
-                  icon={
-                    pathname === "/"
-                      ? e.href === "/porn"
+        {getSidebar ? (
+          <nav className="p-2">
+            <ul className="space-y-2">
+              {navigation.map((e, i) => (
+                <li key={i}>
+                  <Button
+                    href={e.href}
+                    icon={
+                      pathname === "/"
+                        ? e.href === "/porn"
+                          ? `${e.icon}-fill`
+                          : e.icon
+                        : pathname === e.href
                         ? `${e.icon}-fill`
                         : e.icon
-                      : pathname === e.href
-                      ? `${e.icon}-fill`
-                      : e.icon
-                  }
-                  iconEnd={
-                    !getSidebar
-                      ? pathname === "/"
+                    }
+                    variant={
+                      pathname === "/"
                         ? e.href === "/porn"
-                          ? "record2 ml-auto"
-                          : "record ml-auto"
+                          ? "baseActive"
+                          : "base"
                         : pathname === e.href
-                        ? "record2 ml-auto"
-                        : "record ml-auto"
-                      : ""
-                  }
-                  variant={!getSidebar ? "ghost" : "base"}
-                  radius={!getSidebar ? "default" : "rounded"}
-                  width="full"
-                  justify={!getSidebar ? "start" : "default"}
-                >
-                  {!getSidebar && e.title}
-                </Button>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {getSidebar && <Divider />}
-
-        <nav className="space-y-2 p-2">
-          {!getSidebar && (
-            <ul>
-              <li>
-                <Label title="Activity" muted className="ml-2 text-xs" />
-              </li>
+                        ? "baseActive"
+                        : "base"
+                    }
+                    radius="rounded"
+                  ></Button>
+                </li>
+              ))}
             </ul>
-          )}
+          </nav>
+        ) : (
+          <nav className="space-y-2 p-2">
+            {!getSidebar && (
+              <div className="flex items-center gap-2 text-xs text-zinc-400">
+                <div className="bg-zinc-800 flex items-center justify-center size-6 text-xs rounded">
+                  <i className="bi bi-layers" />
+                </div>
 
-          <ul className="space-y-2 p-2">
-            {activity.map((e, i) => (
-              <li key={i}>
-                <Button
-                  icon={getCollapse === e.title ? `${e.icon}-fill` : e.icon}
-                  iconEnd={
-                    !getSidebar
-                      ? getCollapse === e.title
-                        ? "dash ml-auto"
-                        : "plus ml-auto"
-                      : ""
-                  }
-                  variant={!getSidebar ? "ghost" : "base"}
-                  radius={!getSidebar ? "default" : "rounded"}
-                  width="full"
-                  justify={!getSidebar ? "start" : "default"}
-                  onClick={() =>
-                    getSidebar
-                      ? router.push(e.href)
-                      : getCollapse === e.title
-                      ? setCollapse("")
-                      : setCollapse(e.title)
-                  }
-                >
-                  {!getSidebar && e.title}
-                </Button>
+                <p>NAVIGATION</p>
+              </div>
+            )}
 
-                {getCollapse === e.title && (
-                  <div className="ml-4 borderL border-dashed">
-                    <div className="pl-2">
-                      {Array.from({ length: 5 }, (_, i) => (
-                        <Button
-                          key={i}
-                          variant="ghost"
-                          size="sm"
-                          width="full"
-                          justify="start"
-                        >
-                          asdasd
-                        </Button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
+            <ul className="border-l border-dashed border-zinc-800 ml-3 pl-3">
+              {navigation.map((e, i) => (
+                <li key={i}>
+                  <Button
+                    href={e.href}
+                    iconEnd={
+                      !getSidebar
+                        ? pathname === "/"
+                          ? e.href === "/porn" && "dot ml-auto"
+                          : pathname === e.href && "dot ml-auto"
+                        : ""
+                    }
+                    variant={
+                      !getSidebar
+                        ? pathname === "/"
+                          ? e.href === "/porn"
+                            ? "active"
+                            : "default"
+                          : pathname === e.href
+                          ? "active"
+                          : "default"
+                        : ""
+                    }
+                    width="full"
+                    justify="start"
+                  >
+                    {!getSidebar && e.title}
+                  </Button>
+                </li>
+              ))}
+            </ul>
+
+            {!getSidebar && (
+              <div className="flex items-center gap-2 text-xs text-zinc-400">
+                <div className="bg-zinc-800 flex items-center justify-center size-6 text-xs rounded">
+                  <i className="bi bi-bookmark" />
+                </div>
+
+                <p>BOOKMARK</p>
+              </div>
+            )}
+
+            <ul className="border-l border-dashed border-zinc-800 ml-3 pl-3">
+              {navigation.map((e, i) => (
+                <li key={i}>
+                  <Button href={"#"} width="full" justify="start">
+                    {!getSidebar && e.title}
+                  </Button>
+                </li>
+              ))}
+            </ul>
+
+            {!getSidebar && (
+              <div className="flex items-center gap-2 text-xs text-zinc-400">
+                <div className="bg-zinc-800 flex items-center justify-center size-6 text-xs rounded">
+                  <i className="bi bi-hand-thumbs-up" />
+                </div>
+
+                <p>REACTION</p>
+              </div>
+            )}
+
+            <ul className="border-l border-dashed border-zinc-800 ml-3 pl-3">
+              {navigation.map((e, i) => (
+                <li key={i}>
+                  <Button href={"#"} width="full" justify="start">
+                    {!getSidebar && e.title}
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
 
         <div className="md:hidden mt-auto p-2">
           <Button
             icon="layout-sidebar-inset"
             variant={!getSidebar ? "base" : "baseActive"}
             radius={!getSidebar ? "default" : "rounded"}
-            onClick={() => {
-              setSidebar(!getSidebar);
-              setCollapse("");
-            }}
+            onClick={() => setSidebar(!getSidebar)}
           />
         </div>
       </aside>

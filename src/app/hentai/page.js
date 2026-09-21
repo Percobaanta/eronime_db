@@ -1,10 +1,14 @@
 "use client";
 
 import { useController } from "@/ui/Controller";
-import ButtonX from "@/ui/uiButton";
+import Post from "@/ui/uiPost";
 
 export default function hentaiPage() {
-  const { getSidebar, setSidebar, theme, setTheme } = useController();
+  const { getHentai } = useController();
 
-  return <>hentaiPage</>;
+  return (
+    <>
+      <Post data={getHentai} />
+    </>
+  );
 }

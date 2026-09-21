@@ -1,10 +1,14 @@
 "use client";
 
 import { useController } from "@/ui/Controller";
-import ButtonX from "@/ui/uiButton";
+import Post from "@/ui/uiPost";
 
 export default function cosplayPage() {
-  const { getSidebar, setSidebar, theme, setTheme } = useController();
+  const { getCosplay } = useController();
 
-  return <>cosplayPage</>;
+  return (
+    <>
+      <Post data={getCosplay} />
+    </>
+  );
 }

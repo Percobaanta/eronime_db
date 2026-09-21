@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Sidebar from "@/ui/uiSidebar";
 import Header from "@/ui/uiHeader";
-import Card from "@/ui/uiCard";
+import Card from "@/ui/uiPost";
 
 export default function App() {
   // Req Api

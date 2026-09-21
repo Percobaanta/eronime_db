@@ -6,7 +6,6 @@ import Button from "./uiButton";
 import Divider from "./uiDivider";
 import Label from "./uiLabel";
 import Setting from "./uiSetting";
-import Announcement from "./uiAnnouncement";
 
 export default function Header() {
   const pathname = usePathname();
@@ -16,8 +15,6 @@ export default function Header() {
     setSidebar,
     getSidebarMobile,
     setSidebarMobile,
-    getCollapse,
-    setCollapse,
     getFilter,
     setFilter,
   } = useController();
@@ -32,10 +29,7 @@ export default function Header() {
             <Button
               icon="layout-sidebar-inset"
               className="md:block! hidden!"
-              onClick={() => {
-                setSidebar(!getSidebar);
-                setCollapse("");
-              }}
+              onClick={() => setSidebar(!getSidebar)}
             ></Button>
 
             <Button
@@ -63,45 +57,43 @@ export default function Header() {
           </div>
 
           {/* Center Menu */}
-          <div className="relative flex gap-2 p-2">
-            <div className="md:flex hidden gap-3">
-              <nav className="flex  gap-2 md:w-fit w-full overflow-auto scrollbar-none">
-                <Button href={"/porn"} className="relative">
-                  porn
-                  {(pathname === "/" || pathname === "/porn") && (
-                    <span className="absolute bottom-0 w-2 border border-white rounded-full"></span>
-                  )}
-                </Button>
+          <div className="md:flex items-center hidden gap-2 p-2">
+            <nav className="flex  gap-2 md:w-fit w-full overflow-auto scrollbar-none">
+              <Button href={"/porn"} className="relative">
+                porn
+                {(pathname === "/" || pathname === "/porn") && (
+                  <span className="absolute bottom-0 w-2 border border-white rounded-full"></span>
+                )}
+              </Button>
 
-                <Button href={"/animated"} className="relative">
-                  animated
-                  {pathname === "/animated" && (
-                    <span className="absolute bottom-0 w-2 border border-white rounded-full"></span>
-                  )}
-                </Button>
+              <Button href={"/animated"} className="relative">
+                animated
+                {pathname === "/animated" && (
+                  <span className="absolute bottom-0 w-2 border border-white rounded-full"></span>
+                )}
+              </Button>
 
-                <Button href={"/hentai"} className="relative">
-                  hentai
-                  {pathname === "/hentai" && (
-                    <span className="absolute bottom-0 w-2 border border-white rounded-full"></span>
-                  )}
-                </Button>
+              <Button href={"/hentai"} className="relative">
+                hentai
+                {pathname === "/hentai" && (
+                  <span className="absolute bottom-0 w-2 border border-white rounded-full"></span>
+                )}
+              </Button>
 
-                <Button href={"/cosplay"} className="relative">
-                  cosplay
-                  {pathname === "/cosplay" && (
-                    <span className="absolute bottom-0 w-2 border border-white rounded-full"></span>
-                  )}
-                </Button>
+              <Button href={"/cosplay"} className="relative">
+                cosplay
+                {pathname === "/cosplay" && (
+                  <span className="absolute bottom-0 w-2 border border-white rounded-full"></span>
+                )}
+              </Button>
 
-                <Button href={"/manhwa"} className="relative">
-                  manhwa
-                  {pathname === "/manhwa" && (
-                    <span className="absolute bottom-0 w-2 border border-white rounded-full"></span>
-                  )}
-                </Button>
-              </nav>
-            </div>
+              <Button href={"/manhwa"} className="relative">
+                manhwa
+                {pathname === "/manhwa" && (
+                  <span className="absolute bottom-0 w-2 border border-white rounded-full"></span>
+                )}
+              </Button>
+            </nav>
           </div>
 
           {/* Right Menu */}
@@ -122,11 +114,9 @@ export default function Header() {
                 variant="white"
                 radius="full"
               >
-                <span className="md:block hidden">Browse</span>
+                <span className="md:block hidden px-6">Browse</span>
               </Button>
             )}
-
-            <Announcement />
 
             <Setting />
           </div>

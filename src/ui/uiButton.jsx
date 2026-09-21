@@ -6,6 +6,7 @@ export default function ButtonX({
   href,
   icon,
   iconEnd,
+  iconClass,
   size = "default",
   width = "default",
   variant = "default",
@@ -35,7 +36,8 @@ export default function ButtonX({
   };
 
   const variants = {
-    default: "",
+    default: "text-zinc-400 hover:text-zinc-100",
+    active: "text-zinc-100",
     white: "bg-zinc-100 hover:bg-zinc-300 text-zinc-800",
     base: "bg-zinc-900 hover:bg-zinc-800",
     baseActive: "bg-zinc-800",
@@ -77,7 +79,11 @@ export default function ButtonX({
 
   const content = (
     <>
-      {icon && <i className={`bi bi-${icon} text-[16px]`} aria-hidden="true" />}
+      {icon && (
+        <span className={iconClass}>
+          <i className={`bi bi-${icon} text-[16px]`} aria-hidden="true" />
+        </span>
+      )}
 
       {children}
 

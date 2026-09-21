@@ -1,9 +1,14 @@
 "use client";
 
 import { useController } from "@/ui/Controller";
+import Post from "@/ui/uiPost";
 
 export default function pornPage() {
-  const { getSidebar, setSidebar, theme, setTheme } = useController();
+  const { getPorn } = useController();
 
-  return <>pornPage</>;
+  return (
+    <>
+      <Post data={getPorn} />
+    </>
+  );
 }
