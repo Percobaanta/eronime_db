@@ -8,8 +8,14 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const { getSidebar, setSidebar, getSidebarMobile, setSidebarMobile } =
-    useController();
+  const {
+    getSidebar,
+    setSidebar,
+    getSidebarMobile,
+    setSidebarMobile,
+    setCreator,
+    setTag,
+  } = useController();
 
   const navigation = [
     {
@@ -32,6 +38,11 @@ export default function Header() {
       title: "cosplay",
       icon: "image",
     },
+    {
+      href: "/manhwa",
+      title: "manhwa",
+      icon: "image",
+    },
   ];
 
   return (
@@ -40,14 +51,14 @@ export default function Header() {
       {getSidebarMobile && (
         <div
           onClick={() => setSidebarMobile(false)}
-          className="fixed inset-0 z-30 bg-black/70 md:hidden"
+          className="fixed inset-0 z-30 bg-black/90 md:hidden"
         >
           <Button
-            variant="baseActive"
+            variant="white"
             radius="full"
             icon={getSidebarMobile ? "x-lg" : "list"}
             onClick={() => setSidebarMobile(!getSidebarMobile)}
-            className="absolute top-4 right-6"
+            className="absolute top-2 right-2"
           ></Button>
         </div>
       )}
@@ -55,7 +66,7 @@ export default function Header() {
       {/* Sidebar */}
       <aside
         className={`dark:md:bg-black md:bg-white bg-zinc-900 md:sticky fixed flex flex-none flex-col gap-5 left-0 top-0 z-40 h-screen md:translate-x-0 overflow-auto
-        ${getSidebar ? "min-w-0" : "w-60"}
+        ${getSidebar ? "min-w-0" : "w-52"}
         ${getSidebarMobile ? "translate-x-0" : "-translate-x-full"}
       `}
       >
@@ -66,7 +77,7 @@ export default function Header() {
             justify="start"
             className={!getSidebar ? "p-2 h-min!" : "h-min! p-2!"}
           >
-            <div className="bg-indigo-500 text-zinc-100 flex items-center justify-center rounded-xl size-8">
+            <div className="bg-yellow-200 text-black flex items-center justify-center rounded-xl size-8">
               <i className="bi bi-chat-heart-fill text-[18px]" />
             </div>
 
@@ -114,6 +125,7 @@ export default function Header() {
           </nav>
         ) : (
           <nav className="space-y-2 p-2">
+            {/* Navigation */}
             {!getSidebar && (
               <div className="flex items-center gap-2 text-xs text-zinc-400">
                 <div className="bg-zinc-800 flex items-center justify-center size-6 text-xs rounded">
@@ -132,8 +144,12 @@ export default function Header() {
                     iconEnd={
                       !getSidebar
                         ? pathname === "/"
-                          ? e.href === "/porn" && "dot ml-auto"
-                          : pathname === e.href && "dot ml-auto"
+                          ? e.href === "/porn"
+                            ? "record-fill ml-auto"
+                            : "record ml-auto"
+                          : pathname === e.href
+                          ? "record-fill ml-auto"
+                          : "record ml-auto"
                         : ""
                     }
                     variant={
@@ -149,6 +165,9 @@ export default function Header() {
                     }
                     width="full"
                     justify="start"
+                    onClick={() => {
+                      setCreator([]), setTag([]);
+                    }}
                   >
                     {!getSidebar && e.title}
                   </Button>
@@ -156,6 +175,7 @@ export default function Header() {
               ))}
             </ul>
 
+            {/* Bookmark */}
             {!getSidebar && (
               <div className="flex items-center gap-2 text-xs text-zinc-400">
                 <div className="bg-zinc-800 flex items-center justify-center size-6 text-xs rounded">
@@ -167,15 +187,16 @@ export default function Header() {
             )}
 
             <ul className="border-l border-dashed border-zinc-800 ml-3 pl-3">
-              {navigation.map((e, i) => (
+              {Array.from({ length: 2 }, (_, i) => (
                 <li key={i}>
                   <Button href={"#"} width="full" justify="start">
-                    {!getSidebar && e.title}
+                    Bookmark - {i}
                   </Button>
                 </li>
               ))}
             </ul>
 
+            {/* Reaction */}
             {!getSidebar && (
               <div className="flex items-center gap-2 text-xs text-zinc-400">
                 <div className="bg-zinc-800 flex items-center justify-center size-6 text-xs rounded">
@@ -187,10 +208,10 @@ export default function Header() {
             )}
 
             <ul className="border-l border-dashed border-zinc-800 ml-3 pl-3">
-              {navigation.map((e, i) => (
+              {Array.from({ length: 2 }, (_, i) => (
                 <li key={i}>
                   <Button href={"#"} width="full" justify="start">
-                    {!getSidebar && e.title}
+                    Reaction - {i}
                   </Button>
                 </li>
               ))}

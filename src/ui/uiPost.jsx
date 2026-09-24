@@ -2,6 +2,7 @@
 
 import { useController } from "@/ui/Controller";
 import { usePathname } from "next/navigation";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import Button from "./uiButton";
 import Label from "./uiLabel";
@@ -9,7 +10,74 @@ import Label from "./uiLabel";
 export default function Card({ data }) {
   const pathname = usePathname();
 
-  const { getSetting } = useController();
+  const {
+    getPorn,
+    getAnimated,
+    getHentai,
+    getCosplay,
+    getBookmark,
+    getReaction,
+    getSetting,
+    getSort,
+    getCreator,
+    getTag,
+  } = useController();
+
+  const [loadCount, setLoadCount] = useState(30);
+
+  const getApi =
+    pathname === "/" || pathname === "/porn"
+      ? getPorn
+      : pathname === "/animated"
+      ? getAnimated
+      : pathname === "/hentai"
+      ? getHentai
+      : pathname === "/cosplay"
+      ? getCosplay
+      : pathname === "/Search"
+      ? getSearch
+      : getBookmark;
+
+  const result = useMemo(() => {
+    let data = [...(getApi || [])];
+
+    // CREATOR (OR
+    if (getCreator?.length) {
+      data = data.filter((item) =>
+        getCreator.some((creator) => item.xcreator?.includes(creator))
+      );
+    }
+
+    // TAG (AND)
+    if (getTag?.length) {
+      data = data.filter((e) => getTag.every((tag) => e.xtags?.includes(tag)));
+    }
+
+    // SORT
+    if (getSort === "view") {
+      data.sort(
+        (a, b) =>
+          (parseInt(b.id.slice(-4), 10) || 0) -
+          (parseInt(a.id.slice(-4), 10) || 0)
+      );
+    } else if (getSort === "view_down") {
+      data.sort(
+        (a, b) =>
+          (parseInt(a.id.slice(-4), 10) || 0) -
+          (parseInt(b.id.slice(-4), 10) || 0)
+      );
+    } else if (getSort === "title") {
+      data.sort((a, b) => a.xtitle.localeCompare(b.xtitle));
+    } else if (getSort === "title_down") {
+      data.sort((a, b) => b.xtitle.localeCompare(a.xtitle));
+    } else if (getSort === "date") {
+      data.sort((a, b) => Number(b.id) - Number(a.id));
+    } else if (getSort === "date_down") {
+      data.sort((a, b) => Number(a.id) - Number(b.id));
+    }
+
+    return data;
+  }, [getApi, getCreator, getTag, getSort]);
 
   return (
     <>
@@ -21,20 +89,30 @@ export default function Card({ data }) {
             title={
               pathname === "/" || pathname === "/porn" ? (
                 <>
-                  new porn <span className="text-indigo-500"> videos</span>
+                  new porn <span className="text-yellow-200"> videos</span>
                 </>
               ) : pathname === "/animated" ? (
                 <>
-                  new animated <span className="text-indigo-500"> videos</span>
+                  new animated <span className="text-yellow-200"> videos</span>
                 </>
               ) : pathname === "/hentai" ? (
                 <>
-                  new hentai <span className="text-indigo-500"> videos</span>
+                  new hentai <span className="text-yellow-200"> videos</span>
+                </>
+              ) : pathname === "/cosplay" ? (
+                <>
+                  new cosplay
+                  <span className="text-yellow-200"> collection</span>
+                </>
+              ) : pathname === "/search" ? (
+                <>
+                  explore
+                  <span className="text-yellow-200"> content</span>
                 </>
               ) : (
                 <>
-                  new cosplay{" "}
-                  <span className="text-indigo-500"> collection</span>
+                  new cosplay
+                  <span className="text-yellow-200"> Reaction</span>
                 </>
               )
             }
@@ -48,13 +126,13 @@ export default function Card({ data }) {
         {getSetting && (
           <>
             <div
-              className={`grid gap-x-4 gap-y-6 ${
+              className={`grid gap-x-2 gap-y-6 ${
                 getSetting.layout === "5"
                   ? "md:grid-cols-5 grid-cols-2"
                   : "md:grid-cols-6 grid-cols-2"
               }`}
             >
-              {data?.map((e, i) => (
+              {result?.slice(0, loadCount).map((e, i) => (
                 <Link href={`/porn/${e.id}`} key={i}>
                   <img
                     src={
@@ -87,10 +165,6 @@ export default function Card({ data }) {
                   </h2>
                 </Link>
               ))}
-            </div>
-
-            <div className="flex justify-center">
-              <Button>Load More</Button>
             </div>
           </>
         )}

@@ -4,6 +4,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 import Sidebar from "./uiSidebar";
 import Header from "./uiHeader";
+import { getProxiedPluginState } from "next/dist/build/build-context";
 
 const ControllerContext = createContext(null);
 
@@ -19,6 +20,8 @@ export function Controller({ children }) {
   const [getAnimated, setAnimated] = useState([]);
   const [getHentai, setHentai] = useState([]);
   const [getCosplay, setCosplay] = useState([]);
+  const [getBookmark, setBookmark] = useState([]);
+  const [getReaction, setReaction] = useState([]);
 
   // Core State
   const [getSidebar, setSidebar] = useState(false);
@@ -26,7 +29,10 @@ export function Controller({ children }) {
   const [getFilter, setFilter] = useState(false);
   const [getSetting, setSetting] = useState(null);
   const [theme, setTheme] = useState("dark");
-
+  const [getSearch, setSearch] = useState("");
+  const [getSort, setSort] = useState("date");
+  const [getCreator, setCreator] = useState([]);
+  const [getTag, setTag] = useState([]);
   // Async Api
   useEffect(() => {
     async function getApi() {
@@ -66,6 +72,12 @@ export function Controller({ children }) {
         setHentai,
         getCosplay,
         setCosplay,
+        getBookmark,
+        setBookmark,
+        getReaction,
+        setReaction,
+        getSearch,
+        setSearch,
         getSidebar,
         setSidebar,
         getSidebarMobile,
@@ -74,6 +86,12 @@ export function Controller({ children }) {
         setFilter,
         getSetting,
         setSetting,
+        getSort,
+        setSort,
+        getCreator,
+        setCreator,
+        getTag,
+        setTag,
       }}
     >
       <Sidebar />
