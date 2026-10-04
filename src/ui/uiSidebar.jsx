@@ -65,12 +65,12 @@ export default function Header() {
 
       {/* Sidebar */}
       <aside
-        className={`dark:md:bg-black md:bg-white bg-zinc-900 md:sticky fixed flex flex-none flex-col gap-5 left-0 top-0 z-40 h-screen md:translate-x-0 overflow-auto
+        className={`dark:bg-zinc-900 md:bg-white  md:sticky fixed flex flex-none flex-col gap-5 left-0 top-0 z-40 h-screen md:translate-x-0 overflow-auto borderR
         ${getSidebar ? "min-w-0" : "w-52"}
         ${getSidebarMobile ? "translate-x-0" : "-translate-x-full"}
       `}
       >
-        <div className="md:bg-black bg-zinc-900 sticky top-0 flex gap-2">
+        <div className="bg-zinc-900 sticky top-0 flex gap-2">
           <Button
             href={"/"}
             width="full"
@@ -82,7 +82,7 @@ export default function Header() {
             </div>
 
             {!getSidebar && (
-              <div className="flex flex-col leading-4">
+              <div className="flex flex-col leading-4 text-white">
                 <label className="lowercase text-[18px] font-semibold!">
                   eronime
                 </label>
@@ -168,6 +168,7 @@ export default function Header() {
                     onClick={() => {
                       setCreator([]), setTag([]);
                     }}
+                    className="px-0!"
                   >
                     {!getSidebar && e.title}
                   </Button>
@@ -189,7 +190,12 @@ export default function Header() {
             <ul className="border-l border-dashed border-zinc-800 ml-3 pl-3">
               {Array.from({ length: 2 }, (_, i) => (
                 <li key={i}>
-                  <Button href={"#"} width="full" justify="start">
+                  <Button
+                    href={"#"}
+                    width="full"
+                    justify="start"
+                    className="px-0!"
+                  >
                     Bookmark - {i}
                   </Button>
                 </li>
@@ -210,7 +216,12 @@ export default function Header() {
             <ul className="border-l border-dashed border-zinc-800 ml-3 pl-3">
               {Array.from({ length: 2 }, (_, i) => (
                 <li key={i}>
-                  <Button href={"#"} width="full" justify="start">
+                  <Button
+                    href={"#"}
+                    width="full"
+                    justify="start"
+                    className="px-0!"
+                  >
                     Reaction - {i}
                   </Button>
                 </li>

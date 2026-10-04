@@ -23,7 +23,7 @@ export default function Label({
   };
 
   const finalStyles = [
-    ``,
+    `mb-2`,
     h1 && "font-bold",
     h2 && "font-semibold",
     h3 && "font-light",
@@ -61,9 +61,9 @@ export default function Label({
   }
 
   return (
-    <span className={finalStyles}>
+    <div className={finalStyles}>
       {icon && <i className={`bi bi-${icon} mr-2`} aria-hidden="true"></i>}
-      {title}
-    </span>
+      <span>{title}</span>
+    </div>
   );
 }

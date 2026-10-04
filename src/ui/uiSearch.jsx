@@ -17,8 +17,8 @@ export default function Search({ getApi, getSearch = "" }) {
   );
 
   return (
-    <section className="container mx-auto p-2 pb-10 space-y-5">
-      <div>
+    <section className="container mx-auto">
+      <div className="mb-5">
         <Label
           className="text-2xl! font-bold! uppercase"
           h1
@@ -36,7 +36,7 @@ export default function Search({ getApi, getSearch = "" }) {
 
       {getSetting && (
         <div
-          className={`grid gap-x-2 gap-y-6 ${
+          className={`grid gap-x-3 gap-y-5 ${
             getSetting.layout === "5"
               ? "md:grid-cols-5 grid-cols-2"
               : "md:grid-cols-6 grid-cols-2"

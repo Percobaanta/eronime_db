@@ -2,9 +2,13 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 
-import Sidebar from "./uiSidebar";
 import Header from "./uiHeader";
 import { getProxiedPluginState } from "next/dist/build/build-context";
+import Button from "./uiButton";
+
+import Navbar from "./navbar";
+import Sidebar from "./sidebar";
+import Filter from "./uiFilter";
 
 const ControllerContext = createContext(null);
 
@@ -24,9 +28,13 @@ export function Controller({ children }) {
   const [getReaction, setReaction] = useState([]);
 
   // Core State
-  const [getSidebar, setSidebar] = useState(false);
+  const [getSidebar, setSidebar] = useState(true);
   const [getSidebarMobile, setSidebarMobile] = useState(false);
-  const [getFilter, setFilter] = useState(false);
+  const [getFilter, setFilter] = useState({
+    sort: "date_asc",
+    creators: [],
+    tags: [],
+  });
   const [getSetting, setSetting] = useState(null);
   const [theme, setTheme] = useState("dark");
   const [getSearch, setSearch] = useState("");
@@ -94,13 +102,25 @@ export function Controller({ children }) {
         setTag,
       }}
     >
-      <Sidebar />
+      <Navbar />
+
+      <div className="flex">
+        <Sidebar />
+
+        <div className="grow h-screen overflow-auto pt-20 p-3">
+          <Filter />
+
+          {children}
+        </div>
+      </div>
+
+      {/* <Sidebar />
 
       <main>
         <Header />
 
         {children}
-      </main>
+      </main> */}
     </ControllerContext.Provider>
   );
 }
