@@ -1,15 +1,15 @@
 "use client";
 
 import { useController } from "@/ui/Controller";
-import { usePathname } from "next/navigation";
 import Button from "./uiButton";
 import Setting from "./uiSetting";
-import Announcement from "./uiAnnouncement";
+import Search from "./uiSearch";
+import { usePathname } from "next/navigation";
 
 export default function Navbar({}) {
   const pathname = usePathname();
 
-  const { getSidebar, setSidebar, setSearch, setFilter } = useController();
+  const { getSidebar, setSidebar, setFilter } = useController();
 
   return (
     <>
@@ -43,22 +43,12 @@ export default function Navbar({}) {
             onClick={() => setSidebar(!getSidebar)}
           ></Button>
 
-          {pathname === "/search" ? (
-            <div className="bg-zinc-900 flex md:w-64 w-full rounded-full overflow-auto ml-auto">
-              <Button icon={"search"}></Button>
+          <Search />
 
-              <input
-                className="w-full text-sm h-full outline-0"
-                placeholder="Search..."
-                autoFocus
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
-          ) : (
-            <Button href="/search" icon="search" className="ml-auto"></Button>
-          )}
-
-          <Announcement />
+          <Button
+            href={"bookmark"}
+            icon={pathname === "/bookmark" ? "bookmark-fill" : "bookmark"}
+          ></Button>
 
           <Setting />
         </div>

@@ -2,63 +2,69 @@
 
 import { useController } from "@/ui/Controller";
 import { useState } from "react";
-import Button from "@/ui/uiButton";
-import Card from "@/ui/uiCard";
+import Button from "./uiButton";
+import Label from "./uiLabel";
 import Link from "next/link";
-import Label from "@/ui/uiLabel";
 
-export default function Search({ getApi, getSearch = "" }) {
-  const { getSetting } = useController();
+export default function Search() {
+  const { getPorn, getAnimated, getHentai, getCosplay } = useController();
 
-  const [visibleCount, setVisibleCount] = useState(15);
+  const getApi = [...getPorn, ...getAnimated, ...getHentai, ...getCosplay];
+
+  const [getModal, setModal] = useState(false);
+  const [getSearch, setSearch] = useState("");
 
   const searchData = getApi?.filter((doc) =>
     doc?.xtitle?.toLowerCase().includes(getSearch.toLowerCase())
   );
 
   return (
-    <section className="container mx-auto">
-      <div className="mb-5">
-        <Label
-          className="text-2xl! font-bold! uppercase"
-          h1
-          title={
-            <>
-              explore
-              <span className="text-yellow-200"> content</span>
-            </>
-          }
-        ></Label>
-        <p className="text-sm text-zinc-400">
-          Showing results for your selected filters
-        </p>
-      </div>
+    <>
+      <Button
+        icon="search"
+        onClick={() => setModal(true)}
+        className="ml-auto"
+      ></Button>
 
-      {getSetting && (
-        <div
-          className={`grid gap-x-3 gap-y-5 ${
-            getSetting.layout === "5"
-              ? "md:grid-cols-5 grid-cols-2"
-              : "md:grid-cols-6 grid-cols-2"
-          }`}
-        >
-          {searchData.map((doc) => (
-            <article key={doc.id}>
-              <Card
-                href={`/${doc.xtype}/${doc.id}`}
-                src={
-                  doc?.xtype === "cosplay"
-                    ? `/img/${doc?.id}/(1).webp`
-                    : `/img/pah/${doc?.id}.webp`
-                }
-                type={doc.xtype}
-                variant={getSetting.style}
-                title={doc.xtitle}
-              ></Card>
-            </article>
-          ))}
+      {getModal && (
+        <div className="fixed inset-0 z-50 px-10">
+          <div
+            className="absolute inset-0 bg-zinc-950/90"
+            onClick={() => setModal(false)}
+          />
+
+          <div className="relative z-10 mx-auto mt-24 w-full rounded-lg bg-zinc-900 md:w-96">
+            <div className="flex items-center gap-3 p-3">
+              <Label icon="search" className="mb-0!"></Label>
+
+              <input
+                placeholder="Search..."
+                autoFocus
+                className="text-sm w-full h-8 outline-0"
+                onChange={(e) => setSearch(e.target.value)}
+              />
+
+              <Button icon="x" onClick={() => setModal(false)} />
+            </div>
+
+            <div className="max-h-96 overflow-auto">
+              {searchData.slice(0, 10).map((items, i) => (
+                <Link
+                  key={i}
+                  href={`${items.xtype}/${items.xtitle}`}
+                  className="hover:bg-zinc-800 flex flex-col p-3"
+                >
+                  <span className="text-xs truncate block">{items.xtitle}</span>
+
+                  <span className="text-xs textMuted capitalize">
+                    {items.xtype}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       )}
-    </section>
+    </>
   );
 }

@@ -18,6 +18,8 @@ export default function Navbar({}) {
     setFilter,
   } = useController();
 
+  const apiAll = [...getPorn, ...getAnimated, ...getHentai, ...getCosplay];
+
   const [getCollapse, setCollapse] = useState("porn");
 
   // GET API
@@ -28,7 +30,9 @@ export default function Navbar({}) {
       ? getAnimated
       : pathname === "/hentai"
       ? getHentai
-      : getCosplay;
+      : pathname === "/cosplay"
+      ? getCosplay
+      : apiAll;
 
   // GET CREATOR WITHOUT DUPLICATE
   const creators = [...new Set(getApi?.flatMap((item) => item.xcreator || []))];
@@ -65,7 +69,7 @@ export default function Navbar({}) {
             <Button
               iconEnd={getCollapse === "porn" ? "dash ml-auto" : "plus ml-auto"}
               width="full"
-              className="pl-0"
+              className="px-0!"
               onClick={() =>
                 getCollapse === "porn" ? setCollapse(null) : setCollapse("porn")
               }
@@ -97,7 +101,7 @@ export default function Navbar({}) {
                         : "record text-xs! ml-auto"
                     }
                     aria-label={e.title}
-                    className="justify-between! w-full! pl-5"
+                    className="justify-between! w-full! pl-5 pr-0"
                     onClick={() =>
                       setFilter((prev) => ({
                         ...prev,
@@ -118,7 +122,7 @@ export default function Navbar({}) {
             <Button
               iconEnd={getCollapse === "sort" ? "dash ml-auto" : "plus ml-auto"}
               width="full"
-              className="pl-0"
+              className="px-0!"
               onClick={() =>
                 getCollapse === "sort" ? setCollapse(null) : setCollapse("sort")
               }
@@ -171,7 +175,7 @@ export default function Navbar({}) {
                         : `${items.icon} text-xs! ml-auto`
                     }
                     aria-label={items.title}
-                    className="justify-between! w-full! pl-5"
+                    className="justify-between! w-full! pl-5 pr-0"
                     onClick={() =>
                       setFilter((prev) => ({ ...prev, sort: items.sort }))
                     }
@@ -182,14 +186,14 @@ export default function Navbar({}) {
             </div>
           </div>
 
-          {/* CREATOR */}
+          {/* CREATOR / ARTIST / BRAND */}
           <div className="flex flex-col">
             <Button
               iconEnd={
                 getCollapse === "creator" ? "dash ml-auto" : "plus ml-auto"
               }
               width="full"
-              className="pl-0"
+              className="px-0!"
               onClick={() =>
                 getCollapse === "creator"
                   ? setCollapse(null)
@@ -199,25 +203,29 @@ export default function Navbar({}) {
               <div className="bg-zinc-800 flex items-center justify-center size-6 text-xs rounded-lg">
                 <i className="bi bi-person" />
               </div>
-              CREATOR
+
+              {pathname === "/hentai" ? "BRAND" : "ARTIST"}
             </Button>
 
             <div className="ml-3 border-l border-dashed border-zinc-800">
               {getCollapse === "creator" &&
                 creators.map((items, i) => (
-                  <Button
-                    key={i}
-                    iconEnd={
-                      getFilter.creators.includes(items)
-                        ? "record-fill text-xs! ml-auto"
-                        : "record text-xs! ml-auto"
-                    }
-                    aria-label={items}
-                    className="justify-between! w-full! pl-5"
-                    onClick={() => toggleCreators(items)}
-                  >
-                    {items}
-                  </Button>
+                  <div key={i} className="flex justify-between items-center">
+                    <Button
+                      className="text-start truncate! block! w-full pl-5"
+                      onClick={() => toggleCreators(items)}
+                    >
+                      {items}
+                    </Button>
+
+                    <i
+                      className={
+                        getFilter.creators.includes(items)
+                          ? "bi bi-record-fill text-xs! ml-auto"
+                          : "bi bi-record text-xs! ml-auto"
+                      }
+                    />
+                  </div>
                 ))}
             </div>
           </div>
@@ -227,7 +235,7 @@ export default function Navbar({}) {
             <Button
               iconEnd={getCollapse === "tag" ? "dash ml-auto" : "plus ml-auto"}
               width="full"
-              className="pl-0"
+              className="px-0!"
               onClick={() =>
                 getCollapse === "tag" ? setCollapse(null) : setCollapse("tag")
               }
@@ -241,19 +249,22 @@ export default function Navbar({}) {
             <div className="ml-3 border-l border-dashed border-zinc-800">
               {getCollapse === "tag" &&
                 tags.map((items, i) => (
-                  <Button
-                    key={i}
-                    iconEnd={
-                      getFilter.tags.includes(items)
-                        ? "record-fill text-xs! ml-auto"
-                        : "record text-xs! ml-auto"
-                    }
-                    aria-label={items}
-                    className="justify-between! w-full! pl-5"
-                    onClick={() => toggleTags(items)}
-                  >
-                    {items}
-                  </Button>
+                  <div key={i} className="flex justify-between items-center">
+                    <Button
+                      className="text-start truncate! block! w-full pl-5"
+                      onClick={() => toggleTags(items)}
+                    >
+                      {items}
+                    </Button>
+
+                    <i
+                      className={
+                        getFilter.tags.includes(items)
+                          ? "bi bi-record-fill text-xs! ml-auto"
+                          : "bi bi-record text-xs! ml-auto"
+                      }
+                    />
+                  </div>
                 ))}
             </div>
           </div>
